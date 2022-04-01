@@ -1,0 +1,78 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = "mysql://root:1234Abcd@localhost:3300/handels"
+}
+
+model adminlogin {
+  id         Int    @id @default(autoincrement())
+  username   String @db.VarChar(50)
+  hashedPswd String @db.VarChar(200)
+}
+
+model company {
+  id           Int            @id @default(autoincrement())
+  name         String         @db.VarChar(100)
+  companyInfo  String?        @db.VarChar(300)
+  externalUrl  String?        @db.VarChar(200)
+  logoUrl      String         @db.VarChar(200)
+  foodCheck    Boolean
+  competitions competitions[]
+  offers       offers[]
+  placement    placement[]
+}
+
+model competitions {
+  id        Int     @id @default(autoincrement())
+  companyId Int
+  formUrl   String  @db.VarChar(200)
+  company   company @relation(fields: [companyId], references: [id], onUpdate: Restrict, map: "competitions_ibfk_1")
+
+  @@index([companyId], map: "companyId")
+}
+
+model offers {
+  id        Int     @id @default(autoincrement())
+  companyId Int
+  offer     String  @db.VarChar(150)
+  price     Int
+  company   company @relation(fields: [companyId], references: [id], onUpdate: Restrict, map: "offers_ibfk_1")
+
+  @@index([companyId], map: "companyId")
+}
+
+model placement {
+  id        Int      @id @default(autoincrement())
+  companyId Int?
+  company   company? @relation(fields: [companyId], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "placement_ibfk_1")
+
+  @@index([companyId], map: "companyId")
+}
+
+model qrcodes {
+  id         Int      @id @default(autoincrement())
+  randomId   String   @db.VarChar(20)
+  companyUrl String   @db.VarChar(200)
+  qrName     String   @db.VarChar(50)
+  qrscan     qrscan[]
+}
+
+model qrscan {
+  id       Int      @id @default(autoincrement())
+  randomId Int
+  dateTime DateTime @db.DateTime(0)
+  device   String   @db.VarChar(50)
+  qrcodes  qrcodes  @relation(fields: [randomId], references: [id], onUpdate: Restrict, map: "FK_qr")
+
+  @@index([randomId], map: "FK_qr")
+}
+
+model sponsors {
+  id         Int    @id @default(autoincrement())
+  name       String @db.VarChar(50)
+  logoUrl    String @db.VarChar(200)
+  sponsorUrl String @db.VarChar(200)
+}
