@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = "mysql://root:1234Abcd@localhost:3300/handels"
+  url      = "mysql://felixf:Abcd1234@www.datanom.ax:3306/DBfelixf"
 }
 
 model adminlogin {
