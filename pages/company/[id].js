@@ -1,8 +1,7 @@
-import LoadCompanies from "/Components/loadCompanies";
+import LoadCompanies from "/Components/LoadCompanies";
 import MainMenu from "/Components/MainMenu";
 import FooterMenu from "/Components/FooterMenu";
 import React from "react";
-import { useState, useEffect } from "react";
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
