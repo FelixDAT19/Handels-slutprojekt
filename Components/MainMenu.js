@@ -51,7 +51,7 @@ function MainMenu() {
           className="burger-check"
         />
 
-        <label className="burger menu main-nav">
+        <label for="main-nav" className="burger menu">
           <span></span>
         </label>
         <ul>
@@ -60,13 +60,11 @@ function MainMenu() {
               { link, name, css },
               i // maps out main menu
             ) => (
-              <>
                 <li>
-                  <a className={css} href={link}>
+                  <a href={link}>
                     {name}
                   </a>
                 </li>
-              </>
             )
           )}
         </ul>

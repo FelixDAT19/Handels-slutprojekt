@@ -9,7 +9,7 @@ function Home({ sponsors, location }) {
   return (
     <>
       <MainMenu />
-
+      <hr/>
       <CompanyLinks location={location}/>
 
       <FooterMenu sponsors={sponsors}/>
