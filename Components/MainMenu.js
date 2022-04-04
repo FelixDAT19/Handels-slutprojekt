@@ -51,7 +51,7 @@ function MainMenu() {
           className="burger-check"
         />
 
-        <label for="main-nav" className="burger menu">
+        <label className="burger menu main-nav">
           <span></span>
         </label>
         <ul>

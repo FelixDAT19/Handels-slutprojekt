@@ -1,9 +1,10 @@
 import React from "react";
+import Image from "next/image";
 
 function LoadCompanies({ name, companyInfo, externalUrl, logoUrl }) {
   return (
     <div>
-      <img src={logoUrl} alt={logoUrl} />
+      <image src={logoUrl} alt={logoUrl} />
       <h1>{name}</h1>
       <p>
         {companyInfo}
