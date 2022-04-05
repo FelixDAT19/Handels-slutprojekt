@@ -10,8 +10,8 @@ function MainMenu() {
       css: "smalbutton",
     },
     {
-      link: "/menu",
-      name: "Meny",
+      link: "/food",
+      name: "Mat på plats",
       css: "smalbutton",
     },
     {
@@ -51,16 +51,16 @@ function MainMenu() {
           className="burger-check"
         />
 
-        <label for="main-nav" className="burger menu">
+        <label htmlFor="main-nav" className="burger menu">
           <span></span>
         </label>
         <ul>
           {linksMenu.map(
             (
-              { link, name, css },
-              i // maps out main menu
+              {link, name},
+              o // maps out main menu
             ) => (
-                <li>
+                <li key={o}>
                   <a href={link}>
                     {name}
                   </a>
