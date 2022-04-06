@@ -12,7 +12,7 @@ function events({ sponsors }) {
 
       <br />
 
-      <iframe src="/files/programblad.pdf"/>
+      <iframe src="/files/programblad.pdf" className="iframecss"/>
 
       <br />
 
