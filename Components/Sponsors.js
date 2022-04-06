@@ -1,5 +1,4 @@
 
-
 function Sponsors({sponsors}){
     
     return(

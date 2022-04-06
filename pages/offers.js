@@ -5,7 +5,7 @@ import LoadOffers from "/Components/LoadOffers";
 const prisma = new PrismaClient();
 
 function offers({ sponsors, offers }) {
-  //Erbjudandesidan
+  
   return (
     <>
       <MainMenu />

@@ -7,6 +7,7 @@ function LoadFood({offers}){
         if (company.foodCheck === true) {
             return (
                 <div key={a}>
+                    <h3>{company.name}</h3>
                     <p>{offer} {price}</p>
                 </div>
             );
