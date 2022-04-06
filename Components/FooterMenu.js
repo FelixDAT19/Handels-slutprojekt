@@ -7,10 +7,10 @@ function FooterMenu({sponsors}){
         <>
             <Sponsors sponsors={sponsors}/> {/* show sponsors above footer */}
             
-            <div id="footer">
+            <div className="footer">
 
                 <p id="footerText">
-                    Sidan är skapad av Felix
+                    Sidan är skapad av grupp 2
                 </p>
 
             </div>

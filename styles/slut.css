@@ -227,3 +227,22 @@ span.boo {
 	height: 50px; /* Mellanrummet, storleken imellan textfälten */
     border:0.1px solid black; /* Kantstorlek runt texten för att lättare urskilja dem. */
 }
+.footer { /* Bottendelen pÃ¥ varje sida  */
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 1rem;
+	background-color: rgb(64, 59, 59);
+	color: white;
+	text-align: center;
+	height:70px;
+   
+}
+.iframecss {
+	width:640; 
+	height:1365; 
+	frameborder:0;
+	marginheight:0; 
+	marginwidth:0;
+}
