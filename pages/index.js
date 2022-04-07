@@ -1,8 +1,7 @@
 import MainMenu from "/Components/MainMenu";
 import FooterMenu from "/Components/FooterMenu";
 import CompanyLinks from "/Components/CompanyLinks";
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import prisma from "/api/client";
 
 function Home({ sponsors, location }) {
   
@@ -15,7 +14,7 @@ function Home({ sponsors, location }) {
       <FooterMenu sponsors={sponsors}/>
     </>
 
-    //startsida med länk
+    
   );
 }
 

@@ -1,16 +1,31 @@
 import React from "react";
-import Image from "next/image";
+import {useRouter} from 'next/router'
+import Link from "next/link";
 
-function LoadCompanies({ name, companyInfo, externalUrl, logoUrl }) {
+function LoadCompanies({ id, name, companyInfo, externalUrl, logoUrl, offers, competitions }) {
+
+  const router =  useRouter();
+
   return (
     <div>
-      <image src={logoUrl} alt={logoUrl} />
+      <img src={logoUrl} alt={logoUrl} />
       <h1>{name}</h1>
       <p>
         {companyInfo}
         <br />
-        <a href={externalUrl}>{externalUrl}</a>
+        <Link href={externalUrl}>{externalUrl}</Link>
       </p>
+      <h3>Erbjudanden</h3>
+      {offers.map(({offer, price}, s) => (
+        <div key={s}>
+            <p>{offer} {price}</p>
+        </div>
+      ))}
+      {competitions.map(({formUrl}, s) => (
+        <div key={s}>
+            <Link herf={formUrl} className="competitionLink">Tävling</Link>
+        </div>
+      ))}
     </div>
   );
 }

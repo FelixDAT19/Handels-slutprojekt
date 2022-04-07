@@ -1,7 +1,6 @@
 import MainMenu from "/Components/MainMenu";
 import FooterMenu from "/Components/FooterMenu";
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import prisma from "/api/client";
 
 function events({ sponsors }) {
   return (
@@ -12,7 +11,7 @@ function events({ sponsors }) {
 
       <br />
 
-      <iframe src="/files/programblad.pdf"/>
+      <iframe src="/files/programblad.pdf" className="iframecss"/>
 
       <br />
 
