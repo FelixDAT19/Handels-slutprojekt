@@ -271,3 +271,22 @@ Header {							/* Rubriken */
 	font-weight: 400;
 }
 
+.footer { /* Bottendelen pÃ¥ varje sida  */
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 1rem;
+	background-color: rgb(64, 59, 59);
+	color: white;
+	text-align: center;
+	height:70px;
+   
+}
+.iframecss {
+	width:640; 
+	height:1365; 
+	frameborder:0;
+	marginheight:0; 
+	marginwidth:0;
+}
