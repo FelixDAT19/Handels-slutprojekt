@@ -1,4 +1,5 @@
 import'/styles/slut.css';
+import'/styles/map.css';
 import { useEffect } from 'react';
 
 export default function MyApp({ Component, pageProps }) {

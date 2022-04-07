@@ -45,9 +45,10 @@ model offers {
 }
 
 model placement {
-  id        Int      @id @default(autoincrement())
-  companyId Int?
-  company   company? @relation(fields: [companyId], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "placement_ibfk_1")
+  id          Int      @id @default(autoincrement())
+  companyId   Int?
+  mapLocation String?  @db.Char(100)
+  company     company? @relation(fields: [companyId], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "placement_ibfk_1")
 
   @@index([companyId], map: "companyId")
 }

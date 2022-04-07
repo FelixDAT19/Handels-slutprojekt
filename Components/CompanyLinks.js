@@ -3,12 +3,22 @@ import {useRouter} from 'next/router'
 function CompanyLinks({location}){ //maps out all locations where there is a company
 
     const router = useRouter();
-
-    return location.map(({ id, companyId }, i) => {
+    
+    return location.map(({ id, companyId, mapLocation }, i) => {
         if (companyId !== null) {
             return (
-                
-                <div key={i}>
+                   
+                <area shape="rect" coords={mapLocation} alt={id} href={`/company/${companyId}`}/>     
+
+            );
+        }
+    });
+    
+
+}
+export default CompanyLinks;
+
+/*                <div key={i}>
                     <button
                     id={id}
                     onClick={() =>
@@ -18,12 +28,4 @@ function CompanyLinks({location}){ //maps out all locations where there is a com
                     {id}
                     </button>
                     <br />
-                </div>
-                
-            );
-        }
-    });
-    
-
-}
-export default CompanyLinks;
+                </div> */

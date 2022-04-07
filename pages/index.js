@@ -9,7 +9,11 @@ function Home({ sponsors, location }) {
     <>
       <MainMenu />
       <hr/>
-      <CompanyLinks location={location}/>
+      <img src="/files/lokalhandels.png" className="mapImage" usemap="#workmap"/>
+
+          <map name="workmap">
+            <CompanyLinks location={location}/>
+          </map>
 
       <FooterMenu sponsors={sponsors}/>
     </>
