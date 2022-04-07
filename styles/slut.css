@@ -1,9 +1,11 @@
 .logo { /* Loggan på handelsmässan */
 
     width: 100%; /* Anger 100 % bredd efter skärmstorlek på logon */
-    height: 100%; /* Anger 100 % höjd efter skärmstorlek på logon */
-    box-sizing: border-box;
-    
+    max-width: 700px;
+    height: auto; /* Anger 100 % höjd efter skärmstorlek på logon */
+    display: block;
+    margin: 0 auto;
+   
 }
 
 
@@ -21,7 +23,7 @@
   
   
 body {
-    background-color: rgb(230, 226, 210); /* Bakgrundsfärg*/
+    background-color: rgb(255, 255, 255); /* Bakgrundsfärg*/
     max-width: 100%; /* Anger max bredden på innehållet i sidan */
     margin:  auto;
     
@@ -53,7 +55,8 @@ h1 {
 
 .sponsorImage {
 	width: 100%;
-    padding: 5px 15px; /* Mellanrummet i innehållet ifrån sidans kanter, höjd. Utger mellanrum*/
+    max-width: 700px;
+    padding: 5px 20px; /* Mellanrummet i innehållet ifrån sidans kanter, höjd. Utger mellanrum*/
     margin:auto;
     display:block;
 }
@@ -194,7 +197,8 @@ span.boo {
 		width: calc(100%); /* Anger storleken på headerns bredd, fältet där texten, innehållet ska finnas*/
 		margin: 0;
 		min-height: 50px;
-		background: #eee; /* färgen på bakgrunden där burger boxen sitter */
+		background: rgb(46,204,113);
+background: linear-gradient(90deg, rgba(46,204,113,1) 0%, rgba(52,152,219,1) 100%); /* färgen på bakgrunden där burger boxen sitter */
 		overflow: hidden;
         
 }
@@ -217,7 +221,7 @@ span.boo {
 		padding: 0 15px;
 		text-decoration: none;
 		overflow: hidden;
-		color: #333; /* Färgen på texten i menyn som kommer upp */
+		color: rgb(255, 255, 255); /* Färgen på texten i menyn som kommer upp */
 		text-align: center; /* Bestämmer hur texten ska radas upp i menyn */
         
 }
