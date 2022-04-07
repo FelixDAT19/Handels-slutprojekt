@@ -1,8 +1,8 @@
 import MainMenu from "/Components/MainMenu";
 import FooterMenu from "/Components/FooterMenu";
-import { PrismaClient } from "@prisma/client";
+import prisma from "/api/client";
 import LoadCompetitions from "/Components/LoadCompetitions";
-const prisma = new PrismaClient();
+
 
 function competitions({ sponsors, competitions  }) {
   //Tävlingar
@@ -15,11 +15,15 @@ function competitions({ sponsors, competitions  }) {
 
       <h1>Tävlingar</h1>
 
+      <h2>Handelsmässans egna tävling</h2>
+
       <iframe
         src="https://docs.google.com/forms/d/e/1FAIpQLScDyejaHJdpMhmQXIMY-o_LAukSPwNwp7DKPe1Wu2Wx_dy7UA/viewform?embedded=true"
-        id="competitionIframe"
+        className="iframecss"
       />
       <br/>
+
+      <h2>företags tävlingar</h2>
 
       <LoadCompetitions competitions={competitions}/>
 
