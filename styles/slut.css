@@ -22,9 +22,9 @@
   
 body {
     background-color: rgb(230, 226, 210); /* Bakgrundsfärg*/
-    padding: 15px 15px 60px; /* Mellanrummet i innehållet ifrån sidans kanter, utger mellanrum*/
-    max-width: 680px; /* Anger max bredden på innehållet i sidan */
+    max-width: 100%; /* Anger max bredden på innehållet i sidan */
     margin:  auto;
+    
 }
     
     
@@ -53,6 +53,9 @@ h1 {
 
 .sponsorImage {
 	width: 100%;
+    padding: 5px 15px; /* Mellanrummet i innehållet ifrån sidans kanter, höjd. Utger mellanrum*/
+    margin:auto;
+    display:block;
 }
 
 /*--------------------------------------
@@ -73,6 +76,7 @@ h1 {
 -----------------------------------------------------------------------------------*/
 .burger-check {
 		display: none; /* Döljer checkboxen */
+        
 }
 
 
@@ -86,6 +90,7 @@ Gör så att man kann trycka fram och tillbaka med knappen.
 		width:100%; /* Anger bredden hur långt ifrån knappen man kan trycka, var man trycker  */
 		height: 60px;
 		cursor: pointer;
+        
 }
 
 .burger:after {
@@ -96,6 +101,7 @@ Gör så att man kann trycka fram och tillbaka med knappen.
 		width: 100%;
 		text-align: center;
 		font-size: 13px;
+        
 }
 
 /*--------------------------------------
@@ -112,14 +118,14 @@ Gör så att man kann trycka fram och tillbaka med knappen.
 		height: 4px; /* Anger tjockleken på ikonen/höjden */
 		background: #333; /* Färgen på burgarmeny iconen */
 		border-radius: 0.2em;
-}
+}       
 
 /* Reset the left and create the pseudo-element */
 .burger span:before,
 .burger span:after {
 		content: '';
 		left: 0;
-}
+}       
 
 /* Top bar position */
 .burger span:before {
@@ -190,6 +196,7 @@ span.boo {
 		min-height: 50px;
 		background: #eee; /* färgen på bakgrunden där burger boxen sitter */
 		overflow: hidden;
+        
 }
 
 .a-header ul {
@@ -199,7 +206,7 @@ span.boo {
 		list-style: none;
 		margin: 0;
 		padding: 0; /* Hur långt innehållet, textfälten kommer upp ifrån vänster kant.  */
-}
+}       
 
 .a-header ul a {
 		position: relative;
@@ -212,7 +219,7 @@ span.boo {
 		overflow: hidden;
 		color: #333; /* Färgen på texten i menyn som kommer upp */
 		text-align: center; /* Bestämmer hur texten ska radas upp i menyn */
-    
+        
 }
 
 .a-header ul a:hover,
@@ -222,13 +229,13 @@ span.boo {
 		text-decoration: solid;
 		background: rgb(255, 255, 255); /* Färgen när man hovrar över texten (på dator) på telefon när man håller in fingret på en av texterna */
 		border-bottom-color: #08c;
-}
+}       
 
 /* Animate height of 'a' element in order to reveal the menu on check (IE9 or higher) */
 #main-nav:checked ~ ul a {
 	height: 50px; /* Mellanrummet, storleken imellan textfälten */
     border:0.1px solid black; /* Kantstorlek runt texten för att lättare urskilja dem. */
-}
+}   
 .backbutton {                         /* Tillbaka knappen */
     color: #ffffff !important;
     background-color: #db545a !important;
@@ -271,15 +278,12 @@ Header {                            /* Rubriken */
 }
 
 .footer { /* Bottendelen pÃ¥ varje sida  */
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    left: 0;
+   position: relative;
     padding: 1rem;
     background-color: rgb(64, 59, 59);
     color: white;
     text-align: center;
-    height:70px;
+    bottom: 0;
    
 }
 .iframecss {
