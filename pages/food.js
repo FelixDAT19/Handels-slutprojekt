@@ -1,8 +1,8 @@
 import MainMenu from "/Components/MainMenu";
 import FooterMenu from "/Components/FooterMenu";
-import { PrismaClient } from "@prisma/client";
+import prisma from "/api/client";
 import LoadFood from "/Components/LoadFood";
-const prisma = new PrismaClient();
+
 
 
 function food({ sponsors, offers }) {
