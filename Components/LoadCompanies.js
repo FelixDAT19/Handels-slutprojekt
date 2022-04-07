@@ -1,5 +1,6 @@
 import React from "react";
 import {useRouter} from 'next/router'
+import Link from "next/link";
 
 function LoadCompanies({ id, name, companyInfo, externalUrl, logoUrl, offers, competitions }) {
 
@@ -12,7 +13,7 @@ function LoadCompanies({ id, name, companyInfo, externalUrl, logoUrl, offers, co
       <p>
         {companyInfo}
         <br />
-        <a href={externalUrl}>{externalUrl}</a>
+        <Link href={externalUrl}>{externalUrl}</Link>
       </p>
       <h3>Erbjudanden</h3>
       {offers.map(({offer, price}, s) => (
@@ -22,7 +23,7 @@ function LoadCompanies({ id, name, companyInfo, externalUrl, logoUrl, offers, co
       ))}
       {competitions.map(({formUrl}, s) => (
         <div key={s}>
-            <a passHerf={formUrl}>Tävling</a>
+            <Link herf={formUrl} className="competitionLink">Tävling</Link>
         </div>
       ))}
     </div>

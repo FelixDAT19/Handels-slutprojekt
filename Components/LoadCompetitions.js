@@ -1,4 +1,4 @@
-import company from "../pages/company/[id]";
+import Link from "next/link";
 
 function LoadCompetitions({competitions}){
     
@@ -8,7 +8,7 @@ function LoadCompetitions({competitions}){
             {competitions.map(({companyId, company ,formUrl}, u) => ( //maps out sponsors
                 <div key={u}>
                         <p id={companyId}>{company.name}</p>
-                        <a passHref={formUrl}>{formUrl}</a>
+                        <Link passHref={formUrl}>{formUrl}</Link>
                     <br/>
                 </div>
             ))}

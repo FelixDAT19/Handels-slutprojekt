@@ -14,7 +14,7 @@ function Home({ sponsors, location }) {
       <FooterMenu sponsors={sponsors}/>
     </>
 
-    //startsida med länk
+    
   );
 }
 
