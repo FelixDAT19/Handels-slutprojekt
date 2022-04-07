@@ -227,22 +227,63 @@ span.boo {
 	height: 50px; /* Mellanrummet, storleken imellan textfälten */
     border:0.1px solid black; /* Kantstorlek runt texten för att lättare urskilja dem. */
 }
+.backbutton {                         /* Tillbaka knappen */
+    color: #ffffff !important;
+    background-color: #db545a !important;
+    pointer-events: auto;
+    pointer-events: initial;
+    margin-top: 15px;
+    border-style: none;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    margin: 44px auto 60px;
+    padding: 18px 49px;
+    display: block;
+    border-bottom: none;
+    text-align: center;
+}
+
+.btn {                            /* Stora knapparna (tävlingsknappar) */
+    pointer-events: auto;
+    pointer-events: initial;
+    margin-left: 0;
+    margin-right: 0;
+    border-style: none;
+    font-weight: 700;
+    font-size: 1rem;
+    margin: 20px auto 0;
+    padding: 22px 50px 22px 50px;
+    color: #ffffff !important;
+    background-color: #478ac9 !important;
+    display: block;
+    width: 65%;
+    border-bottom: none;
+    text-align: center;
+}
+
+Header {                            /* Rubriken */
+    font-size: 4.5rem;
+    text-align: center;
+    box-sizing: border-box;
+    font-weight: 400;
+}
+
 .footer { /* Bottendelen pÃ¥ varje sida  */
-	position: fixed;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	padding: 1rem;
-	background-color: rgb(64, 59, 59);
-	color: white;
-	text-align: center;
-	height:70px;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: rgb(64, 59, 59);
+    color: white;
+    text-align: center;
+    height:70px;
    
 }
 .iframecss {
-	width:640; 
-	height:1365; 
-	frameborder:0;
-	marginheight:0; 
-	marginwidth:0;
+    width:640; 
+    height:1365; 
+    frameborder:0;
+    marginheight:0; 
+    marginwidth:0;
 }
