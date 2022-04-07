@@ -9,7 +9,7 @@ function Home({ sponsors, location }) {
     <>
       <MainMenu />
       <hr/>
-      <img src="/files/lokalhandels.png" className="mapImage" usemap="#workmap"/>
+      <img src="/files/lokalhandels.png" className="mapImage" useMap="#workmap"/>
 
           <map name="workmap">
             <CompanyLinks location={location}/>
