@@ -51,7 +51,9 @@ h1 {
 }
 /* ALL CSS KOD NEDANFÖR ÄR FÖR BURGER MENYN */
 
-
+.sponsorImage {
+	width: 100%;
+}
 
 /*--------------------------------------
  Animationstid som bestämmer före och efter hur lång tid den varar 
