@@ -1,7 +1,6 @@
-import Link from "next/link";
 import Sponsors from "./Sponsors";
 
-function FooterMenu({sponsors}){
+function FooterMenu({sponsors}){ //footer page with sponsors
 
     return(
         <>

@@ -5,7 +5,7 @@ import LoadCompetitions from "/Components/LoadCompetitions";
 
 
 function competitions({ sponsors, competitions  }) {
-  //Tävlingar
+  //competition page
 
   return (
     <>
@@ -34,7 +34,7 @@ function competitions({ sponsors, competitions  }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps() { //query for competition data and sponsor data
   const dataSponsor = await prisma.sponsors.findMany();
   const sponsors = [...JSON.parse(JSON.stringify(dataSponsor))];
 

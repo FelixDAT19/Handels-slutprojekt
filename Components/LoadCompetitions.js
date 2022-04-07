@@ -1,14 +1,14 @@
-import Link from "next/link";
+
 
 function LoadCompetitions({competitions}){
     
     return(
         <div id="Competitions">
 
-            {competitions.map(({companyId, company ,formUrl}, u) => ( //maps out sponsors
+            {competitions.map(({companyId, company ,formUrl}, u) => ( //maps out competitions that ar from other companies
                 <div key={u}>
                         <p id={companyId}>{company.name}</p>
-                        <Link passHref={formUrl}>{formUrl}</Link>
+                        <a href={formUrl}>{formUrl}</a>
                     <br/>
                 </div>
             ))}

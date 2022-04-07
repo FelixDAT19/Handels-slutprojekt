@@ -1,6 +1,6 @@
 import {useRouter} from 'next/router'
 
-function CompanyLinks({location}){
+function CompanyLinks({location}){ //maps out all locations where there is a company
 
     const router = useRouter();
 

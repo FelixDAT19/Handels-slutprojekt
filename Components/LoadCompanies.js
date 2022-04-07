@@ -1,19 +1,18 @@
 import React from "react";
-import {useRouter} from 'next/router'
-import Link from "next/link";
+
 
 function LoadCompanies({ id, name, companyInfo, externalUrl, logoUrl, offers, competitions }) {
 
-  const router =  useRouter();
-
+  
+  //site to load in specific comapny and map out its data
   return (
     <div>
-      <img src={logoUrl} alt={logoUrl} />
+      <img src={logoUrl} alt="company logo"/>
       <h1>{name}</h1>
       <p>
         {companyInfo}
         <br />
-        <Link href={externalUrl}>{externalUrl}</Link>
+        <a href={externalUrl} className="companyLink">{externalUrl}</a>
       </p>
       <h3>Erbjudanden</h3>
       {offers.map(({offer, price}, s) => (
@@ -21,9 +20,9 @@ function LoadCompanies({ id, name, companyInfo, externalUrl, logoUrl, offers, co
             <p>{offer} {price}</p>
         </div>
       ))}
-      {competitions.map(({formUrl}, s) => (
-        <div key={s}>
-            <Link herf={formUrl} className="competitionLink">Tävling</Link>
+      {competitions.map(({formUrl}, d) => (
+        <div key={d}>
+            <a href={formUrl} className="competitionLink">{formUrl}</a>
         </div>
       ))}
     </div>

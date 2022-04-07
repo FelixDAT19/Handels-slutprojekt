@@ -3,6 +3,7 @@ import FooterMenu from "/Components/FooterMenu";
 import prisma from "/api/client";
 
 function events({ sponsors }) {
+  //event page with pdf iframe
   return (
     <>
       <MainMenu />
@@ -20,7 +21,7 @@ function events({ sponsors }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps() { // fetches sponsors
   const dataSponsor = await prisma.sponsors.findMany();
   const sponsors = [...JSON.parse(JSON.stringify(dataSponsor))];
 
