@@ -1,9 +1,9 @@
 import MainMenu from "/Components/MainMenu";
 import FooterMenu from "/Components/FooterMenu";
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import prisma from "/api/client";
 
 function events({ sponsors }) {
+  //event page with pdf iframe
   return (
     <>
       <MainMenu />
@@ -12,7 +12,7 @@ function events({ sponsors }) {
 
       <br />
 
-      <iframe src="/files/programblad.pdf"/>
+      <iframe src="/files/programblad.pdf" className="iframecss"/>
 
       <br />
 
@@ -21,7 +21,7 @@ function events({ sponsors }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps() { // fetches sponsors
   const dataSponsor = await prisma.sponsors.findMany();
   const sponsors = [...JSON.parse(JSON.stringify(dataSponsor))];
 

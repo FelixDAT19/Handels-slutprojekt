@@ -1,25 +1,28 @@
 import MainMenu from "/Components/MainMenu";
 import FooterMenu from "/Components/FooterMenu";
 import CompanyLinks from "/Components/CompanyLinks";
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import prisma from "/api/client";
 
 function Home({ sponsors, location }) {
-  
+  //start page with links to compaines and thair placements
   return (
     <>
       <MainMenu />
       <hr/>
-      <CompanyLinks location={location}/>
+      <img src="/files/lokalhandels.png" className="mapImage" useMap="#workmap"/>
+
+          <map name="workmap">
+            <CompanyLinks location={location}/>
+          </map>
 
       <FooterMenu sponsors={sponsors}/>
     </>
 
-    //startsida med länk
+    
   );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps() { // fetches sponsors and location data for links
   
   const dataSponsor = await prisma.sponsors.findMany();
   const sponsors = [...JSON.parse(JSON.stringify(dataSponsor)),]

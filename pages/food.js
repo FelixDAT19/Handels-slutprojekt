@@ -1,12 +1,12 @@
 import MainMenu from "/Components/MainMenu";
 import FooterMenu from "/Components/FooterMenu";
-import { PrismaClient } from "@prisma/client";
+import prisma from "/api/client";
 import LoadFood from "/Components/LoadFood";
-const prisma = new PrismaClient();
+
 
 
 function food({ sponsors, offers }) {
-  //meny
+  //food page that maps out what food companys offer
   return (
     <>
       <MainMenu />
@@ -22,7 +22,7 @@ function food({ sponsors, offers }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps() { //fetches sponsors and offers that includes specific company data
   const dataSponsor = await prisma.sponsors.findMany();
   const sponsors = [...JSON.parse(JSON.stringify(dataSponsor))];
 

@@ -1,9 +1,9 @@
 import Link from "next/link";
 
 function MainMenu() {
-  //function to load links
+  
 
-  const linksMenu = [
+  const linksMenu = [ //json data with information on where links are supposed to go
     {
       link: "/offers",
       name: "Erbjudanden",
@@ -34,13 +34,7 @@ function MainMenu() {
   return (
     <div className="mainMenu">
       <Link href="/">
-        <a
-          className="headImage"
-          dangerouslySetInnerHTML={{
-            __html:
-              "<img src=https://cdn.discordapp.com/attachments/950309989157863434/958240009310334996/handek-removebg-preview.png class='logo'>",
-          }}
-        ></a>
+        <img src="https://cdn.discordapp.com/attachments/950309989157863434/958240009310334996/handek-removebg-preview.png" className='logo'/>
       </Link>
       <br />
       <div className="a-header">
@@ -58,7 +52,7 @@ function MainMenu() {
           {linksMenu.map(
             (
               {link, name},
-              o // maps out main menu
+              o // maps out main menu from json data
             ) => (
                 <li key={o}>
                   <a href={link}>
