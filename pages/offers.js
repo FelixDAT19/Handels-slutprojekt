@@ -10,9 +10,16 @@ function offers({ sponsors, offers }) {
     <>
       <MainMenu />
 
+
       <h1>Erbjudanden</h1>
 
       <br/>
+
+      <div class="btn">Erbjudanden foretag</div>
+      <div class="btn">Erbjudanden foretag</div>
+      <div class="btn">Erbjudanden foretag</div>
+      <div class="btn">Erbjudanden foretag</div>
+      <div class="backbutton">Tillbaka</div>
 
       <LoadOffers offers={offers}/>
 
