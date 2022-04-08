@@ -7,7 +7,7 @@ function LoadCompanies({ id, name, companyInfo, externalUrl, logoUrl, offers, co
   //site to load in specific comapny and map out its data
   return (
     <div>
-      <img src={logoUrl} alt="company logo"/>
+      <img src={logoUrl} alt="company logo" className="companyImage"/>
       <h1>{name}</h1>
       <p>
         {companyInfo}

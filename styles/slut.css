@@ -62,6 +62,13 @@ h1 {
     display:block;
     
 }
+.companyImage {
+	width: 30%;
+    max-width: 350px;
+    padding: 5px 30px; 
+    margin:auto;
+    display:block;
+}
 
 /*--------------------------------------
  Animationstid som bestämmer före och efter hur lång tid den varar 
@@ -298,7 +305,4 @@ Header {                            /* Rubriken */
     height:483px; 
     display:block;
     margin:auto;
-    frameborder:0;
-    marginheight:0; 
-    marginwidth:0;
 }
