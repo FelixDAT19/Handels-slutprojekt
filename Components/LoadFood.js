@@ -8,7 +8,7 @@ function LoadFood({offers}){ //loads offers from companies that offer food
             return (
                 <div key={a}>
                     <h3>{company.name}</h3>
-                    <p>{offer} {price}</p>
+                    <p className="btn">{offer} {price}</p>
                 </div>
             );
         } 

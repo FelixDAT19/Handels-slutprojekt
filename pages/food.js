@@ -13,11 +13,6 @@ function food({ sponsors, offers }) {
 
       <h1>Mat på plats</h1>
 
-      <div class="btn">Matställe 1</div>
-      <div class="btn">Matställe 2</div>
-      <div class="btn">Matställe 3</div>
-      <div class="btn">Matställe 4</div>
-      <div class="backbutton">Tillbaka</div>
 
       <br/>
 

@@ -8,7 +8,7 @@ function LoadOffers({offers}){ //loads offers from companies that dont offer foo
             return (
                 <div key={p}>
                     <h3>{company.name}</h3>
-                    <p>{offer} {price}</p>
+                    <p className="btn">{offer} {price}</p>
                 </div>
             );
         } 

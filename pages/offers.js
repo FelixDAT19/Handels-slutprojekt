@@ -15,12 +15,6 @@ function offers({ sponsors, offers }) {
 
       <br/>
 
-      <div class="btn">Erbjudanden foretag</div>
-      <div class="btn">Erbjudanden foretag</div>
-      <div class="btn">Erbjudanden foretag</div>
-      <div class="btn">Erbjudanden foretag</div>
-      <div class="backbutton">Tillbaka</div>
-
       <LoadOffers offers={offers}/>
 
       <FooterMenu sponsors={sponsors} />
