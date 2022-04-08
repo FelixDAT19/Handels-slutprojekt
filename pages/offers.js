@@ -5,7 +5,7 @@ import LoadOffers from "/Components/LoadOffers";
 
 
 function offers({ sponsors, offers }) {
-  
+  //maps out offers from companies that have noo food
   return (
     <>
       <MainMenu />
@@ -21,7 +21,7 @@ function offers({ sponsors, offers }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps() { //fetches sponsors and offer data that includes company data
   const dataSponsor = await prisma.sponsors.findMany();
   const sponsors = [...JSON.parse(JSON.stringify(dataSponsor))];
 

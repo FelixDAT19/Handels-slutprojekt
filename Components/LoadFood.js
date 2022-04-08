@@ -1,5 +1,5 @@
 
-function LoadFood({offers}){
+function LoadFood({offers}){ //loads offers from companies that offer food
 
     
 

@@ -1,5 +1,5 @@
 
-function LoadOffers({offers}){
+function LoadOffers({offers}){ //loads offers from companies that dont offer food
 
     
 

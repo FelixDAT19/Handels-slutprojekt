@@ -4,12 +4,18 @@ import CompanyLinks from "/Components/CompanyLinks";
 import prisma from "/api/client";
 
 function Home({ sponsors, location }) {
-  
+  //start page with links to compaines and thair placements
   return (
     <>
       <MainMenu />
       <hr/>
-      <CompanyLinks location={location}/>
+
+
+      <img src="/files/lokal.png" className="imageMap" useMap="#workmap"/>
+        
+      <map name="workmap">
+        <CompanyLinks location={location}/>
+      </map>
 
       <FooterMenu sponsors={sponsors}/>
     </>
@@ -18,7 +24,7 @@ function Home({ sponsors, location }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps() { // fetches sponsors and location data for links
   
   const dataSponsor = await prisma.sponsors.findMany();
   const sponsors = [...JSON.parse(JSON.stringify(dataSponsor)),]
