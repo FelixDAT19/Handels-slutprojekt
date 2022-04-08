@@ -289,3 +289,18 @@ Header {                            /* Rubriken */
     marginheight:0; 
     marginwidth:0;
 }
+.textbox {
+	background : linear-gradient(to top, 
+                    rgba(217,217,217, 0), 
+                    rgba(217,217,217, 0.5) 90%);
+	border-radius: 15px;
+	padding: 50px;
+	padding-left: 0;
+	padding-right: 0; 
+	margin: 10px;
+	margin-right: 0;
+	margin-left: 0;
+	text-align: center;
+	display: block;
+	max-width: 100%;
+}
