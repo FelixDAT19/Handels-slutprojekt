@@ -50,15 +50,17 @@ h1 {
     font-weight: 400;
     font-family: 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica',
         'Arial', sans-serif;
+    
 }
 /* ALL CSS KOD NEDANFÖR ÄR FÖR BURGER MENYN */
 
 .sponsorImage {
 	width: 100%;
     max-width: 700px;
-    padding: 5px 20px; /* Mellanrummet i innehållet ifrån sidans kanter, höjd. Utger mellanrum*/
+    padding: 5px 30px; /* Mellanrummet i innehållet ifrån sidans kanter, höjd. Utger mellanrum*/
     margin:auto;
     display:block;
+    
 }
 
 /*--------------------------------------
@@ -115,7 +117,7 @@ Gör så att man kann trycka fram och tillbaka med knappen.
 .burger span:before,
 .burger span:after {
 		position: absolute; /* Gör så att knappen fastnar på samma ställe i skärmen. */
-		left: 47%; /* Anger hur långt vänsterifrån knappen ska sitta. */
+		left: 50%; /* Anger hur långt vänsterifrån knappen ska sitta. */
 		top: 25px;
 		width: 40px; /* Bredden på knapp ikonen */
 		height: 4px; /* Anger tjockleken på ikonen/höjden */
@@ -194,11 +196,10 @@ span.boo {
 .a-header {
 		position: relative; /* Håller kvar knappen på rätt ställe*/
 		float: left;
-		width: calc(100%); /* Anger storleken på headerns bredd, fältet där texten, innehållet ska finnas*/
+		width: 100%; /* Anger storleken på headerns bredd, fältet där texten, innehållet ska finnas*/
 		margin: 0;
 		min-height: 50px;
-		background: rgb(46,204,113);
-background: linear-gradient(90deg, rgba(46,204,113,1) 0%, rgba(52,152,219,1) 100%); /* färgen på bakgrunden där burger boxen sitter */
+        background: linear-gradient(90deg, rgba(46,204,113,1) 0%, rgba(52,152,219,1) 100%); /* färgen på bakgrunden där burger boxen sitter */
 		overflow: hidden;
         
 }
@@ -214,7 +215,7 @@ background: linear-gradient(90deg, rgba(46,204,113,1) 0%, rgba(52,152,219,1) 100
 
 .a-header ul a {
 		position: relative;
-		float: left;
+		float: left; /* Radar upp innehåll, går inte att tas bort */
 		width: 100%; /*  Bredden på innehållet i menyn, texten */
 		height: 0;
 		line-height: 50px;
@@ -240,6 +241,8 @@ background: linear-gradient(90deg, rgba(46,204,113,1) 0%, rgba(52,152,219,1) 100
 	height: 50px; /* Mellanrummet, storleken imellan textfälten */
     border:0.1px solid black; /* Kantstorlek runt texten för att lättare urskilja dem. */
 }   
+
+
 .backbutton {                         /* Tillbaka knappen */
     color: #ffffff !important;
     background-color: #db545a !important;
@@ -290,9 +293,11 @@ Header {                            /* Rubriken */
     bottom: 0;
    
 }
-.iframecss {
-    width:640; 
-    height:1365; 
+.iframecss { 
+    width:643; 
+    height:483px; 
+    display:block;
+    margin:auto;
     frameborder:0;
     marginheight:0; 
     marginwidth:0;
