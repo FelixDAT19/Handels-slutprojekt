@@ -43,13 +43,13 @@ body {
   
   
 h1 {
+	
     text-align: center;
     font-size: 10;
     box-sizing: border-box;
     font-weight: 400;
     font-family: 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica',
         'Arial', sans-serif;
-    
 }
 /* ALL CSS KOD NEDANFÖR ÄR FÖR BURGER MENYN */
 
@@ -308,4 +308,13 @@ Header {                            /* Rubriken */
 	text-align: center;
 	display: block;
 	max-width: 100%;
+}
+
+.iframecss {
+	width: 100%;
+	height: 150px;
+}
+
+.mainMenu{
+	height: 178px;
 }
