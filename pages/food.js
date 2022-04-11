@@ -1,17 +1,18 @@
 import MainMenu from "/Components/MainMenu";
 import FooterMenu from "/Components/FooterMenu";
-import { PrismaClient } from "@prisma/client";
+import prisma from "/api/client";
 import LoadFood from "/Components/LoadFood";
-const prisma = new PrismaClient();
+
 
 
 function food({ sponsors, offers }) {
-  //meny
+  //food page that maps out what food companys offer
   return (
     <>
       <MainMenu />
 
       <h1>Mat på plats</h1>
+
 
       <br/>
 
@@ -22,11 +23,11 @@ function food({ sponsors, offers }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps() { //fetches sponsors and offers that includes specific company data
   const dataSponsor = await prisma.sponsors.findMany();
   const sponsors = [...JSON.parse(JSON.stringify(dataSponsor))];
 
-  const dataOffers = await prisma.offers.findMany({include: {company: true,}})
+  const dataOffers = await prisma.company.findMany({include: {offers: true,}})
   const offers = [...JSON.parse(JSON.stringify(dataOffers))];
 
   return {

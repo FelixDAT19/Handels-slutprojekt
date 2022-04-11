@@ -1,9 +1,13 @@
 .logo { /* Loggan på handelsmässan */
 
-    width: 100%; /* Anger 100 % bredd efter skärmstorlek på logon */
-    height: 100%; /* Anger 100 % höjd efter skärmstorlek på logon */
-    box-sizing: border-box;
-    
+
+    max-width: 100%;
+    width: auto;
+    max-height: 100px;
+
+    display: block;
+    margin: 0 auto;
+   
 }
 
 
@@ -21,10 +25,10 @@
   
   
 body {
-    background-color: rgb(230, 226, 210); /* Bakgrundsfärg*/
-    padding: 15px 15px 60px; /* Mellanrummet i innehållet ifrån sidans kanter, utger mellanrum*/
-    max-width: 680px; /* Anger max bredden på innehållet i sidan */
+    background-color: rgb(255, 255, 255); /* Bakgrundsfärg*/
+    max-width: 100%; /* Anger max bredden på innehållet i sidan */
     margin:  auto;
+    
 }
     
     
@@ -42,6 +46,7 @@ body {
   
   
 h1 {
+	
     text-align: center;
     font-size: 10;
     box-sizing: border-box;
@@ -51,7 +56,21 @@ h1 {
 }
 /* ALL CSS KOD NEDANFÖR ÄR FÖR BURGER MENYN */
 
-
+.sponsorImage {
+	width: 100%;
+    max-width: 700px;
+    padding: 5px 30px; /* Mellanrummet i innehållet ifrån sidans kanter, höjd. Utger mellanrum*/
+    margin:auto;
+    display:block;
+    
+}
+.companyImage {
+	width: 50%;
+    max-width: 350px;
+    padding: 5px 30px; 
+    margin:auto;
+    display:block;
+}
 
 /*--------------------------------------
  Animationstid som bestämmer före och efter hur lång tid den varar 
@@ -71,6 +90,7 @@ h1 {
 -----------------------------------------------------------------------------------*/
 .burger-check {
 		display: none; /* Döljer checkboxen */
+        
 }
 
 
@@ -80,10 +100,12 @@ Gör så att man kann trycka fram och tillbaka med knappen.
 .burger {
 	
 		float: left;
-		margin-left: left;
 		width:100%; /* Anger bredden hur långt ifrån knappen man kan trycka, var man trycker  */
 		height: 60px;
 		cursor: pointer;
+        display: flex;
+        justify-content: center
+        
 }
 
 .burger:after {
@@ -94,6 +116,7 @@ Gör så att man kann trycka fram och tillbaka med knappen.
 		width: 100%;
 		text-align: center;
 		font-size: 13px;
+        
 }
 
 /*--------------------------------------
@@ -104,20 +127,20 @@ Gör så att man kann trycka fram och tillbaka med knappen.
 .burger span:before,
 .burger span:after {
 		position: absolute; /* Gör så att knappen fastnar på samma ställe i skärmen. */
-		left: 47%; /* Anger hur långt vänsterifrån knappen ska sitta. */
+		left: 50%; /* Anger hur långt vänsterifrån knappen ska sitta. */
 		top: 25px;
 		width: 40px; /* Bredden på knapp ikonen */
 		height: 4px; /* Anger tjockleken på ikonen/höjden */
 		background: #333; /* Färgen på burgarmeny iconen */
 		border-radius: 0.2em;
-}
+}       
 
 /* Reset the left and create the pseudo-element */
 .burger span:before,
 .burger span:after {
 		content: '';
 		left: 0;
-}
+}       
 
 /* Top bar position */
 .burger span:before {
@@ -183,11 +206,12 @@ span.boo {
 .a-header {
 		position: relative; /* Håller kvar knappen på rätt ställe*/
 		float: left;
-		width: calc(100%); /* Anger storleken på headerns bredd, fältet där texten, innehållet ska finnas*/
+		width: 100%; /* Anger storleken på headerns bredd, fältet där texten, innehållet ska finnas*/
 		margin: 0;
 		min-height: 50px;
-		background: #eee; /* färgen på bakgrunden där burger boxen sitter */
+        background: linear-gradient(90deg, rgba(46,204,113,1) 0%, rgba(52,152,219,1) 100%); /* färgen på bakgrunden där burger boxen sitter */
 		overflow: hidden;
+        
 }
 
 .a-header ul {
@@ -197,20 +221,20 @@ span.boo {
 		list-style: none;
 		margin: 0;
 		padding: 0; /* Hur långt innehållet, textfälten kommer upp ifrån vänster kant.  */
-}
+}       
 
 .a-header ul a {
 		position: relative;
-		float: left;
+		float: left; /* Radar upp innehåll, går inte att tas bort */
 		width: 100%; /*  Bredden på innehållet i menyn, texten */
 		height: 0;
 		line-height: 50px;
 		padding: 0 15px;
 		text-decoration: none;
 		overflow: hidden;
-		color: #333; /* Färgen på texten i menyn som kommer upp */
+		color: rgb(255, 255, 255); /* Färgen på texten i menyn som kommer upp */
 		text-align: center; /* Bestämmer hur texten ska radas upp i menyn */
-    
+        
 }
 
 .a-header ul a:hover,
@@ -218,12 +242,104 @@ span.boo {
 .a-header ul a:focus,
 .a-header ul a:visited {
 		text-decoration: solid;
-		background: rgb(255, 255, 255); /* Färgen när man hovrar över texten (på dator) på telefon när man håller in fingret på en av texterna */
+		background: lightgray; /* Färgen när man hovrar över texten (på dator) på telefon när man håller in fingret på en av texterna */
 		border-bottom-color: #08c;
-}
+}       
 
 /* Animate height of 'a' element in order to reveal the menu on check (IE9 or higher) */
 #main-nav:checked ~ ul a {
 	height: 50px; /* Mellanrummet, storleken imellan textfälten */
     border:0.1px solid black; /* Kantstorlek runt texten för att lättare urskilja dem. */
+}   
+
+
+.backbutton {                         /* Tillbaka knappen */
+    color: #ffffff !important;
+    background-color: #db545a !important;
+    pointer-events: auto;
+
+    border-style: none;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    margin: 44px auto 60px;
+    padding: 18px 49px;
+    display: block;
+    border-bottom: none;
+    text-align: center;
+    box-sizing: border-box;
+    max-width: 50%;
+}
+
+.btn {                            /* Stora knapparna (tävlingsknappar) */
+    pointer-events: auto;
+    pointer-events: initial;
+    margin-left: 0;
+    margin-right: 0;
+    border-style: none;
+    font-weight: 700;
+    font-size: 1rem;
+    margin: 20px auto 0;
+    padding: 22px 50px 22px 50px;
+    color: #ffffff !important;
+    background-color: #4EA21D !important;
+    display: block;
+    width: 65%;
+    border-bottom: none;
+    text-align: center;
+}
+
+Header {                            /* Rubriken */
+    font-size: 4.5rem;
+    text-align: center;
+    box-sizing: border-box;
+    font-weight: 400;
+}
+
+.footer { /* Bottendelen pÃ¥ varje sida  */
+   position: relative;
+    padding: 1rem;
+    background-color: rgb(64, 59, 59);
+    color: white;
+    text-align: center;
+    bottom: 0;
+   
+}
+
+
+.textbox {                  /* text ruta till tävlingssidan */
+	background : linear-gradient(to top, 
+                    rgba(217,217,217, 0), 
+                    rgba(217,217,217, 0.5) 90%);
+	border-radius: 15px;
+	padding: 50px;
+	padding-left: 0;
+	padding-right: 0; 
+	margin: 10px;
+	margin-right: 0;
+	margin-left: 0;
+	text-align: center;
+	display: block;
+	max-width: 100%;
+
+}
+
+.openHours{
+    text-align: center;
+}
+
+
+.iframecss {
+	width: 100%;
+	height: 150px;
+}
+
+.mainMenu{
+	height: 178px;
+
+}
+#sponsor{
+    background: linear-gradient(rgba(46,204,113,1) 0%, rgba(52,152,219,1) 100%);
+    padding: 5px;
+
+
 }

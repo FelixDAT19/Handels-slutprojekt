@@ -1,10 +1,9 @@
 import MainMenu from "/Components/MainMenu";
 import FooterMenu from "/Components/FooterMenu";
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import prisma from "/api/client";
 
 function about({ sponsors }) {
-  //omsidan
+  //about page
   return (
     <>
       <MainMenu />
@@ -14,20 +13,21 @@ function about({ sponsors }) {
       <p>öppettider</p>
       <p>12-19</p>
       <p>10-18</p>
+      <br/>
 
       <FooterMenu sponsors={sponsors} />
     </>
   );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps() { //fetches data from database
   const dataSponsor = await prisma.sponsors.findMany();
-  const sponsors = [...JSON.parse(JSON.stringify(dataSponsor))];
+  const sponsors = [...JSON.parse(JSON.stringify(dataSponsor))]; //turns data in to json array
 
   return {
     props: {
       sponsors,
     },
-  };
+  }; // returns sponsor data
 }
 export default about;

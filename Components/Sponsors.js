@@ -1,15 +1,14 @@
-
+import Link from "next/link";
 
 function Sponsors({sponsors}){
-    
     return(
         <div id="sponsor">
 
             {sponsors.map(({logoUrl,sponsorUrl,name}, i) => ( //maps out sponsors
                 <div key={i}>
                     
-                    <a passHref={true} href={sponsorUrl} className="sponsorImage" dangerouslySetInnerHTML={{__html: logoUrl}}/>
-                    <p className="sponsorInfo">{name}</p>
+                    <Link href={sponsorUrl} className="sponsorHomepage" passHref><img src={logoUrl} alt="sponsorimgae" className="sponsorImage"></img></Link>
+                   
                     <br/>
                 </div>
             ))}
