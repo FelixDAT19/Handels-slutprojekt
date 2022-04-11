@@ -11,13 +11,23 @@ function Home({ sponsors, location, compaines }) {
     <>
       <MainMenu />
       <hr/>
-      <img src="/files/lokal.png" className="imageMap" useMap="#workmap"/>
+      <div className="openHours">
+        <h2>Öppettider</h2>
+        <p>12-19</p>
+        <p>10-18</p>
+      </div>
+      <hr/>
+      <img src="/files/lokal.png" className="imageMap" alt="lokalen" useMap="#workmap"/>
         
       <map name="workmap">
         <CompanyLinks location={location}/>
       </map>
+
+      <br/>
       
       <CompanyList company={compaines}/>
+
+      <br/>
 
       <FooterMenu sponsors={sponsors}/>
     </>

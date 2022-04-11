@@ -1,7 +1,10 @@
 .logo { /* Loggan på handelsmässan */
-	max-width: 100%;
+
+
+    max-width: 100%;
     width: auto;
-    max-height: 100px; /* Anger 100 % höjd efter skärmstorlek på logon */
+    max-height: 100px;
+
     display: block;
     margin: 0 auto;
    
@@ -61,6 +64,13 @@ h1 {
     display:block;
     
 }
+.companyImage {
+	width: 50%;
+    max-width: 350px;
+    padding: 5px 30px; 
+    margin:auto;
+    display:block;
+}
 
 /*--------------------------------------
  Animationstid som bestämmer före och efter hur lång tid den varar 
@@ -90,10 +100,11 @@ Gör så att man kann trycka fram och tillbaka med knappen.
 .burger {
 	
 		float: left;
-		margin-left: left;
 		width:100%; /* Anger bredden hur långt ifrån knappen man kan trycka, var man trycker  */
 		height: 60px;
 		cursor: pointer;
+        display: flex;
+        justify-content: center
         
 }
 
@@ -231,7 +242,7 @@ span.boo {
 .a-header ul a:focus,
 .a-header ul a:visited {
 		text-decoration: solid;
-		background: rgb(255, 255, 255); /* Färgen när man hovrar över texten (på dator) på telefon när man håller in fingret på en av texterna */
+		background: lightgray; /* Färgen när man hovrar över texten (på dator) på telefon när man håller in fingret på en av texterna */
 		border-bottom-color: #08c;
 }       
 
@@ -246,7 +257,7 @@ span.boo {
     color: #ffffff !important;
     background-color: #db545a !important;
     pointer-events: auto;
-    pointer-events: initial;
+
     border-style: none;
     font-weight: 700;
     font-size: 0.9375rem;
@@ -294,6 +305,7 @@ Header {                            /* Rubriken */
    
 }
 
+
 .textbox {                  /* text ruta till tävlingssidan */
 	background : linear-gradient(to top, 
                     rgba(217,217,217, 0), 
@@ -308,7 +320,13 @@ Header {                            /* Rubriken */
 	text-align: center;
 	display: block;
 	max-width: 100%;
+
 }
+
+.openHours{
+    text-align: center;
+}
+
 
 .iframecss {
 	width: 100%;
@@ -317,4 +335,10 @@ Header {                            /* Rubriken */
 
 .mainMenu{
 	height: 178px;
+
+#sponsor{
+    background: linear-gradient(rgba(46,204,113,1) 0%, rgba(52,152,219,1) 100%);
+    padding: 5px;
+
+
 }

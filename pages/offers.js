@@ -15,12 +15,6 @@ function offers({ sponsors, offers }) {
 
       <br/>
 
-      <div class="btn">Erbjudanden foretag</div>
-      <div class="btn">Erbjudanden foretag</div>
-      <div class="btn">Erbjudanden foretag</div>
-      <div class="btn">Erbjudanden foretag</div>
-      <div class="backbutton">Tillbaka</div>
-
       <LoadOffers offers={offers}/>
 
       <FooterMenu sponsors={sponsors} />
@@ -32,7 +26,7 @@ export async function getStaticProps() { //fetches sponsors and offer data that 
   const dataSponsor = await prisma.sponsors.findMany();
   const sponsors = [...JSON.parse(JSON.stringify(dataSponsor))];
 
-  const dataOffers = await prisma.offers.findMany({include: {company: true,}})
+  const dataOffers = await prisma.company.findMany({include: {offers: true,}})
   const offers = [...JSON.parse(JSON.stringify(dataOffers))];
 
   return {
