@@ -1,8 +1,7 @@
 .logo { /* Loggan på handelsmässan */
-
-    width: 100%; /* Anger 100 % bredd efter skärmstorlek på logon */
-    max-width: 700px;
-    height: auto; /* Anger 100 % höjd efter skärmstorlek på logon */
+	max-width: 100%;
+    width: auto;
+    max-height: 100px; /* Anger 100 % höjd efter skärmstorlek på logon */
     display: block;
     margin: 0 auto;
    
@@ -295,7 +294,6 @@ Header {                            /* Rubriken */
    
 }
 
-}
 .textbox {                  /* text ruta till tävlingssidan */
 	background : linear-gradient(to top, 
                     rgba(217,217,217, 0), 
