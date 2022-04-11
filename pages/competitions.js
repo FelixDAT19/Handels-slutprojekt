@@ -21,7 +21,6 @@ function competitions({ sponsors, competitions  }) {
         src="https://docs.google.com/forms/d/e/1FAIpQLScDyejaHJdpMhmQXIMY-o_LAukSPwNwp7DKPe1Wu2Wx_dy7UA/viewform?embedded=true"
         className="iframecss"
       />
-      <br/>
 
       <h2>företags tävlingar</h2>
 
