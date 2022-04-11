@@ -1,8 +1,8 @@
 .logo { /* Loggan på handelsmässan */
 
-    width: 100%; /* Anger 100 % bredd efter skärmstorlek på logon */
-    max-width: 700px;
-    height: auto; /* Anger 100 % höjd efter skärmstorlek på logon */
+    max-width: 100%;
+    width: auto;
+    max-height: 100px;
     display: block;
     margin: 0 auto;
    
@@ -91,10 +91,11 @@ Gör så att man kann trycka fram och tillbaka med knappen.
 .burger {
 	
 		float: left;
-		margin-left: left;
 		width:100%; /* Anger bredden hur långt ifrån knappen man kan trycka, var man trycker  */
 		height: 60px;
 		cursor: pointer;
+        display: flex;
+        justify-content: center
         
 }
 
@@ -232,7 +233,7 @@ span.boo {
 .a-header ul a:focus,
 .a-header ul a:visited {
 		text-decoration: solid;
-		background: rgb(255, 255, 255); /* Färgen när man hovrar över texten (på dator) på telefon när man håller in fingret på en av texterna */
+		background: lightgray; /* Färgen när man hovrar över texten (på dator) på telefon när man håller in fingret på en av texterna */
 		border-bottom-color: #08c;
 }       
 
@@ -301,4 +302,10 @@ Header {                            /* Rubriken */
     frameborder:0;
     marginheight:0; 
     marginwidth:0;
+}
+
+#sponsor{
+    background: linear-gradient(rgba(46,204,113,1) 0%, rgba(52,152,219,1) 100%);
+    padding: 5px;
+
 }
