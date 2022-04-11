@@ -1,11 +1,13 @@
 import'/styles/slut.css';
 import'/styles/map.css';
-import'/styles/listDropdown.css'
-import { useEffect } from 'react';
+import'/styles/listDropdown.css';
+import'/styles/offer.css';
+import'/styles/company.css';
+import { useEffect } from 'react'; //import of css and useeffect
 
 export default function MyApp({ Component, pageProps }) {
 
-    useEffect(() => {
+    useEffect(() => { //settings for service worker
         if("serviceWorker" in navigator) {
           window.addEventListener("load", function () {
            navigator.serviceWorker.register("/sw.js").then(

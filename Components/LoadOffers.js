@@ -3,12 +3,18 @@ function LoadOffers({offers}){ //loads offers from companies that dont offer foo
 
     
 
-    return offers.map(({ company, offer, price }, p) => {
-        if (company.foodCheck === false) {
+    return offers.map(({ name, foodCheck, offers }, p) => {
+        if (foodCheck === false && offers != "") {
             return (
-                <div key={p}>
-                    <h3>{company.name}</h3>
-                    <p className="btn">{offer} {price}</p>
+                <div key={p} className="companyOffer">
+                    <h3 className="companyOfferName">{name}</h3>
+                    
+                    {offers.map(({ offer, price}, f) => (
+                        <div key={f} className="offerInformation">
+                            <div className="offerName">{offer}</div>
+                            <div className="offerPrice">{price+" €"}</div>
+                        </div>
+                    ))}
                 </div>
             );
         } 
