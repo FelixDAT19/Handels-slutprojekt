@@ -16,6 +16,10 @@ function Home({ sponsors, location, compaines }) {
         <p>12-19</p>
         <p>10-18</p>
       </div>
+      <div className="openDate">
+        <h2>Datum</h2>
+        <p>1.1.2202-1.2.2202</p>
+      </div>
       <hr/>
       <img src="/files/lokal.png" className="imageMap" alt="lokalen" useMap="#workmap"/>
         

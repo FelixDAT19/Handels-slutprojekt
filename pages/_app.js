@@ -3,6 +3,7 @@ import'/styles/map.css';
 import'/styles/listDropdown.css';
 import'/styles/offer.css';
 import'/styles/company.css';
+import'/styles/competitions.css';
 import { useEffect } from 'react'; //import of css and useeffect
 
 export default function MyApp({ Component, pageProps }) {
