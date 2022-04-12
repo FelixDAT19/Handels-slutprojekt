@@ -13,6 +13,7 @@ function food({ sponsors, offers }) {
 
       <h1>Mat på plats</h1>
 
+
       <br/>
 
       <LoadFood offers={offers}/>
@@ -26,7 +27,7 @@ export async function getStaticProps() { //fetches sponsors and offers that incl
   const dataSponsor = await prisma.sponsors.findMany();
   const sponsors = [...JSON.parse(JSON.stringify(dataSponsor))];
 
-  const dataOffers = await prisma.offers.findMany({include: {company: true,}})
+  const dataOffers = await prisma.company.findMany({include: {offers: true,}})
   const offers = [...JSON.parse(JSON.stringify(dataOffers))];
 
   return {

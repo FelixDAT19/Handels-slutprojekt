@@ -15,15 +15,14 @@ function competitions({ sponsors, competitions  }) {
 
       <h1>Tävlingar</h1>
 
-      <h2>Handelsmässans egna tävling</h2>
+      <div className="textbox">Handelsmässans egna tävling Handelsmässans egna tävling</div>
 
       <iframe
         src="https://docs.google.com/forms/d/e/1FAIpQLScDyejaHJdpMhmQXIMY-o_LAukSPwNwp7DKPe1Wu2Wx_dy7UA/viewform?embedded=true"
         className="iframecss"
       />
-      <br/>
 
-      <h2>företags tävlingar</h2>
+      <h2 className="companyCompetitions">företags tävlingar</h2>
 
       <LoadCompetitions competitions={competitions}/>
 

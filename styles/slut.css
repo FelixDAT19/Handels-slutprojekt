@@ -1,8 +1,10 @@
 .logo { /* Loggan på handelsmässan */
 
+
     max-width: 100%;
     width: auto;
     max-height: 100px;
+
     display: block;
     margin: 0 auto;
    
@@ -26,7 +28,6 @@ body {
     background-color: rgb(255, 255, 255); /* Bakgrundsfärg*/
     max-width: 100%; /* Anger max bredden på innehållet i sidan */
     margin:  auto;
-    
 }
     
     
@@ -44,12 +45,14 @@ body {
   
   
 h1 {
+	
     text-align: center;
     font-size: 2em;
     box-sizing: border-box;
+
     font-weight: 400; /* Tjocklek på texten */
     font-family: 'Times New Roman',;
-    
+
 }
 h2 {
     text-align: center;
@@ -75,6 +78,13 @@ p {
     padding: 40px;
    
     
+}
+.companyImage {
+	width: 50%;
+    max-width: 350px;
+    padding: 5px 30px; 
+    margin:auto;
+    display:block;
 }
 
 #sponsor {
@@ -214,7 +224,9 @@ span.boo {
 		width: 100%; /* Anger storleken på headerns bredd, fältet där texten, innehållet ska finnas*/
 		margin: 0;
 		min-height: 50px;
+
         background:  rgb(46,204,113); /* färgen på bakgrunden där burger boxen sitter */
+
 		overflow: hidden;
         
 }
@@ -247,7 +259,7 @@ span.boo {
 .a-header ul a:focus,
 .a-header ul a:visited {
 		text-decoration: solid;
-		background: lightgray; /* Färgen när man hovrar över texten (på dator) på telefon när man håller in fingret på en av texterna */
+		background: rgb(74, 202, 128); /* Färgen när man hovrar över texten (på dator) på telefon när man håller in fingret på en av texterna */
 		border-bottom-color: #08c;
 }       
 
@@ -262,8 +274,7 @@ span.boo {
     color: #ffffff !important;
     background-color: #db545a !important;
     pointer-events: auto;
-    pointer-events: initial;
-    margin-top: 15px;
+
     border-style: none;
     font-weight: 700;
     font-size: 0.9375rem;
@@ -272,6 +283,8 @@ span.boo {
     display: block;
     border-bottom: none;
     text-align: center;
+    box-sizing: border-box;
+    max-width: 50%;
 }
 
 .btn {                            /* Stora knapparna (tävlingsknappar) */
@@ -285,7 +298,7 @@ span.boo {
     margin: 20px auto 0;
     padding: 22px 50px 22px 50px;
     color: #ffffff !important;
-    background-color: #478ac9 !important;
+    background-color: #4EA21D !important;
     display: block;
     width: 65%;
     border-bottom: none;
@@ -301,13 +314,47 @@ span.boo {
     bottom: 0;
    
 }
-.iframecss { 
-    max-width: 100%;
-    height:483px; 
-    display:block;
-    margin:auto;
-    frameborder:0;
-    marginheight:0; 
-    marginwidth:0;
+
+.textbox {                  /* text ruta till tävlingssidan */
+	background : linear-gradient(to top, 
+                    rgba(217,217,217, 0), 
+                    rgba(217,217,217, 0.5) 90%);
+	border-radius: 15px;
+	padding: 50px;
+	padding-left: 0;
+	padding-right: 0; 
+	margin: 10px;
+	margin-right: 0;
+	margin-left: 0;
+	text-align: center;
+	display: block;
+	max-width: 100%;
+
+}
+
+.openHours{
+    text-align: center;
+}
+
+
+.iframecss {
+	width: 80%;
+	height: 500px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.mainMenu{
+	height: 178px;
+
+}
+#sponsor{
+    background: 	rgba(46,204,113);
+    padding: 5px;
+
+
+}
+.openDate{
+    text-align: center;
 }
 

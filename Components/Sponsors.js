@@ -8,7 +8,7 @@ function Sponsors({sponsors}){
                 <div key={i}>
                     
                     <Link href={sponsorUrl} className="sponsorHomepage" passHref><img src={logoUrl} alt="sponsorimgae" className="sponsorImage"></img></Link>
-                    <p className="sponsorInfo">{name}</p>
+                   
                     <br/>
                 </div>
             ))}

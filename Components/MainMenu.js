@@ -24,11 +24,6 @@ function MainMenu() {
       name: "Program",
       css: "smalbutton",
     },
-    {
-      link: "/about",
-      name: "Om",
-      css: "smalbutton",
-    },
   ];
 
   return (
