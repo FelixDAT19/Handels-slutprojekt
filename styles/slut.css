@@ -47,20 +47,36 @@ body {
 h1 {
 	
     text-align: center;
-    font-size: 10;
+    font-size: 2em;
     box-sizing: border-box;
-    font-weight: 400;
-    font-family: 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica',
-        'Arial', sans-serif;
+
+    font-weight: 400; /* Tjocklek på texten */
+    font-family: 'Times New Roman',;
+
+}
+h2 {
+    text-align: center;
+    font-size: 1.2em;
+    box-sizing: border-box;
+    font-weight: 400; /* Tjockleken på txten */
+    font-family: 'Times New Roman',;
+    
+}
+
+p {
+    text-align: center;
+    font-family: 'Times New Roman';
+    font-size: 1.2em; /* 1 em = 16 px, default på en webbläsare */
+
 }
 /* ALL CSS KOD NEDANFÖR ÄR FÖR BURGER MENYN */
 
 .sponsorImage {
-	width: 100%;
-    max-width: 700px;
-    padding: 5px 30px; /* Mellanrummet i innehållet ifrån sidans kanter, höjd. Utger mellanrum*/
+    max-width: 70%;
     margin:auto;
     display:block;
+    padding: 40px;
+   
     
 }
 .companyImage {
@@ -69,6 +85,10 @@ h1 {
     padding: 5px 30px; 
     margin:auto;
     display:block;
+}
+
+#sponsor {
+  background-color:rgba(46,204,113);
 }
 
 /*--------------------------------------
@@ -96,26 +116,22 @@ h1 {
 /*--------------------------------------
 Gör så att man kann trycka fram och tillbaka med knappen.
 --------------------------------------*/
-.burger {
+.burger{
 	
-		float: left;
-		width:100%; /* Anger bredden hur långt ifrån knappen man kan trycka, var man trycker  */
+		max-width: 100%; /* Anger bredden hur långt ifrån knappen man kan trycka, var man trycker  */
 		height: 60px;
 		cursor: pointer;
         display: flex;
-        justify-content: center
+        justify-content: center;
         
 }
 
 .burger:after {
-	
-		position: left; /* Anger läget på knappen i förhållande till innehållet, fältet  */
 		bottom: 7px;
-		left: 0px;
-		width: 100%;
-		text-align: center;
+		max-width: 100%;
 		font-size: 13px;
-        
+        display: flex;
+        justify-content: center;
 }
 
 /*--------------------------------------
@@ -126,19 +142,19 @@ Gör så att man kann trycka fram och tillbaka med knappen.
 .burger span:before,
 .burger span:after {
 		position: absolute; /* Gör så att knappen fastnar på samma ställe i skärmen. */
-		left: 50%; /* Anger hur långt vänsterifrån knappen ska sitta. */
 		top: 25px;
 		width: 40px; /* Bredden på knapp ikonen */
 		height: 4px; /* Anger tjockleken på ikonen/höjden */
 		background: #333; /* Färgen på burgarmeny iconen */
 		border-radius: 0.2em;
+        display: flex;
+        justify-content: center;
 }       
 
 /* Reset the left and create the pseudo-element */
 .burger span:before,
 .burger span:after {
 		content: '';
-		left: 0;
 }       
 
 /* Top bar position */
@@ -208,7 +224,9 @@ span.boo {
 		width: 100%; /* Anger storleken på headerns bredd, fältet där texten, innehållet ska finnas*/
 		margin: 0;
 		min-height: 50px;
-        background: rgba(46,204,113); /* färgen på bakgrunden där burger boxen sitter */
+
+        background:  rgb(46,204,113); /* färgen på bakgrunden där burger boxen sitter */
+
 		overflow: hidden;
         
 }
@@ -287,13 +305,6 @@ span.boo {
     text-align: center;
 }
 
-Header {                            /* Rubriken */
-    font-size: 4.5rem;
-    text-align: center;
-    box-sizing: border-box;
-    font-weight: 400;
-}
-
 .footer { /* Bottendelen pÃ¥ varje sida  */
    position: relative;
     padding: 1rem;
@@ -303,7 +314,6 @@ Header {                            /* Rubriken */
     bottom: 0;
    
 }
-
 
 .textbox {                  /* text ruta till tävlingssidan */
 	background : linear-gradient(to top, 
@@ -347,3 +357,4 @@ Header {                            /* Rubriken */
 .openDate{
     text-align: center;
 }
+
