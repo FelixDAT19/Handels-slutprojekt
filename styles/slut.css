@@ -73,14 +73,12 @@ p {
     margin:auto;
     display:block;
     padding: 40px;
-    
    
     
 }
 
-#sponsor{
-    background: linear-gradient(rgba(46,204,113,1) 0%, rgba(52,152,219,1) 100%);
-   
+#sponsor {
+  background-color:rgba(46,204,113);
 }
 
 /*--------------------------------------
@@ -216,7 +214,7 @@ span.boo {
 		width: 100%; /* Anger storleken på headerns bredd, fältet där texten, innehållet ska finnas*/
 		margin: 0;
 		min-height: 50px;
-        background: linear-gradient(90deg, rgba(46,204,113,1) 0%, rgba(52,152,219,1) 100%); /* färgen på bakgrunden där burger boxen sitter */
+        background:  rgb(46,204,113); /* färgen på bakgrunden där burger boxen sitter */
 		overflow: hidden;
         
 }
