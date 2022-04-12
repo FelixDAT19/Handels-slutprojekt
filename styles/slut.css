@@ -28,6 +28,7 @@ body {
     background-color: rgb(255, 255, 255); /* Bakgrundsfärg*/
     max-width: 100%; /* Anger max bredden på innehållet i sidan */
     margin:  auto;
+    font-family: 'Times New Roman';
 }
     
     
@@ -51,21 +52,19 @@ h1 {
     box-sizing: border-box;
 
     font-weight: 400; /* Tjocklek på texten */
-    font-family: 'Times New Roman',;
+ 
 
 }
 h2 {
-    text-align: center;
+
     font-size: 1.2em;
     box-sizing: border-box;
     font-weight: 400; /* Tjockleken på txten */
-    font-family: 'Times New Roman',;
+    
     
 }
 
 p {
-    text-align: center;
-    font-family: 'Times New Roman';
     font-size: 1.2em; /* 1 em = 16 px, default på en webbläsare */
 
 }
