@@ -248,7 +248,7 @@ span.boo {
 		padding: 0 15px;
 		text-decoration: none;
 		overflow: hidden;
-		color: rgb(255, 255, 255); /* Färgen på texten i menyn som kommer upp */
+		color: #333; /* Färgen på texten i menyn som kommer upp */
 		text-align: center; /* Bestämmer hur texten ska radas upp i menyn */
         
 }
