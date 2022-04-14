@@ -4,7 +4,6 @@
     max-width: 100%;
     width: auto;
     max-height: 100px;
-
     display: block;
     margin: 0 auto;
    
@@ -28,7 +27,7 @@ body {
     background-color: rgb(255, 255, 255); /* Bakgrundsfärg*/
     max-width: 100%; /* Anger max bredden på innehållet i sidan */
     margin:  auto;
-    font-family: 'Times New Roman';
+    font-family: 'Verdana';
 }
     
     
@@ -66,7 +65,7 @@ h2 {
 
 p {
     font-size: 1.2em; /* 1 em = 16 px, default på en webbläsare */
-
+    
 }
 /* ALL CSS KOD NEDANFÖR ÄR FÖR BURGER MENYN */
 
@@ -224,7 +223,7 @@ span.boo {
 		margin: 0;
 		min-height: 50px;
 
-        background:  rgb(46,204,113); /* färgen på bakgrunden där burger boxen sitter */
+        background: rgb(0, 126, 205); /* färgen på bakgrunden där burger boxen sitter */
 
 		overflow: hidden;
         
@@ -258,7 +257,7 @@ span.boo {
 .a-header ul a:focus,
 .a-header ul a:visited {
 		text-decoration: solid;
-		background: rgb(74, 202, 128); /* Färgen när man hovrar över texten (på dator) på telefon när man håller in fingret på en av texterna */
+		background: rgb(40, 162, 237); /* Färgen när man hovrar över texten (på dator) på telefon när man håller in fingret på en av texterna */
 		border-bottom-color: #08c;
 }       
 
@@ -348,7 +347,7 @@ span.boo {
 
 }
 #sponsor{
-    background: 	rgba(46,204,113);
+    background: 	rgb(0, 126, 205);
     padding: 5px;
 
 
