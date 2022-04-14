@@ -16,9 +16,9 @@ model adminlogin {
 model company {
   id           Int            @id @default(autoincrement())
   name         String         @db.VarChar(100)
-  companyInfo  String?        @db.VarChar(300)
-  externalUrl  String?        @db.VarChar(200)
-  logoUrl      String         @db.VarChar(200)
+  companyInfo  String?        @db.VarChar(500)
+  externalUrl  String?        @db.VarChar(500)
+  logoUrl      String         @db.VarChar(500)
   foodCheck    Boolean
   competitions competitions[]
   offers       offers[]
@@ -28,7 +28,7 @@ model company {
 model competitions {
   id        Int     @id @default(autoincrement())
   companyId Int
-  formUrl   String  @db.VarChar(200)
+  formUrl   String  @db.VarChar(500)
   company   company @relation(fields: [companyId], references: [id], onUpdate: Restrict, map: "competitions_ibfk_1")
 
   @@index([companyId], map: "companyId")
@@ -56,7 +56,7 @@ model placement {
 model qrcodes {
   id         Int      @id @default(autoincrement())
   randomId   String   @db.VarChar(20)
-  companyUrl String   @db.VarChar(200)
+  companyUrl String   @db.VarChar(500)
   qrName     String   @db.VarChar(50)
   qrscan     qrscan[]
 }
@@ -74,6 +74,6 @@ model qrscan {
 model sponsors {
   id         Int    @id @default(autoincrement())
   name       String @db.VarChar(50)
-  logoUrl    String @db.VarChar(200)
-  sponsorUrl String @db.VarChar(200)
+  logoUrl    String @db.VarChar(500)
+  sponsorUrl String @db.VarChar(500)
 }

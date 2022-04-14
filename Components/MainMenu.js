@@ -4,25 +4,29 @@ function MainMenu() {
   
 
   const linksMenu = [ //json data with information on where links are supposed to go
-    {
+  {
+      link: "/",
+      name: "Hem",
+  },
+  {
       link: "/offers",
       name: "Erbjudanden",
-      css: "smalbutton",
+      
     },
     {
       link: "/food",
       name: "Mat på plats",
-      css: "smalbutton",
+      
     },
     {
       link: "/competitions",
       name: "Tävlingar",
-      css: "smalbutton",
+      
     },
     {
       link: "/events",
       name: "Program",
-      css: "smalbutton",
+      
     },
   ];
 
