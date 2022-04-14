@@ -27,7 +27,7 @@ body {
     background-color: rgb(255, 255, 255); /* Bakgrundsfärg*/
     max-width: 100%; /* Anger max bredden på innehållet i sidan */
     margin:  auto;
-    font-family: 'Verdana';
+    font-family: 'Verdana', Arial, sans-serif !important;
 }
     
     
@@ -64,8 +64,7 @@ h2 {
 }
 
 p {
-    font-size: 1.2em; /* 1 em = 16 px, default på en webbläsare */
-    
+    font-size: 1em; /* 1 em = 16 px, default på en webbläsare */
 }
 /* ALL CSS KOD NEDANFÖR ÄR FÖR BURGER MENYN */
 
@@ -78,7 +77,7 @@ p {
     
 }
 .companyImage {
-	width: 50%;
+	width: 70%;
     max-width: 350px;
     padding: 5px 30px; 
     margin:auto;
@@ -290,7 +289,6 @@ span.boo {
     pointer-events: initial;
     margin-left: 0;
     margin-right: 0;
-    border-style: none;
     font-weight: 700;
     font-size: 1rem;
     margin: 20px auto 0;
@@ -314,13 +312,8 @@ span.boo {
 }
 
 .textbox {                  /* text ruta till tävlingssidan */
-	background : linear-gradient(to top, 
-                    rgba(217,217,217, 0), 
-                    rgba(217,217,217, 0.5) 90%);
 	border-radius: 15px;
 	padding: 50px;
-	padding-left: 0;
-	padding-right: 0; 
 	margin: 10px;
 	margin-right: 0;
 	margin-left: 0;
@@ -332,6 +325,7 @@ span.boo {
 
 .openHours{
     text-align: center;
+    
 }
 
 
@@ -354,5 +348,6 @@ span.boo {
 }
 .openDate{
     text-align: center;
+    
 }
 
