@@ -25,8 +25,8 @@ function LoadCompanies({ id, name, companyInfo, externalUrl, logoUrl, offers, co
         ))}
       </div>
       {competitions.map(({formUrl}, d) => (
-        <div key={d} className="competitionLink">
-            <a href={formUrl}>Tävling</a>
+        <div key={d} >
+            <a href={formUrl} className="competitionLink">Tävling</a>
         </div>
       ))}
     <br/>
