@@ -39,7 +39,7 @@
     text-decoration:solid; /* Tar bort understrecket i länkarna */
     display: flex; /* Skapar mellanrum emellan olika divs */
     margin-right: 30px; /* Högerkants mellanrum */
-    margin-left: 20px;
+    margin-left: 20px; /* Vänsterkansts mellanrum */
     align-items: center; /* */
     background-color: #0a85c2;
     border-radius: 10px;
@@ -64,6 +64,7 @@
     padding-right: 20px;
     position: relative;
     text-align: center;
+    
 }
   
 
@@ -83,3 +84,8 @@
 
 
 
+.companyInfo{
+    text-align: left;
+    margin: 5%;
+    line-height: 1.5;
+}
