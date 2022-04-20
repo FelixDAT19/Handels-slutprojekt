@@ -91,7 +91,7 @@ if (isset($_POST['editSponsor']) && $_POST['editSponsor'] != "") {
                 ?>
             </tbody>
         </table>
-        <Form method="POST">
+        <Form autocomplete="off" method="POST">
             <input value="<?= $sponsorName; ?>" type="text" id="sponsorName" name="sponsorName" maxlength="50" placeholder="Namn på sponsor">
             <input value="<?= $sponsorUrl; ?>" type="url" id="sponsorUrl" name="sponsorUrl" maxlength="500" placeholder="Länk till Sponsorns hemsida">
             <input value="<?= $logoUrl; ?>" type="url" id="logoUrl" name="logoUrl" maxlength="500" placeholder="Länk till logo">
