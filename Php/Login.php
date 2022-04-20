@@ -77,7 +77,7 @@ if (isset($_POST['login'])) {
 
 <body>
     <img src="https://cdn.discordapp.com/attachments/950309989157863434/958240009310334996/handek-removebg-preview.png" class="logo">
-    <Form method="POST" action="Login.php">
+    <Form autocomplete="off" method="POST" action="Login.php">
         <input type="text" id="username" name="username" placeholder="Username">
         <input type="password" id="password" name="password" placeholder="Password">
         <button name="login" type="submit">Login</button>
