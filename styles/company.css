@@ -1,9 +1,73 @@
 .companyGeneral {
     text-align: center;
 }
-.competitionLink{
+.competitionLink {
+    padding: 14px 30px;
+    text-decoration:solid; /* Tar bort understrecket i länkarna */
+    display: flex; /* Skapar mellanrum emellan olika divs */
+    margin-right: 30px; /* Högerkants mellanrum */
+    margin-left: 20px;
+    align-items: center; /* */
+    background-color: #0a85c2;
+    border-radius: 10px;
+    border-style: none;
+    box-shadow: none;
+    box-sizing: border-box;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 500;
+    height: 50px;
+    letter-spacing: normal;
+    line-height: 1.5;
+    font-weight: 500;
+    justify-content: center; /* Centrerar texten */
+    outline: none;
+    overflow: hidden;
+    max-width: 1780px;
+    min-height: 40px;
+    min-width: 0px;
+    overflow: hidden;
+    padding-left: 20px;
+    padding-right: 20px;
+    position: relative;
     text-align: center;
+    
+  }
+  
+.companyLink {
+    padding: 14px 30px;
+    text-decoration:solid; /* Tar bort understrecket i länkarna */
+    display: flex; /* Skapar mellanrum emellan olika divs */
+    margin-right: 30px; /* Högerkants mellanrum */
+    margin-left: 20px; /* Vänsterkansts mellanrum */
+    align-items: center; /* */
+    background-color: #0a85c2;
+    border-radius: 10px;
+    border-style: none;
+    box-shadow: none;
+    box-sizing: border-box;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 500;
+    height: 50px;
+    letter-spacing: normal;
+    line-height: 1.5;
+    font-weight: 500;
+    justify-content: center; /* Centrerar texten */
+    outline: none;
+    overflow: hidden;
+    max-width: 1780px;
+    min-height: 40px;
+    min-width: 0px;
+    overflow: hidden;
+    padding-left: 20px;
+    padding-right: 20px;
+    position: relative;
+    text-align: center;
+    
 }
+  
+
 .companyWebsite{
     text-align: center;
     margin-bottom: 2%;
@@ -15,4 +79,13 @@
     margin-right: 1%;
     margin-top: 1%; 
     margin-bottom: 3%;
+}
+
+
+
+
+.companyInfo{
+    text-align: left;
+    margin: 5%;
+    line-height: 1.5;
 }

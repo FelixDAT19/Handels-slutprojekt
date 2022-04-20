@@ -4,7 +4,6 @@
     max-width: 100%;
     width: auto;
     max-height: 100px;
-
     display: block;
     margin: 0 auto;
    
@@ -28,7 +27,7 @@ body {
     background-color: rgb(255, 255, 255); /* Bakgrundsfärg*/
     max-width: 100%; /* Anger max bredden på innehållet i sidan */
     margin:  auto;
-    
+    font-family: 'Verdana', Arial, sans-serif !important;
 }
     
     
@@ -48,28 +47,45 @@ body {
 h1 {
 	
     text-align: center;
-    font-size: 10;
+    font-size: 2em;
     box-sizing: border-box;
-    font-weight: 400;
-    font-family: 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica',
-        'Arial', sans-serif;
+
+    font-weight: 400; /* Tjocklek på texten */
+ 
+
+}
+h2 {
+
+    font-size: 1.2em;
+    box-sizing: border-box;
+    font-weight: 400; /* Tjockleken på txten */
+    
+    
+}
+
+p {
+    font-size: 1em; /* 1 em = 16 px, default på en webbläsare */
 }
 /* ALL CSS KOD NEDANFÖR ÄR FÖR BURGER MENYN */
 
 .sponsorImage {
-	width: 100%;
-    max-width: 700px;
-    padding: 5px 30px; /* Mellanrummet i innehållet ifrån sidans kanter, höjd. Utger mellanrum*/
+    max-width: 70%;
     margin:auto;
     display:block;
+    padding: 40px;
+   
     
 }
 .companyImage {
-	width: 50%;
+	width: 60%;
     max-width: 350px;
-    padding: 5px 30px; 
+    padding: 30px; 
     margin:auto;
     display:block;
+}
+
+#sponsor {
+  background-color:rgba(46,204,113);
 }
 
 /*--------------------------------------
@@ -97,26 +113,22 @@ h1 {
 /*--------------------------------------
 Gör så att man kann trycka fram och tillbaka med knappen.
 --------------------------------------*/
-.burger {
+.burger{
 	
-		float: left;
-		width:100%; /* Anger bredden hur långt ifrån knappen man kan trycka, var man trycker  */
+		max-width: 100%; /* Anger bredden hur långt ifrån knappen man kan trycka, var man trycker  */
 		height: 60px;
 		cursor: pointer;
         display: flex;
-        justify-content: center
+        justify-content: center;
         
 }
 
 .burger:after {
-	
-		position: left; /* Anger läget på knappen i förhållande till innehållet, fältet  */
 		bottom: 7px;
-		left: 0px;
-		width: 100%;
-		text-align: center;
+		max-width: 100%;
 		font-size: 13px;
-        
+        display: flex;
+        justify-content: center;
 }
 
 /*--------------------------------------
@@ -127,19 +139,19 @@ Gör så att man kann trycka fram och tillbaka med knappen.
 .burger span:before,
 .burger span:after {
 		position: absolute; /* Gör så att knappen fastnar på samma ställe i skärmen. */
-		left: 50%; /* Anger hur långt vänsterifrån knappen ska sitta. */
 		top: 25px;
 		width: 40px; /* Bredden på knapp ikonen */
 		height: 4px; /* Anger tjockleken på ikonen/höjden */
 		background: #333; /* Färgen på burgarmeny iconen */
 		border-radius: 0.2em;
+        display: flex;
+        justify-content: center;
 }       
 
 /* Reset the left and create the pseudo-element */
 .burger span:before,
 .burger span:after {
 		content: '';
-		left: 0;
 }       
 
 /* Top bar position */
@@ -209,7 +221,9 @@ span.boo {
 		width: 100%; /* Anger storleken på headerns bredd, fältet där texten, innehållet ska finnas*/
 		margin: 0;
 		min-height: 50px;
-        background: linear-gradient(90deg, rgba(46,204,113,1) 0%, rgba(52,152,219,1) 100%); /* färgen på bakgrunden där burger boxen sitter */
+
+        background: rgb(0, 126, 205); /* färgen på bakgrunden där burger boxen sitter */
+
 		overflow: hidden;
         
 }
@@ -232,7 +246,7 @@ span.boo {
 		padding: 0 15px;
 		text-decoration: none;
 		overflow: hidden;
-		color: rgb(255, 255, 255); /* Färgen på texten i menyn som kommer upp */
+		color: #333; /* Färgen på texten i menyn som kommer upp */
 		text-align: center; /* Bestämmer hur texten ska radas upp i menyn */
         
 }
@@ -242,7 +256,7 @@ span.boo {
 .a-header ul a:focus,
 .a-header ul a:visited {
 		text-decoration: solid;
-		background: lightgray; /* Färgen när man hovrar över texten (på dator) på telefon när man håller in fingret på en av texterna */
+		background: rgb(40, 162, 237); /* Färgen när man hovrar över texten (på dator) på telefon när man håller in fingret på en av texterna */
 		border-bottom-color: #08c;
 }       
 
@@ -275,7 +289,6 @@ span.boo {
     pointer-events: initial;
     margin-left: 0;
     margin-right: 0;
-    border-style: none;
     font-weight: 700;
     font-size: 1rem;
     margin: 20px auto 0;
@@ -288,13 +301,6 @@ span.boo {
     text-align: center;
 }
 
-Header {                            /* Rubriken */
-    font-size: 4.5rem;
-    text-align: center;
-    box-sizing: border-box;
-    font-weight: 400;
-}
-
 .footer { /* Bottendelen pÃ¥ varje sida  */
    position: relative;
     padding: 1rem;
@@ -305,15 +311,9 @@ Header {                            /* Rubriken */
    
 }
 
-
 .textbox {                  /* text ruta till tävlingssidan */
-	background : linear-gradient(to top, 
-                    rgba(217,217,217, 0), 
-                    rgba(217,217,217, 0.5) 90%);
 	border-radius: 15px;
-	padding: 50px;
-	padding-left: 0;
-	padding-right: 0; 
+	padding: 10px;
 	margin: 10px;
 	margin-right: 0;
 	margin-left: 0;
@@ -325,12 +325,15 @@ Header {                            /* Rubriken */
 
 .openHours{
     text-align: center;
+    
 }
 
 
 .iframecss {
-	width: 100%;
-	height: 150px;
+	width: 80%;
+	height: 500px;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .mainMenu{
@@ -338,8 +341,13 @@ Header {                            /* Rubriken */
 
 }
 #sponsor{
-    background: linear-gradient(rgba(46,204,113,1) 0%, rgba(52,152,219,1) 100%);
+    background: 	rgb(0, 126, 205);
     padding: 5px;
 
 
 }
+.openDate{
+    text-align: center;
+    
+}
+
