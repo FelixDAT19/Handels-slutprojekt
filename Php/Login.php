@@ -55,7 +55,7 @@ if (isset($_POST['login'])) {
     //Unhashes the password & compares the input with the password in the database.
     if (password_verify($password, $row['hashedPswd'])) {
         $_SESSION['loggedin'] = true;
-        header("Location: AdminPage");
+        header("Location: AdminPage.php");
         exit();
     } else {
         $_SESSION['alert'] = "Fel användarnamn eller lösenord";
