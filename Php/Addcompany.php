@@ -155,7 +155,7 @@ if ($_POST) {
             </tbody>
         </table>
 
-        <Form method="POST">
+        <Form autocomplete="off" method="POST">
             <input value="<?= $companyName; ?>" type="text" id="companyName" name="companyName" maxlength="100" placeholder="Företagsnamn">
             <input value="<?= $companyInfo; ?>" type="text" id="companyInfo" name="companyInfo" maxlength="350" placeholder="Företagsinfo">
             <input value="<?= $externalUrl; ?>" type="url" id="externalUrl" name="externalUrl" maxlength="500" placeholder="Företagets hemsida">

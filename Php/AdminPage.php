@@ -83,7 +83,7 @@ if (isset($_POST['deleteOpenHours'])) {
                 ?>
             </tbody>
         </table>
-        <form method="POST">
+        <form autocomplete="off" method="POST">
             <select name="companies">
                 <?php
                 selectCompany($db);
@@ -105,7 +105,7 @@ if (isset($_POST['deleteOpenHours'])) {
                 ?>
             </tbody>
         </table>
-        <Form method="POST">
+        <Form autocomplete="off" method="POST">
             <input type="text" id="username" name="username" placeholder="Username">
             <input type="password" id="password" name="password" placeholder="Password">
             <button name="createAccount" type="submit">Create Account</button>
@@ -138,7 +138,7 @@ if (isset($_POST['deleteOpenHours'])) {
                     <td>$row[dateTime]</td>
                     <td>$row[device]</td>
                     <td>
-                    <form method='post'><input type='submit' name='delete[$row[randomId]]' value='delete'></form>
+                    <form autocomplete='off' method='post'><input type='submit' name='delete[$row[randomId]]' value='delete'></form>
                     </td>
                     </tr>";
                 }
@@ -174,7 +174,7 @@ if (isset($_POST['deleteOpenHours'])) {
             </tbody>
         </table>
         <div>
-            <form method="POST">
+            <form autocomplete="off" method="POST">
                 <input type="text" id="qrName" name="qrName" placeholder="Länk till qr-kod">
                 <input type="text" id="qrUrl" name="qrUrl" placeholder="Länk till qr-kod">
                 <button type="submit" name="addQrCode">Lägg till</button>

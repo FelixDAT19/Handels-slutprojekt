@@ -55,7 +55,7 @@ if (isset($_POST['login'])) {
     //Unhashes the password & compares the input with the password in the database.
     if (password_verify($password, $row['hashedPswd'])) {
         $_SESSION['loggedin'] = true;
-        header("Location: AdminPage");
+        header("Location: AdminPage.php");
         exit();
     } else {
         $_SESSION['alert'] = "Fel användarnamn eller lösenord";
@@ -72,16 +72,23 @@ if (isset($_POST['login'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="adminpage.css">
     <title>Login</title>
 </head>
 
 <body>
-    <img src="https://cdn.discordapp.com/attachments/950309989157863434/958240009310334996/handek-removebg-preview.png" class="logo">
-    <Form method="POST" action="Login.php">
-        <input type="text" id="username" name="username" placeholder="Username">
-        <input type="password" id="password" name="password" placeholder="Password">
-        <button name="login" type="submit">Login</button>
-    </Form>
+    <div class="center-screen">
+        <div>
+            <img class="loginimg" src="https://cdn.discordapp.com/attachments/950309989157863434/958240009310334996/handek-removebg-preview.png" class="logo">
+        </div>
+        <div class="loginform">
+            <Form method="POST" action="Login.php" autocomplete="off">
+                <input class="logininput" type="text" id="username" name="username" placeholder="Username"> <br>
+                <input class="logininput" type="password" id="password" name="password" placeholder="Password"><br>
+                <button class="loginbutton" name="login" type="submit">Logga in</button>
+            </Form>
+        </div>
+    </div>
 </body>
 
 </html>
