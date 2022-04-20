@@ -138,7 +138,7 @@ if (isset($_POST['deleteOpenHours'])) {
                     <td>$row[dateTime]</td>
                     <td>$row[device]</td>
                     <td>
-                    <form autocomplete="off" method='post'><input type='submit' name='delete[$row[randomId]]' value='delete'></form>
+                    <form autocomplete='off' method='post'><input type='submit' name='delete[$row[randomId]]' value='delete'></form>
                     </td>
                     </tr>";
                 }
