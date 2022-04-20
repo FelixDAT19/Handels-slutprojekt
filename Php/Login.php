@@ -76,12 +76,18 @@ if (isset($_POST['login'])) {
 </head>
 
 <body>
-    <img src="https://cdn.discordapp.com/attachments/950309989157863434/958240009310334996/handek-removebg-preview.png" class="logo">
-    <Form autocomplete="off" method="POST" action="Login.php">
-        <input type="text" id="username" name="username" placeholder="Username">
-        <input type="password" id="password" name="password" placeholder="Password">
-        <button name="login" type="submit">Login</button>
-    </Form>
+    <div class="center-screen">
+        <div>
+            <img class="loginimg" src="https://cdn.discordapp.com/attachments/950309989157863434/958240009310334996/handek-removebg-preview.png" class="logo">
+        </div>
+        <div class="loginform">
+            <Form method="POST" action="Login.php" autocomplete="off">
+                <input class="logininput" type="text" id="username" name="username" placeholder="Username"> <br>
+                <input class="logininput" type="password" id="password" name="password" placeholder="Password"><br>
+                <button class="loginbutton" name="login" type="submit">Logga in</button>
+            </Form>
+        </div>
+    </div>
 </body>
 
 </html>
