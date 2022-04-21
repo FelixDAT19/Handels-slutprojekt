@@ -1,0 +1,93 @@
+.dropbtn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+/*css for loginpage*/
+/*makes sure the form & picture are centered*/
+.center-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-height: 50%;
+    align-content: center;
+    flex-wrap: wrap;
+    margin: 15% 25% 15% 25%;
+}
+
+.loginimg{
+max-width: 75%;
+}
+
+.loginform{
+    width: 40%;
+  }
+
+/*creates the look for the input fields & makes thicker border if focused*/
+  .logininput:focus {
+    border: 3px solid #555;
+    padding: 10px 18px;
+  }
+
+  .logininput {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  /*creates the look for the login button & changes color on hover*/
+  .loginbutton {
+    width: 100%;
+    background-color: #007ecd;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .loginbutton:hover {
+    background-color: #0067cd;
+  }
