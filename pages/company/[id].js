@@ -6,13 +6,13 @@ import prisma from "/api/client";//imports
 
 function company({ placement, sponsors }) {
   return (
-    <>
+    <div className="viewport">
       <MainMenu />
 
       <LoadCompanies {...placement} />
 
       <FooterMenu sponsors={sponsors} />
-    </>
+    </div>
   );
 }
 export async function getStaticPaths() { // function to get url information so it can be queryd in the next function

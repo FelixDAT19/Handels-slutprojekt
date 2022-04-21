@@ -8,7 +8,7 @@ function competitions({ sponsors, competitions  }) {
   //competition page
 
   return (
-    <>
+    <div className="viewport">
       <MainMenu />
 
       <hr />
@@ -29,7 +29,7 @@ function competitions({ sponsors, competitions  }) {
       <hr />
 
       <FooterMenu sponsors={sponsors} />
-    </>
+    </div>
   );
 }
 

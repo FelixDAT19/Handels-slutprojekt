@@ -8,7 +8,7 @@ import LoadFood from "/Components/LoadFood";
 function food({ sponsors, offers }) {
   //food page that maps out what food companys offer
   return (
-    <>
+    <div className="viewport">
       <MainMenu />
 
       <h1>Mat på plats</h1>
@@ -19,7 +19,7 @@ function food({ sponsors, offers }) {
       <LoadFood offers={offers}/>
 
       <FooterMenu sponsors={sponsors} />
-    </>
+    </div>
   );
 }
 

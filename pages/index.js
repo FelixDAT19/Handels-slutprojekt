@@ -8,9 +8,8 @@ function Home({ sponsors, location, compaines }) {
   //start page with links to compaines and thair placements
   
   return (
-    <>
+    <div className="viewport">
       <MainMenu />
-      <hr/>
       <div className="openHours">
         <h2>Öppettider</h2>
         <p>12-19 1.1.2202</p>
@@ -28,7 +27,7 @@ function Home({ sponsors, location, compaines }) {
       <br/>
 
       <FooterMenu sponsors={sponsors}/>
-    </>
+    </div>
 
     
   );

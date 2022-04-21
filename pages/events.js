@@ -5,7 +5,7 @@ import prisma from "/api/client";
 function events({ sponsors }) {
   //event page with pdf iframe
   return (
-    <>
+    <div className="viewport">
       <MainMenu />
 
       <h1>Program</h1>
@@ -17,7 +17,7 @@ function events({ sponsors }) {
       <br />
 
       <FooterMenu sponsors={sponsors} />
-    </>
+    </div>
   );
 }
 
