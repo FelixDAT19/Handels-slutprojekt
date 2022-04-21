@@ -1,8 +1,8 @@
 :root {
     --screen-width:     100%;
     --screen-height:    100%;
-    --header-bg-color:  #3a70b7;
-    --splash-bg-color:  #285ed4;
+    --header-bg-color:  rgb(0, 126, 205);
+    --splash-bg-color:  rgb(13, 143, 224);
   }
   
   // calculate a circle's circumference based on radius
@@ -201,11 +201,26 @@
     margin:0 auto;
     position:relative;
     overflow:hidden;
-    background-color:white;
   }
   
   .header {
     height:5rem;
     background-color:var(--header-bg-color);
   }
+
+  .logo { /* Loggan på handelsmässan */
+
+
+    display:inline-block;
+    position:absolute;
+    width: 140px;
+    outline:0;
+    left:10px;
+    top:10px;
+    cursor:pointer;
+    border-radius:10%;
+
+
+   
+}
   

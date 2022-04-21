@@ -1,13 +1,4 @@
-.logo { /* Loggan på handelsmässan */
 
-
-    max-width: 100%;
-    width: auto;
-    max-height: 100px;
-    display: block;
-    margin: 0 auto;
-   
-}
 
 
 .map { /* Bilden på kartan över lokalen */
@@ -24,7 +15,7 @@
   
   
 body {
-    background-color: rgb(255, 255, 255); /* Bakgrundsfärg*/
+    background-color: rgb(240, 240, 240); /* Bakgrundsfärg*/
     max-width: 100%; /* Anger max bredden på innehållet i sidan */
     margin:  auto;
     font-family: 'Verdana', Arial, sans-serif !important;
@@ -127,7 +118,7 @@ p {
 .footer { /* Bottendelen pÃ¥ varje sida  */
    position: relative;
     padding: 1rem;
-    background-color: rgb(64, 59, 59);
+    background-color: rgb(0, 126, 205);
     color: white;
     text-align: center;
     bottom: 0;
@@ -164,7 +155,7 @@ p {
 
 }
 #sponsor{
-    background: 	rgb(0, 126, 205);
+    background: 	rgb(194, 194, 194);
     padding: 5px;
 
 
