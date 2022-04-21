@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
 
-function CompanyList({company}) {
+function CompanyList({company}) {// list with companies and what exact placements they have
 
   return (
     <div className="dropdown">

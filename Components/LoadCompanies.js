@@ -5,6 +5,7 @@ function LoadCompanies({ id, name, companyInfo, externalUrl, logoUrl, offers, co
 
   
   //site to load in specific comapny and map out its data
+  //also has that companies competitions and offers
   return (
     <div className="companyPage">
       <img src={logoUrl} alt="company logo" className="companyImage"/>
@@ -17,14 +18,14 @@ function LoadCompanies({ id, name, companyInfo, externalUrl, logoUrl, offers, co
 
       <div className="companyOffer">
         <h3 className="companyOfferName">Erbjudanden</h3>
-        {offers.map(({offer, price}, s) => (
+        {offers.map(({offer, price}, s) => (//offers
           <div key={s} className="offerInformation">
               <div className="offerName">{offer}</div>
               <div className="offerPrice">{price+" €"}</div>
           </div>
         ))}
       </div>
-      {competitions.map(({formUrl}, d) => (
+      {competitions.map(({formUrl}, d) => ( //competitions
         <div key={d} >
             <a href={formUrl} className="competitionLink">Tävling</a>
         </div>
