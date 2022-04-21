@@ -1,15 +1,15 @@
+import Link from "next/link";
+
 
 function MainMenu() {
   
- 
-
-    if (process.browser) {
+  if (process.browser) {
     const nav = document.querySelector('#nav');
     const menu = document.querySelector('#menu');
     const menuToggle = document.querySelector('.nav__toggle');
     let isMenuOpen = false;
-  
-  
+
+
     // TOGGLE MENU ACTIVE STATE
     menuToggle.addEventListener('click', e => {
       e.preventDefault();
@@ -20,8 +20,8 @@ function MainMenu() {
       menu.hidden = !isMenuOpen;
       nav.classList.toggle('nav--open');
     });
-  
-  
+
+
     // TRAP TAB INSIDE NAV WHEN OPEN
     nav.addEventListener('keydown', e => {
       // abort if menu isn't open or modifier keys are pressed
@@ -43,8 +43,8 @@ function MainMenu() {
           e.preventDefault();
         }
       }
-    });
-  }
+  });
+}
   
 
   const linksMenu = [ //json data with information on where links are supposed to go
@@ -78,7 +78,9 @@ function MainMenu() {
 
     
       <header className="header" role="banner">
-        <img src="https://cdn.discordapp.com/attachments/950309989157863434/958240009310334996/handek-removebg-preview.png" className='logo'/>
+        <Link href="/">
+          <img src="https://cdn.discordapp.com/attachments/950309989157863434/958240009310334996/handek-removebg-preview.png" className='logo'/>
+        </Link>
         <nav id="nav" className="nav" role="navigation">
         
         
@@ -121,40 +123,3 @@ function MainMenu() {
   );
 }
 export default MainMenu;
-
-
-/*
-
-    <div className="mainMenu">
-      <Link href="/">
-        <img src="https://cdn.discordapp.com/attachments/950309989157863434/958240009310334996/handek-removebg-preview.png" className='logo'/>
-      </Link>
-      <br />
-      <div className="a-header">
-        <input
-          type="checkbox"
-          name="main-nav"
-          id="main-nav"
-          className="burger-check"
-        />
-
-        <label htmlFor="main-nav" className="burger menu">
-          <span></span>
-        </label>
-        <ul>
-          {linksMenu.map(
-            (
-              {link, name},
-              o // maps out main menu from json data
-            ) => (
-                <li key={o}>
-                  <a href={link}>
-                    {name}
-                  </a>
-                </li>
-            )
-          )}
-        </ul>
-      </div>
-
-*/
