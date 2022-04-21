@@ -1,6 +1,3 @@
-import Link from "next/link";
-
-
 function MainMenu() {
   
   if (process.browser) {
@@ -78,9 +75,9 @@ function MainMenu() {
 
     
       <header className="header" role="banner">
-        <Link href="/">
+       
           <img src="https://cdn.discordapp.com/attachments/950309989157863434/958240009310334996/handek-removebg-preview.png" className='logo'/>
-        </Link>
+     
         <nav id="nav" className="nav" role="navigation">
         
         
