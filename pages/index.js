@@ -22,6 +22,8 @@ function Home({ sponsors, location, compaines }) {
         
       <map name="workmap">
         <CompanyLinks location={location}/>
+        <area shape="rect" coords="38,1,82,23" alt="cafe" href={`/food`}/>   
+        <area shape="rect" coords="105,1,172,23" alt="program" href={`/events`}/>   
       </map>    
 
       <br/>
