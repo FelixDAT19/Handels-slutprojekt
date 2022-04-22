@@ -29,7 +29,7 @@ export async function getStaticPaths() { // function to get url information so i
 export async function getStaticProps({ params }) { //function to query after company data
   const data = await prisma.company.findUnique({
     where: { id: parseInt(params.id) },
-    include: {offers: true, competitions: true},
+    include: {offers: true, competitions: true, placement:true},
     
   });
   const sponsors = await prisma.sponsors.findMany();

@@ -22,7 +22,7 @@ function competitions({ sponsors, competitions  }) {
         className="iframecss"
       />
 
-      <h2 className="companyCompetitions">företags tävlingar</h2>
+      <br/>
 
       <LoadCompetitions competitions={competitions}/>
 

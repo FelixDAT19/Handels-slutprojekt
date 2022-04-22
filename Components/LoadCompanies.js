@@ -1,7 +1,7 @@
 import React from "react";
 
 
-function LoadCompanies({ id, name, companyInfo, externalUrl, logoUrl, offers, competitions }) {
+function LoadCompanies({ id, name, companyInfo, externalUrl, logoUrl, offers, competitions, placement }) {
 
   
   //site to load in specific comapny and map out its data
@@ -13,6 +13,11 @@ function LoadCompanies({ id, name, companyInfo, externalUrl, logoUrl, offers, co
 
         <h1 className="companyName">{name}</h1>
         <p className="companyInfo">{companyInfo}</p>
+        <p>Platser:</p>
+        {placement.map((i, key) => 
+          <span key={key}>{i.id+ " "}</span>
+        )}
+        <br/>
 
       </div>
 
