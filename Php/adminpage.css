@@ -91,6 +91,7 @@ max-width: 75%;
   .loginbutton:hover {
     background-color: #0067cd;
   }
+
 .success-msg,
 .error-msg {
   margin: 10px 0;
