@@ -15,7 +15,7 @@ function Home({ sponsors, location, compaines }) {
         <p>12-19 1.1.2202</p>
         <p>10-18 1.2.2202</p>
       </div>
-      <hr/>
+      <br/>
       <CompanyList company={compaines}/>
       <br/>
       <img src="/files/lokal.png" className="imageMap" alt="lokalen" useMap="#workmap"/>

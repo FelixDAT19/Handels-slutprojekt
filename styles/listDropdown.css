@@ -1,41 +1,91 @@
-.dropbtn {
-    background-color: rgb(0, 126, 205);
-    color: white;
-    padding: 10px;
-    font-size: 16px;
-    border: none;
-    justify-content: center;
-  }
+.companyDropdownNav{
+  position: relative;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgb(0, 126, 205);
+  width: 300px;
+  line-height: 40px;
+  padding: 8px 25px;
+  border-radius: 5px;
   
-  .dropdown {
-    
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 5px 5px;
-    justify-content: center;
-    
-  }
   
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    max-width: 300px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
+}
+.dropdownButton{
+  color: #e6e6e6;
+  font-size: 22px;
+  font-weight: 500;
+  display: block;
+  cursor: pointer;
   
-  .dropdown-content a {
-    border-bottom: 1px solid;
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
+}
+.first span{
+  float: right;
+  line-height: 40px;
+  transition: 0.5s;
+}
+.first span.rotate{
+  transform: rotate(-180deg);
+}
+.menuCompany{
+  padding-left: 0px;
+  position: absolute;
+  background: rgb(13, 143, 224);
+  list-style: none;
+  top: 40px;
+  left: 0;
+  width: 100%;
+  border-radius: 5px;
+  display: none;
+  z-index: 1;
+}
+.firstUl{
+  overflow: auto;
+  height: 300px;
+}
+[id^=btn]:checked + .menuCompany{
+  display: block;
+}
+
+.listItems{
+  line-height: 40px;
+  padding: 8px 20px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.dropdownButton{
+  font-size: 18px;
+}
+
+
+
+
+.secondUl{
+  position: static;
+  display: block;
   
-  .dropdown-content a:hover {background-color: #ddd;}
-  
-  .dropdown:hover .dropdown-content {display: block;}
-  
-  .dropdown:hover .dropbtn {background-color: rgb(40, 162, 237);}
+}
+.secondLI{
+  line-height: 10px;
+  padding-left: 15px;
+  border-bottom: none;
+}
+.placeText{
+  color: #e6e6e6;
+  font-size: 17px;
+}
+.second span{
+  font-size: 20px;
+  float: right;
+  margin-top: 10px;
+  padding: 0 10px;
+  transition: 0.5s;
+}
+.second span.rotate{
+  transform: rotate(-180deg);
+}
+.dropdownCheckbox{
+  display: none;
+}
+

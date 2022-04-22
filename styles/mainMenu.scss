@@ -17,6 +17,8 @@
   // ---------------------------
   
   .nav {
+
+    
     
     // Toggle Button
     &__toggle {
@@ -45,11 +47,12 @@
       justify-content:center;
       height:var(--screen-height);
       position:relative;
-      z-index:5;
+      z-index:2;
       visibility:hidden;
       list-style-type: none;
       margin: 0px;
       padding: 0px;
+      z-index: 5;
     }
     
     &__item {
@@ -63,7 +66,9 @@
     }
     
     &__link {
-      color:white;
+
+      z-index: 6;
+      color: #e6e6e6;
       display:block;
       text-align:center;
       text-transform:uppercase;
@@ -130,6 +135,8 @@
       position:absolute;
       border-radius:50%;
       background-color:var(--splash-bg-color);
+      z-index: 2;
+      
       
       // screen diameter can be 142vmax at most,
       // circle needs to be twice that size to cover it
@@ -159,6 +166,7 @@
     //scale the background circle to full size
     > .splash::after {
       transform:scale(1);
+      
     }
     
     //animate the menu icon
@@ -217,9 +225,9 @@
     outline:0;
     left:10px;
     top:10px;
-    border-radius:10%;
-
-
+    bottom: 10px;
+    border-radius: 10px;
+    padding: 5px;
    
 }
   
