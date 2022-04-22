@@ -17,26 +17,66 @@ if (empty($_SESSION['loggedin'])) {
     exit;
 }
 
-//session to create alerts on actions
-if (isset($_SESSION['alert'])) {
-    function alert($msg)
-    {
-        echo "<script type='text/javascript'>alert('$msg');</script>";
+if (isset($_SESSION['alertError'])) {
+    if (isset($_SESSION['companyName'], $_SESSION['companyInfo'], $_SESSION['externalUrl'], $_SESSION['logoUrl'], $_SESSION['foodCheck'], $_SESSION['place'])) {
+        $companyName = $_SESSION['companyName'];
+        $companyInfo = $_SESSION['companyInfo'];
+        $externalUrl = $_SESSION['externalUrl'];
+        $logoUrl = $_SESSION['logoUrl'];
+        $foodCheck = $_SESSION['foodCheck'];
+        $placement = $_SESSION['place'];
+
+        $_SESSION['companyName'] = "";
+        $_SESSION['companyInfo'] = "";
+        $_SESSION['externalUrl'] = "";
+        $_SESSION['logoUrl'] = "";
+        $_SESSION['foodCheck'] = "";
+        $_SESSION['place'] = [];
+    } else {
+        $companyName = "";
+        $companyInfo = "";
+        $externalUrl = "";
+        $logoUrl = "";
+        $foodCheck = "";
+        $placement = [];
     }
-    $message = $_SESSION['alert'];
-    alert($message);
-    unset($_SESSION['alert']);
+} else {
+    $companyName = "";
+    $companyInfo = "";
+    $externalUrl = "";
+    $logoUrl = "";
+    $foodCheck = "";
+    $placement = [];
 }
 
+//session to create alerts on actions
+if (isset($_SESSION['alertError'])) {
+    if (isset($_SESSION["alertError"])) {
+        $error = $_SESSION["alertError"];
+    } else {
+        $error = "";
+    }
+
+    echo "<div class='error-msg'>
+    <i class='fa fa-times-circle'></i>
+    $error
+  </div>";
+}
+if (isset($_SESSION['alertSuccess'])) {
+    if (isset($_SESSION["alertSuccess"])) {
+        $success = $_SESSION["alertSuccess"];
+    } else {
+        $success = "";
+    }
+
+    echo "<div class='success-msg'>
+    <i class='fa fa-check'></i>
+    $success
+  </div>";
+}
 
 //creates empty variables for the post data to be added to
 $_SESSION['editCompany'] = "";
-$companyName = "";
-$companyInfo = "";
-$externalUrl = "";
-$logoUrl = "";
-$foodCheck = "";
-$placement = "";
 $chosenCompany = "";
 $offerInfo = "";
 $offerPrice = "";
@@ -44,13 +84,21 @@ $offerPrice = "";
 $db = connectDatabase();
 
 //makes sure one of the radio values are always checked.
-$radiochecked = ['0' => "", '1' => ""];
-if (isset($_POST['foodCheck'])) {
-    $radiochecked[$_POST['foodCheck']] = "checked";
+if ($foodCheck == "") {
+    $radiochecked = ['0' => "", '1' => ""];
+    if (isset($_POST['foodCheck'])) {
+        $radiochecked[$_POST['foodCheck']] = "checked";
+    } else {
+        $radiochecked['0'] = "checked";
+    }
 } else {
-    $radiochecked['0'] = "checked";
+    $radiochecked = ['0' => "", '1' => ""];
+    if (isset($_POST['foodCheck'])) {
+        $radiochecked[$_POST['foodCheck']] = "checked";
+    } else {
+        $radiochecked[$foodCheck] = "checked";
+    }
 }
-
 
 if ($_POST) {
     if (isset($_POST['editCompany']) && $_POST['editCompany'] != "") {
@@ -155,7 +203,7 @@ if ($_POST) {
             </tbody>
         </table>
 
-        <Form autocomplete="off" method="POST">
+        <Form method="POST">
             <input value="<?= $companyName; ?>" type="text" id="companyName" name="companyName" maxlength="100" placeholder="Företagsnamn">
             <input value="<?= $companyInfo; ?>" type="text" id="companyInfo" name="companyInfo" maxlength="350" placeholder="Företagsinfo">
             <input value="<?= $externalUrl; ?>" type="url" id="externalUrl" name="externalUrl" maxlength="500" placeholder="Företagets hemsida">
@@ -169,7 +217,7 @@ if ($_POST) {
                 <div class="dropbtn">välj montrar</div>
                 <div class="dropdown-content">
                     <?php
-                    selectPlacement($db);
+                    selectPlacement($db, $placement);
                     ?>
                 </div>
             </div>
@@ -179,3 +227,6 @@ if ($_POST) {
 </body>
 
 </html>
+<?php
+unset($_SESSION['alertError']);
+unset($_SESSION['alertSuccess']);

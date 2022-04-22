@@ -58,21 +58,21 @@ function deleteOffer($db)
 function createOffer($db)
 {
     if (!isset($_POST['companies'])) {
-        $_SESSION['alert'] = "Välj ett företag";
+        $_SESSION['alertError'] = "Välj ett företag";
         header("location:Addcompany.php");
         exit();
     } elseif (isset($_POST['companies']) && $_POST['companies'] != "") {
         //Checks all fields are filled in & that the price is more than 0, and sends error alert of not
         if ($_POST['offerInfo'] == "") {
-            $_SESSION['alert'] = "Erbjudandebeskrivning saknas";
+            $_SESSION['alertError'] = "Erbjudandebeskrivning saknas";
             header("location:Addcompany.php");
             exit();
         } elseif ($_POST['offerPrice'] == "") {
-            $_SESSION['alert'] = "Pris saknas";
+            $_SESSION['alertError'] = "Pris saknas";
             header("location:Addcompany.php");
             exit();
         } elseif ($_POST['offerPrice'] <= 0) {
-            $_SESSION['alert'] = "Priset kan inte vara 0 eller mindre";
+            $_SESSION['alertError'] = "Priset kan inte vara 0 eller mindre";
             header("location:Addcompany.php");
             exit();
         } else {
@@ -124,35 +124,40 @@ function createCompany($db)
     $externalUrl = $_POST["externalUrl"];
     $logoUrl = $_POST["logoUrl"];
     $foodCheck = $_POST['foodCheck'];
-    if (isset($_POST['place'])) {
-        $placement = $_POST['place'];
-    }
+    $placement = $_POST['place'];
+
+    $_SESSION['companyName'] = trim(htmlspecialchars($_POST["companyName"]));
+    $_SESSION['companyInfo'] = trim(htmlspecialchars($_POST["companyInfo"]));
+    $_SESSION['externalUrl'] = $_POST['externalUrl'];
+    $_SESSION['logoUrl'] = $_POST['logoUrl'];
+    $_SESSION['foodCheck'] = $_POST['foodCheck'];
+    $_SESSION['place'] = $_POST['place'];
     //Checks all required fields are filled & inserts error message into alert.
     if ($_POST['companyName'] == "") {
-        $_SESSION['alert'] = "Företagsnamn saknas";
+        $_SESSION['alertError'] = "Företagsnamn saknas";
         header("location:Addcompany.php");
         exit();
     } elseif ($_POST['companyInfo'] == "") {
-        $_SESSION['alert'] = "Företagsinfo saknas";
+        $_SESSION['alertError'] = "Företagsinfo saknas";
         header("location:Addcompany.php");
         exit();
     } elseif ($_POST['logoUrl'] == "") {
-        $_SESSION['alert'] = "Logo saknas";
+        $_SESSION['alertError'] = "Logo saknas";
         header("location:Addcompany.php");
         exit();
     } elseif (isset($_POST['place']) && $_POST['place'] == "") {
-        $_SESSION['alert'] = "Inga montrar är valda";
+        $_SESSION['alertError'] = "Inga montrar är valda";
         header("location:Addcompany.php");
         exit();
     } elseif (!isset($_POST['place'])) {
-        $_SESSION['alert'] = "Inga montrar är valda";
+        $_SESSION['alertError'] = "Inga montrar är valda";
         header("location:Addcompany.php");
         exit();
     } else {
         $a = checkDupes($db);
         //Checks if the company you want to add already exists, adds it if it doesn't
         if (isset($companyName) && in_array($companyName, $a)) {
-            $_SESSION['alert'] = "Företaget finns redan";
+            $_SESSION['alertError'] = "Företaget finns redan";
             header("location:Addcompany.php");
             exit();
         } else {
@@ -181,14 +186,14 @@ function createCompany($db)
                 $stmtPlacement->bindParam('placement', $placement[$i], PDO::PARAM_INT);
                 $stmtPlacement->execute();
             }
-            $_SESSION['alert'] = "Företaget har lagts till";
+            $_SESSION['alertSuccess'] = "Företaget har lagts till";
             header("location:Addcompany.php");
             exit();
         }
     }
 }
 
-function selectPlacement($db)
+function selectPlacement($db, $placement)
 {
     //prepares sql & binds params.
     $sqlPlacement = "SELECT * FROM placement ORDER BY id;";
@@ -201,13 +206,20 @@ function selectPlacement($db)
 
     //loops the placement table & creates a checkbox list with all the showcases
     foreach ($row as $places) {
-        if ($places['companyId'] == null) {
+        if ($places['companyId'] == null && isset($_SESSION['alertError']) == false) {
             echo ("<input type='checkbox' value='$places[id]' name='place[]'>$places[id]");
+        } elseif (isset($_SESSION['alertError']) == true && $places['companyId'] == null) {
+            if (in_array($places['id'], $placement)) {
+                echo ("<input type='checkbox' value='$places[id]' name='place[]' checked>$places[id]");
+            } else {
+                echo ("<input type='checkbox' value='$places[id]' name='place[]'>$places[id]");
+            }
         } else {
             echo ("<input type='checkbox' disabled>$places[id]");
         }
-    };
+    }
 }
+
 
 function offerList($db)
 {
@@ -218,7 +230,7 @@ function offerList($db)
     ORDER BY companyId;";
 
     $stmt = $db->prepare($sql);
-    $result = $stmt->execute([]);
+    $stmt->execute([]);
 
     while ($row = $stmt->fetch()) {
         echo "<tr>
