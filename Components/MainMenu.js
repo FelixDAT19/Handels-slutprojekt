@@ -19,28 +19,6 @@ function MainMenu() {
     });
 
 
-    // TRAP TAB INSIDE NAV WHEN OPEN
-    nav.addEventListener('keydown', e => {
-      // abort if menu isn't open or modifier keys are pressed
-      if (!isMenuOpen || e.ctrlKey || e.metaKey || e.altKey) {
-        return;
-      }
-      
-      // listen for tab press and move focus
-      // if we're on either end of the navigation
-      const menuLinks = menu.querySelectorAll('.nav__link');
-      if (e.keyCode === 9) {
-        if (e.shiftKey) {
-          if (document.activeElement === menuLinks[0]) {
-            menuToggle.focus();
-            e.preventDefault();
-          }
-        } else if (document.activeElement === menuToggle) {
-          menuLinks[0].focus();
-          e.preventDefault();
-        }
-      }
-  });
 }
   
 
@@ -99,7 +77,7 @@ function MainMenu() {
       
           <a href="#nav" className="nav__toggle" role="button" aria-expanded="false" aria-controls="menu">
             <svg className="menuicon" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
-              <title>Toggle Menu</title>
+              <title>Navbar</title>
               <g>
                 <line className="menuicon__bar" x1="13" y1="16.5" x2="37" y2="16.5"/>
                 <line className="menuicon__bar" x1="13" y1="24.5" x2="37" y2="24.5"/>
