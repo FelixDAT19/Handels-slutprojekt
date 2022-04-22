@@ -3,7 +3,7 @@
 function LoadCompetitions({competitions}){
     
     return(
-        <div className="companyCompetitions">
+        <div className="competitionCompetitions">
         <nav className="companyDropdownNav">
             <label htmlFor="btn" className="first dropdownButton">Företags Tävlingar
             <span className="fas fa-caret-down"></span>

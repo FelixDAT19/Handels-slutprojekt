@@ -1,3 +1,21 @@
+.competitionDropdownNav{
+  position: relative;
+  top: 25%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  background: rgb(0, 126, 205);
+  width: 300px;
+  line-height: 40px;
+  padding: 8px 25px;
+  border-radius: 5px;
+
+  margin-top: 40px;
+  margin-bottom: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
+  
+  
+}
 .companyDropdownNav{
   position: relative;
   top: 25%;
@@ -11,6 +29,8 @@
 
   margin-top: 40px;
   margin-bottom: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
   
   
 }
