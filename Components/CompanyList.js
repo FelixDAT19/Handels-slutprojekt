@@ -3,6 +3,8 @@ import React, {useState} from "react";
 
 function CompanyList({company}) {// list with companies and what exact placements they have
 
+   
+
   return (
 
     <nav className="companyDropdownNav">
@@ -20,7 +22,7 @@ function CompanyList({company}) {// list with companies and what exact placement
                <input type="checkbox" id="btn-company" className="dropdownCheckbox"/>
                <ul className="menuCompany secondUl">
                     {placement.map((i, key) => 
-                        <li key={key} className="listItems secondLI"><a href={`/company/${i.id}`} className="placeText">{i.id+ " "}</a></li>
+                        <li key={key} className="listItems secondLI"><a href={`/company/${i.companyId}`} className="placeText">{i.id+ " "}</a></li>
                     )}
                   
                </ul>

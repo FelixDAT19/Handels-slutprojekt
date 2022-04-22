@@ -41,7 +41,7 @@ export async function getStaticProps() { // fetches sponsors and location data f
   const dataPlacement = await prisma.placement.findMany({ orderBy: [{id: 'asc'}]}); 
   const location = [...JSON.parse(JSON.stringify(dataPlacement)),]
 
-  const dataCompanies = await prisma.company.findMany({include: {placement: { select: { id: true, },},},});
+  const dataCompanies = await prisma.company.findMany({include: {placement: true,},});
   const compaines = [...JSON.parse(JSON.stringify(dataCompanies)),]
 
 
