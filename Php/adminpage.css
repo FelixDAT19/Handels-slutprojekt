@@ -1,7 +1,12 @@
+html{
+  font-size: 14px;
+  font-family: 'Verdana', Arial, sans-serif !important;
+}
+
 .dropbtn {
-    background-color: #04AA6D;
+    background-color: #007ecd;
     color: white;
-    padding: 16px;
+    padding: 12px;
     font-size: 16px;
     border: none;
 }
@@ -36,7 +41,7 @@
 }
 
 .dropdown:hover .dropbtn {
-    background-color: #3e8e41;
+    background-color: #007ecd;
 }
 
 /*css for loginpage*/
@@ -112,4 +117,165 @@ max-width: 75%;
 .error-msg {
   color: #D8000C;
   background-color: #FFBABA;
+}
+
+/* Table look and size */
+  table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    white-space: nowrap;
+  }
+   /*  table tops colums color and size  */
+  table thead tr {
+    background-color: rgb(0, 126, 205);
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+  
+  }
+  
+  /*  tabel content colums size and padding*/
+  table th,
+  table td {
+    padding: 12px 15px;
+    max-width: 262px;
+    overflow-y:scroll;
+    overflow-y:hidden;
+   
+  }
+  /* Table bottoms border with color */
+  table tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+  
+  table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+  /* Last border color  */
+  table tbody tr:last-of-type {
+    border-bottom: 2px solid rgb(0, 126, 205);
+    
+  }
+  
+  table tbody tr.active-row {
+    font-weight: bold;
+    color: rgb(0, 126, 205);
+  }
+  
+  table td + td { border-left:1px solid #dddddd;}
+
+  
+  
+
+  input[type=submit] {
+    width: 100%;
+    background-color: rgb(0, 126, 205);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+
+
+  input[type=submit]:hover {
+    background-color: rgb(0, 62, 205);
+  }
+  
+  
+
+
+input[type=text], select {
+ 
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+
+input[type=url], select {
+
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=password], select {
+  
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=number], select {
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+
+input[type=radio], select {
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+
+
+
+button {
+  background-color: #007ecd;
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+}
+
+header {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #007ecd;
+  top:0px;
+
+
+}
+
+.btn {
+  display: block;
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  float: left;
+}
+
+.btn :hover {
+  background-color: rgb(108, 173, 238);
+}
+
+.adminbtn{
+  font-size: 20px;
+  font-weight: bold;
 }
