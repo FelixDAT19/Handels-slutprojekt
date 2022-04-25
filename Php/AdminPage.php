@@ -64,7 +64,7 @@ if (isset($_POST['deleteOpenHours'])) {
     <title>Admin main</title>
 </head>
 
-<body>
+<body calss="body">
     <header>
         <h1><a href="Adminpage.php">Admin</a></h1>
         <a href="Sponsors.php" class="btn">Sponsorer</a>
@@ -91,7 +91,7 @@ if (isset($_POST['deleteOpenHours'])) {
                 selectCompany($db);
                 ?>
             </select>
-            <input type="url" id="formUrl" name="formUrl" placeholder="Länk till ny tävling" maxlength="500">
+            <input type="url" id="formUrl" name="formUrl" placeholder="Länk till ny tävling" maxlength="500" autocomplete="off">
             <button name="createCompetition" type="submit">Lägg till</button>
         </form>
         <table>
@@ -108,8 +108,8 @@ if (isset($_POST['deleteOpenHours'])) {
             </tbody>
         </table>
         <Form method="POST">
-            <input type="text" id="username" name="username" placeholder="Username">
-            <input type="password" id="password" name="password" placeholder="Password">
+            <input type="text" id="username" name="username" placeholder="Username" autocomplete="off">
+            <input type="password" id="password" name="password" placeholder="Password" autocomplete="off">
             <button name="createAccount" type="submit">Create Account</button>
         </Form>
         <table>
@@ -174,8 +174,8 @@ if (isset($_POST['deleteOpenHours'])) {
         </table>
         <div>
             <form method="POST">
-                <input type="text" id="qrName" name="qrName" placeholder="Länk till qr-kod">
-                <input type="text" id="qrUrl" name="qrUrl" placeholder="Länk till qr-kod">
+                <input type="text" id="qrName" name="qrName" placeholder="Länk till qr-kod" autocomplete="off">
+                <input type="text" id="qrUrl" name="qrUrl" placeholder="Länk till qr-kod" autocomplete="off">
                 <button type="submit" name="addQrCode">Lägg till</button>
             </form>
         </div>
@@ -208,8 +208,8 @@ if (isset($_POST['deleteOpenHours'])) {
             </tbody>
         </table>
         <form method="POST">
-            <input type="text" id="openHours" name="openHours" placeholder="Öppettider">
-            <input type="text" id="openDates" name="openDates" placeholder="Datum">
+            <input type="text" id="openHours" name="openHours" placeholder="Öppettider" autocomplete="off">
+            <input type="text" id="openDates" name="openDates" placeholder="Datum" autocomplete="off">
             <button type="submit" Name="addOpenHours">Lägg till</button>
         </form>
     </main>

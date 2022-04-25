@@ -282,10 +282,10 @@ function companyList($db)
         <td>$row[externalUrl]</td>
         <td>$row[logoUrl]</td>
         <td>
-        <form method='post'><input type='submit' name='deleteCompany[$row[id]]' value='ta bort'></form>
+        <form method='post'><input type='submit' name='editCompany[$row[id]]' value='ändra'></form>
         </td>
         <td>
-        <form method='post'><input type='submit' name='editCompany[$row[id]]' value='ändra'></form>
+        <form method='post'><input type='submit' name='deleteCompany[$row[id]]' value='ta bort'></form>
         </td>
         </tr>";
     }

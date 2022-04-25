@@ -17,15 +17,55 @@ if (empty($_SESSION['loggedin'])) {
     exit;
 }
 
-//session to create alerts on actions
-if (isset($_SESSION['alert'])) {
-    function alert($msg)
-    {
-        echo "<script type='text/javascript'>alert('$msg');</script>";
+if (isset($_SESSION['alertError'])) {
+    if (isset($_SESSION['companyName'], $_SESSION['companyInfo'], $_SESSION['externalUrl'], $_SESSION['logoUrl'], $_SESSION['foodCheck'], $_SESSION['place'])) {
+        $companyName = $_SESSION['companyName'];
+        $companyInfo = $_SESSION['companyInfo'];
+        $externalUrl = $_SESSION['externalUrl'];
+        $logoUrl = $_SESSION['logoUrl'];
+        $foodCheck = $_SESSION['foodCheck'];
+
+        var_dump($_SESSION['place']);
+        $_SESSION['companyName'] = "";
+        $_SESSION['companyInfo'] = "";
+        $_SESSION['externalUrl'] = "";
+        $_SESSION['logoUrl'] = "";
+        $_SESSION['foodCheck'] = "";
+        $_SESSION['place'] = [];
+    } else {
+        $companyName = "";
+        $companyInfo = "";
+        $externalUrl = "";
+        $logoUrl = "";
+        $foodCheck = "";
+        $placement = [];
     }
-    $message = $_SESSION['alert'];
-    alert($message);
-    unset($_SESSION['alert']);
+} else {
+    $companyName = "";
+    $companyInfo = "";
+    $externalUrl = "";
+    $logoUrl = "";
+    $foodCheck = "";
+    $placement = [];
+}
+
+//session to create alerts on actions
+if (isset($_SESSION['alertError'])) {
+    if (isset($_SESSION["alertError"])) {
+        $error = $_SESSION["alertError"];
+    } else {
+        $error = "";
+    }
+
+    echo "<div class='alertError'> $error </div>";
+} elseif (isset($_SESSION['alertSuccess'])) {
+    if (isset($_SESSION["alertSuccess"])) {
+        $success = $_SESSION["alertSuccess"];
+    } else {
+        $success = "";
+    }
+
+    echo "<div class='alertSuccess'> $success </div>";
 }
 
 if (empty($_SESSION['editCompany']) or $_SESSION['editCompany'] == "") {
@@ -41,15 +81,6 @@ if (isset($_POST['deletePlace']) && $_POST['deletePlace'] != "") {
     //checks if the user has selected to delete a place, creates sql & deletes the post from the placement
     deletePlace($db);
 }
-
-$companyName = "";
-$companyInfo = "";
-$externalUrl = "";
-$logoUrl = "";
-$foodCheck = "";
-$placement = [];
-$oldPlacement = [];
-
 
 if (isset($_SESSION['editCompany'])) {
     $getCompanyInfo = getCompanyInfo($db, $selectedCompany, $selectedCompany);
@@ -68,23 +99,23 @@ if (isset($_SESSION['editCompany'])) {
     }
     if (isset($_POST['submitChanges'])) {
         if ($_POST['companyName'] == "") {
-            $_SESSION['alert'] = "Företagsnamn saknas";
+            $_SESSION['alertError'] = "Företagsnamn saknas";
             header("location:editCompany.php");
             exit();
         } elseif ($_POST['companyInfo'] == "") {
-            $_SESSION['alert'] = "Företagsinfo saknas";
+            $_SESSION['alertError'] = "Företagsinfo saknas";
             header("location:editCompany.php");
             exit();
         } elseif ($_POST['logoUrl'] == "") {
-            $_SESSION['alert'] = "Logo saknas";
+            $_SESSION['alertError'] = "Logo saknas";
             header("location:editCompany.php");
             exit();
         } elseif (isset($_POST['place']) && $_POST['place'] == "") {
-            $_SESSION['alert'] = "Inga montrar är valda";
+            $_SESSION['alertError'] = "Inga montrar är valda";
             header("location:editCompany.php");
             exit();
         } elseif (!isset($_POST['place'])) {
-            $_SESSION['alert'] = "Inga montrar är valda";
+            $_SESSION['alertError'] = "Inga montrar är valda";
             header("location:editCompany.php");
             exit();
         } else {
@@ -128,10 +159,10 @@ if (isset($_SESSION['editCompany'])) {
         </table>
 
         <Form method="POST">
-            <input value="<?= $companyName; ?>" type="text" id="companyName" name="companyName" maxlength="100">
-            <input value="<?= $companyInfo; ?>" type="text" id="companyInfo" name="companyInfo" maxlength="350">
-            <input value="<?= $externalUrl; ?>" type="url" id="externalUrl" name="externalUrl" maxlength="500">
-            <input value="<?= $logoUrl; ?>" type="url" id="logoUrl" name="logoUrl" maxlength="500">
+            <input value="<?= $companyName; ?>" type="text" id="companyName" name="companyName" maxlength="100" autocomplete="off">
+            <input value="<?= $companyInfo; ?>" type="text" id="companyInfo" name="companyInfo" maxlength="350" autocomplete="off">
+            <input value="<?= $externalUrl; ?>" type="url" id="externalUrl" name="externalUrl" maxlength="500" autocomplete="off">
+            <input value="<?= $logoUrl; ?>" type="url" id="logoUrl" name="logoUrl" maxlength="500" autocomplete="off">
             <label>Är det ett matföretag?</label>
             <input <?= $radiochecked['1']; ?> type="radio" id="foodCheck" name="foodCheck" value="1">
             <label for="foodCheck">Ja</label>
@@ -141,7 +172,7 @@ if (isset($_SESSION['editCompany'])) {
                 <div class="dropbtn">välj montrar</div>
                 <div class="dropdown-content">
                     <?php
-                    selectPlacement($db, $selectedCompany);
+                    selectPlacement($db, $selectedCompany, $placement);
                     ?>
                 </div>
             </div>
@@ -151,3 +182,6 @@ if (isset($_SESSION['editCompany'])) {
 </body>
 
 </html>
+<?php
+unset($_SESSION['alertError']);
+unset($_SESSION['alertSuccess']);

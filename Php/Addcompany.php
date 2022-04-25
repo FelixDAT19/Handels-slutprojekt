@@ -61,8 +61,7 @@ if (isset($_SESSION['alertError'])) {
     <i class='fa fa-times-circle'></i>
     $error
   </div>";
-}
-if (isset($_SESSION['alertSuccess'])) {
+} elseif (isset($_SESSION['alertSuccess'])) {
     if (isset($_SESSION["alertSuccess"])) {
         $success = $_SESSION["alertSuccess"];
     } else {
@@ -147,10 +146,10 @@ if ($_POST) {
                 selectCompany($db);
                 ?>
             </select>
-            <input type="text" id="offerInfo" name="offerInfo" maxlength="150" placeholder="Kort info om erbjudandet">
-            <input type="number" id="offerPrice" name="offerPrice" maxlength="20" placeholder="Pris på produkt">
+            <input type="text" id="offerInfo" name="offerInfo" maxlength="150" placeholder="Kort info om erbjudandet" autocomplete="off">
+            <input type="number" id="offerPrice" name="offerPrice" maxlength="20" placeholder="Pris på produkt" autocomplete="off">
             <label for="offerPrice">€</label>
-            <button name="addOffer" type="submit">Lägg till</button>
+            <button name="addOffer" type="submit" autocomplete="off">Lägg till</button>
         </form>
     </header>
     <main>
@@ -161,8 +160,8 @@ if ($_POST) {
                     <th>Företagsinfo:</th>
                     <th>Företagets hemsida:</th>
                     <th>Logons url:</th>
-                    <th>Ta bort:</th>
                     <th>Ändra:</th>
+                    <th>Ta bort:</th>
                 </tr>
             </thead>
             <tbody>
@@ -204,10 +203,10 @@ if ($_POST) {
         </table>
 
         <Form method="POST">
-            <input value="<?= $companyName; ?>" type="text" id="companyName" name="companyName" maxlength="100" placeholder="Företagsnamn">
-            <input value="<?= $companyInfo; ?>" type="text" id="companyInfo" name="companyInfo" maxlength="350" placeholder="Företagsinfo">
-            <input value="<?= $externalUrl; ?>" type="url" id="externalUrl" name="externalUrl" maxlength="500" placeholder="Företagets hemsida">
-            <input value="<?= $logoUrl; ?>" type="url" id="logoUrl" name="logoUrl" maxlength="500" placeholder="företagets logo">
+            <input value="<?= $companyName; ?>" type="text" id="companyName" name="companyName" maxlength="100" placeholder="Företagsnamn" autocomplete="off">
+            <input value="<?= $companyInfo; ?>" type="text" id="companyInfo" name="companyInfo" maxlength="350" placeholder="Företagsinfo" autocomplete="off">
+            <input value="<?= $externalUrl; ?>" type="url" id="externalUrl" name="externalUrl" maxlength="500" placeholder="Företagets hemsida" autocomplete="off">
+            <input value="<?= $logoUrl; ?>" type="url" id="logoUrl" name="logoUrl" maxlength="500" placeholder="företagets logo" autocomplete="off">
             <label>Är det ett matföretag?</label>
             <input <?= $radiochecked['1']; ?> type="radio" id="foodCheck" name="foodCheck" value="1">
             <label for="foodCheck">Ja</label>

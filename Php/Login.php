@@ -12,14 +12,55 @@ require_once "Config.php";
 session_start();
 $_SESSION['loggedin'] = false;
 
-if (isset($_SESSION['alert'])) {
-    function alert($msg)
-    {
-        echo "<script type='text/javascript'>alert('$msg');</script>";
+if (isset($_SESSION['alertError'])) {
+    if (isset($_SESSION['sponsorName'], $_SESSION['sponsorUrl'], $_SESSION['logoUrl'])) {
+        $companyName = $_SESSION['sponsorName'];
+        $companyInfo = $_SESSION['sponsorUrl'];
+        $externalUrl = $_SESSION['logoUrl'];
+
+        $_SESSION['sponsorName'] = "";
+        $_SESSION['sponsorUrl'] = "";
+        $_SESSION['logoUrl'] = "";
+    } else {
+        $companyName = "";
+        $companyInfo = "";
+        $externalUrl = "";
+        $logoUrl = "";
+        $foodCheck = "";
+        $placement = [];
     }
-    $message = $_SESSION['alert'];
-    alert($message);
-    unset($_SESSION['alert']);
+} else {
+    $companyName = "";
+    $companyInfo = "";
+    $externalUrl = "";
+    $logoUrl = "";
+    $foodCheck = "";
+    $placement = [];
+}
+
+//session to create alerts on actions
+if (isset($_SESSION['alertError'])) {
+    if (isset($_SESSION["alertError"])) {
+        $error = $_SESSION["alertError"];
+    } else {
+        $error = "";
+    }
+
+    echo "<div class='error-msg'>
+    <i class='fa fa-times-circle'></i>
+    $error
+  </div>";
+} elseif (isset($_SESSION['alertSuccess'])) {
+    if (isset($_SESSION["alertSuccess"])) {
+        $success = $_SESSION["alertSuccess"];
+    } else {
+        $success = "";
+    }
+
+    echo "<div class='success-msg'>
+    <i class='fa fa-check'></i>
+    $success
+  </div>";
 }
 
 $db = connectDatabase();
@@ -30,11 +71,11 @@ if (isset($_POST['login'])) {
 
     //Checks that username and password are set.
     if (!isset($username) or $username == "") {
-        $_SESSION['alert'] = "Användarnamn saknas";
+        $_SESSION['alertError'] = "Användarnamn saknas";
         header("location:AdminPage.php");
         exit();
     } elseif (!isset($_POST['password']) or $password == "") {
-        $_SESSION['alert'] = "Lösenord saknas";
+        $_SESSION['alertError'] = "Lösenord saknas";
         header("location:AdminPage.php");
         exit();
     }
@@ -46,7 +87,7 @@ if (isset($_POST['login'])) {
 
     //Redirects back to the login page if the username doesn't match
     if ($result == false) {
-        $_SESSION['alert'] = "Fel användarnamn eller lösenord";
+        $_SESSION['alertError'] = "Fel användarnamn eller lösenord";
         header("location:AdminPage.php");
         exit();
     }
@@ -58,7 +99,7 @@ if (isset($_POST['login'])) {
         header("Location: AdminPage.php");
         exit();
     } else {
-        $_SESSION['alert'] = "Fel användarnamn eller lösenord";
+        $_SESSION['alertError'] = "Fel användarnamn eller lösenord";
         header("location:AdminPage.php");
         exit();
     }
@@ -83,8 +124,8 @@ if (isset($_POST['login'])) {
         </div>
         <div class="loginform">
             <Form method="POST" action="Login.php" autocomplete="off">
-                <input class="logininput" type="text" id="username" name="username" placeholder="Username"> <br>
-                <input class="logininput" type="password" id="password" name="password" placeholder="Password"><br>
+                <input class="logininput" type="text" id="username" name="username" placeholder="Username" autocomplete="off"> <br>
+                <input class="logininput" type="password" id="password" name="password" placeholder="Password" autocomplete="off"><br>
                 <button class="loginbutton" name="login" type="submit">Logga in</button>
             </Form>
         </div>
@@ -92,3 +133,6 @@ if (isset($_POST['login'])) {
 </body>
 
 </html>
+<?php
+unset($_SESSION['alertError']);
+unset($_SESSION['alertSuccess']);
