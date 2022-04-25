@@ -3,6 +3,11 @@ html{
   font-family: 'Verdana', Arial, sans-serif !important;
 }
 
+body {
+  margin:0;
+  
+}
+
 .dropbtn {
     background-color: #007ecd;
     color: white;
