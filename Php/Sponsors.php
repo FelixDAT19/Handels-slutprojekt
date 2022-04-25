@@ -12,28 +12,28 @@ session_start();
 
 //Session to check if you are logged in
 if (empty($_SESSION['loggedin'])) {
-    $error[] = "'Username or password is incorrect'";
     header('Location: Login.php');
     exit;
 }
-if (isset($_SESSION['alertError'])) {
-    if (isset($_SESSION['sponsorName'], $_SESSION['companyInfo'], $_SESSION['externalUrl'], $_SESSION['logoUrl'], $_SESSION['foodCheck'], $_SESSION['place'])) {
-        $companyName = $_SESSION['companyName'];
-        $companyInfo = $_SESSION['companyInfo'];
-        $externalUrl = $_SESSION['externalUrl'];
 
-        $_SESSION['companyName'] = "";
-        $_SESSION['companyInfo'] = "";
-        $_SESSION['externalUrl'] = "";
+if (isset($_SESSION['alertError'])) {
+    if (isset($_SESSION['sponsorName'], $_SESSION['sponsorUrl'], $_SESSION['logoUrl'])) {
+        $sponsorName = $_SESSION['sponsorName'];
+        $sponsorUrl = $_SESSION['sponsorUrl'];
+        $logoUrl = $_SESSION['logoUrl'];
+
+        $_SESSION['sponsorName'] = "";
+        $_SESSION['sponsorUrl'] = "";
+        $_SESSION['logoUrl'] = "";
     } else {
-        $companyName = "";
-        $companyInfo = "";
-        $externalUrl = "";
+        $sponsorName = "";
+        $sponsorUrl = "";
+        $logoUrl = "";
     }
 } else {
-    $companyName = "";
-    $companyInfo = "";
-    $externalUrl = "";
+    $sponsorName = "";
+    $sponsorUrl = "";
+    $logoUrl = "";
 }
 
 //session to create alerts on actions
@@ -60,45 +60,7 @@ if (isset($_SESSION['alertError'])) {
     $success
   </div>";
 }
-if (isset($_SESSION['alertError'])) {
-    if (isset($_SESSION['sponsorName'], $_SESSION['sponsorUrl'], $_SESSION['logoUrl'])) {
-        $companyName = $_SESSION['sponsorName'];
-        $companyInfo = $_SESSION['sponsorUrl'];
-        $externalUrl = $_SESSION['logoUrl'];
 
-        $_SESSION['sponsorName'] = "";
-        $_SESSION['sponsorUrl'] = "";
-        $_SESSION['logoUrl'] = "";
-    } else {
-        $companyName = "";
-        $companyInfo = "";
-        $externalUrl = "";
-        $logoUrl = "";
-        $foodCheck = "";
-        $placement = [];
-    }
-} else {
-    $companyName = "";
-    $companyInfo = "";
-    $externalUrl = "";
-    $logoUrl = "";
-    $foodCheck = "";
-    $placement = [];
-}
-
-//session to create alerts on actions
-if (isset($_SESSION['alertError'])) {
-    if (isset($_SESSION["alertError"])) {
-        $error = $_SESSION["alertError"];
-    } else {
-        $error = "";
-    }
-
-    echo "<div class='error-msg'>
-    <i class='fa fa-times-circle'></i>
-    $error
-  </div>";
-}
 $db = connectDatabase();
 
 $sponsorName = "";
@@ -142,9 +104,13 @@ if (isset($_POST['editSponsor']) && $_POST['editSponsor'] != "") {
 
 <body>
     <header>
-        <h1><a href="Adminpage.php">Admin</a></h1>
-        <a href="Sponsors.php" class="btn">Sponsorer</a>
-        <a href="Addcompany.php" class="btn">Utställare</a>
+        <nav class="navbar">
+                <div class="navcontent">
+                <li><a class="btn adminbtn" href="Adminpage.php">Admin</a></li>
+                <li><a class="btn" href="Sponsors.php">Sponsorer</a></li>
+                <li><a class="btn" href="Addcompany.php">Utställare</a></li>
+            </div>
+        </nav>
     </header>
     <main>
         <table>

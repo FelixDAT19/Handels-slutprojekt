@@ -241,9 +241,6 @@ input[type=radio], select {
   box-sizing: border-box;
 }
 
-
-
-
 button {
   background-color: #007ecd;
   color: white;
@@ -252,30 +249,36 @@ button {
   border: none;
 }
 
-header {
+.navbar {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
   background-color: #007ecd;
   top:0px;
-
-
+  width: 100%;
+  height: 50px;
 }
 
 .btn {
   display: block;
   color: white;
-  padding: 14px 16px;
   text-decoration: none;
   float: left;
-}
-
-.btn :hover {
-  background-color: rgb(108, 173, 238);
+  padding: 17px 10px 16px 10px;
 }
 
 .adminbtn{
+  display: block;
+  color: white;
+  text-decoration: none;
+  float: left;
+  padding: 13px 10px 13px 10px;
   font-size: 20px;
   font-weight: bold;
 }
+
+.navbtn a:hover {
+  background-color: #006dcd;
+}
+

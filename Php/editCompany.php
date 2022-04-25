@@ -12,7 +12,6 @@ session_start();
 
 //Session to check if you are logged in
 if (empty($_SESSION['loggedin'])) {
-    $error[] = "'Username or password is incorrect'";
     header('Location: Login.php');
     exit;
 }
@@ -137,10 +136,13 @@ if (isset($_SESSION['editCompany'])) {
 
 <body>
     <header>
-        <h1><a href="Adminpage.php">Admin</a></h1>
-        <a href="Sponsors.php" class="btn">Sponsorer</a>
-        <a href="Addcompany.php" class="btn">Utställare</a>
-
+        <nav class="navbar">
+                <div class="navcontent">
+                <li><a class="btn adminbtn" href="Adminpage.php">Admin</a></li>
+                <li><a class="btn" href="Sponsors.php">Sponsorer</a></li>
+                <li><a class="btn" href="Addcompany.php">Utställare</a></li>
+            </div>
+        </nav>
     </header>
     <main>
         <table>

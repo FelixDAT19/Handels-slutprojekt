@@ -11,7 +11,6 @@ require_once "functionsAdminPage.php";
 //Session to check if you are logged in
 session_start();
 if (empty($_SESSION['loggedin'])) {
-    $error[] = "'Username or password is incorrect'";
     header('Location: Login.php');
     exit;
 }
@@ -64,11 +63,15 @@ if (isset($_POST['deleteOpenHours'])) {
     <title>Admin main</title>
 </head>
 
-<body calss="body">
+<body>
     <header>
-        <h1><a href="Adminpage.php">Admin</a></h1>
-        <a href="Sponsors.php" class="btn">Sponsorer</a>
-        <a href="Addcompany.php" class="btn">Utställare</a>
+        <nav class="navbar">
+                <div class="navcontent">
+                <li><a class="btn adminbtn" href="Adminpage.php">Admin</a></li>
+                <li><a class="btn" href="Sponsors.php">Sponsorer</a></li>
+                <li><a class="btn" href="Addcompany.php">Utställare</a></li>
+            </div>
+        </nav>
     </header>
     <main>
         <table>
