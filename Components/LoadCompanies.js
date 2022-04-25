@@ -1,10 +1,11 @@
 import React from "react";
 
 
-function LoadCompanies({ id, name, companyInfo, externalUrl, logoUrl, offers, competitions }) {
+function LoadCompanies({ id, name, companyInfo, externalUrl, logoUrl, offers, competitions, placement }) {
 
   
   //site to load in specific comapny and map out its data
+  //also has that companies competitions and offers
   return (
     <div className="companyPage">
       <img src={logoUrl} alt="company logo" className="companyImage"/>
@@ -12,19 +13,24 @@ function LoadCompanies({ id, name, companyInfo, externalUrl, logoUrl, offers, co
 
         <h1 className="companyName">{name}</h1>
         <p className="companyInfo">{companyInfo}</p>
+        <p>Platser:</p>
+        {placement.map((i, key) => 
+          <span key={key}>{i.id+ " "}</span>
+        )}
+        <br/>
 
       </div>
 
       <div className="companyOffer">
         <h3 className="companyOfferName">Erbjudanden</h3>
-        {offers.map(({offer, price}, s) => (
+        {offers.map(({offer, price}, s) => (//offers
           <div key={s} className="offerInformation">
               <div className="offerName">{offer}</div>
               <div className="offerPrice">{price+" €"}</div>
           </div>
         ))}
       </div>
-      {competitions.map(({formUrl}, d) => (
+      {competitions.map(({formUrl}, d) => ( //competitions
         <div key={d} >
             <a href={formUrl} className="competitionLink">Tävling</a>
         </div>

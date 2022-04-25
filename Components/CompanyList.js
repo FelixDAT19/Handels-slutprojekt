@@ -1,24 +1,40 @@
 import React, {useState} from "react";
 
 
-function CompanyList({company}) {
+function CompanyList({company}) {// list with companies and what exact placements they have
+
+   
 
   return (
-    <div className="dropdown">
-        <button className="dropbtn">Företag</button>
-        <div className="dropdown-content">
-            {company.map(({name,placement}, o ) => (
-                <p key={o}>
-                    {name+ " platser: "}
+
+    <nav className="companyDropdownNav">
+    <label htmlFor="btn" className="first dropdownButton">Företag
+    <span className="fas fa-caret-down"></span>
+    </label>
+    <input type="checkbox" id="btn" className="dropdownCheckbox"/>
+    <ul className="menuCompany firstUl">
+
+    {company.map(({name,placement}, o ) => (
+            <li key={o} className="listItems firstLI">
+               <label htmlFor="btn-2" className="second dropdownButton">{name}
+               <span className="fas fa-caret-down"></span>
+               </label>
+               <input type="checkbox" id="btn-company" className="dropdownCheckbox"/>
+               <ul className="menuCompany secondUl">
                     {placement.map((i, key) => 
-                        <span key={key}>{i.id+ " "}</span>
+                        <li key={key} className="listItems secondLI"><a href={`/company/${i.companyId}`} className="placeText">{i.id+ " "}</a></li>
                     )}
-                </p>
-            ))}
-        </div>
-    </div> 
+                  
+               </ul>
+            </li>
+    ))}
+
+    </ul>
+ </nav>
+
   );
 }
 
 export default CompanyList;
+
 

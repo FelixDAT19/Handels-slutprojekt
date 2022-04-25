@@ -5,7 +5,7 @@ import prisma from "/api/client";
 function about({ sponsors }) {
   //about page
   return (
-    <>
+    <div className="viewport">
       <MainMenu />
 
       <h1>Om</h1>
@@ -16,7 +16,7 @@ function about({ sponsors }) {
       <br/>
 
       <FooterMenu sponsors={sponsors} />
-    </>
+    </div>
   );
 }
 

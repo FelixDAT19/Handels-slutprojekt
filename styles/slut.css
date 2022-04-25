@@ -1,13 +1,4 @@
-.logo { /* Loggan på handelsmässan */
 
-
-    max-width: 100%;
-    width: auto;
-    max-height: 100px;
-    display: block;
-    margin: 0 auto;
-   
-}
 
 
 .map { /* Bilden på kartan över lokalen */
@@ -24,10 +15,11 @@
   
   
 body {
-    background-color: rgb(255, 255, 255); /* Bakgrundsfärg*/
+    background-color: rgb(240, 240, 240); /* Bakgrundsfärg*/
     max-width: 100%; /* Anger max bredden på innehållet i sidan */
     margin:  auto;
     font-family: 'Verdana', Arial, sans-serif !important;
+    z-index: -3;
 }
     
     
@@ -88,183 +80,6 @@ p {
   background-color:rgba(46,204,113);
 }
 
-/*--------------------------------------
- Animationstid som bestämmer före och efter hur lång tid den varar 
---------------------------------------*/
-*,
-*:before,
-*:after {
-		-webkit-transition: all 0.3s;
-		transition: all 0.3s;
-		box-sizing: border-box;
-}
-
-
-/*-----------------------------------------------------------------------------------
- Hamburgerikonen med dess animation. Använder den markerade egenskapen för en kryssruta
-  för att få animeringen att hända samt kontrollera nästa element
------------------------------------------------------------------------------------*/
-.burger-check {
-		display: none; /* Döljer checkboxen */
-        
-}
-
-
-/*--------------------------------------
-Gör så att man kann trycka fram och tillbaka med knappen.
---------------------------------------*/
-.burger{
-	
-		max-width: 100%; /* Anger bredden hur långt ifrån knappen man kan trycka, var man trycker  */
-		height: 60px;
-		cursor: pointer;
-        display: flex;
-        justify-content: center;
-        
-}
-
-.burger:after {
-		bottom: 7px;
-		max-width: 100%;
-		font-size: 13px;
-        display: flex;
-        justify-content: center;
-}
-
-/*--------------------------------------
- Creates the look of the burger icon
- using the inner span and pseudo-elements
---------------------------------------*/
-.burger span,
-.burger span:before,
-.burger span:after {
-		position: absolute; /* Gör så att knappen fastnar på samma ställe i skärmen. */
-		top: 25px;
-		width: 40px; /* Bredden på knapp ikonen */
-		height: 4px; /* Anger tjockleken på ikonen/höjden */
-		background: #333; /* Färgen på burgarmeny iconen */
-		border-radius: 0.2em;
-        display: flex;
-        justify-content: center;
-}       
-
-/* Reset the left and create the pseudo-element */
-.burger span:before,
-.burger span:after {
-		content: '';
-}       
-
-/* Top bar position */
-.burger span:before {
-		top: -8px;
-}
-
-/* Bottom bar position */
-.burger span:after {
-		top: 8px;
-}
-
-/* Get rid of more on action (IE9 or higher) */
-.burger-check:checked + .burger:after {
-		content: '';
-}
-/* Get rid of the middle bar on action (IE9 or higher) */
-
-.burger-check:checked + .burger span {
-		height: 0;
-		width: 0;
-}
-
-/* Moves the top and bottom bars to the middle on action (IE9 or higher) */
-.burger-check:checked + .burger span:before,
-.burger-check:checked + .burger span:after {
-		top: 6px; /* Hur många pixlar raderna i knappen flyttar sig vid */
-}
-
-/* Rotates the top bar on action with full browser support (IE9 or higher) */
-.burger-check:checked + .burger span:before {
-		-webkit-transform: rotate(225deg);
-		-ms-transform: rotate(225deg);
-		transform: rotate(225deg);
-}
-
-/* Rotates the bottom bar on action with full browser support (IE9 or higher) */
-.burger-check:checked + .burger span:after {
-		-webkit-transform: rotate(-225deg);
-		-ms-transform: rotate(225deg);
-		transform: rotate(-225deg);
-}
-
-/*==============================================================================
- Simple reveal (IE9 or higher)
-==============================================================================*/
-span.boo {
-		width: auto;
-		margin-top: 0;
-		line-height: 60px;
-		height: 0;
-		overflow: hidden;
-}
-
-/* Reveals Boo! (IE9 or higher) */
-#main-nav-test:checked ~ .boo {
-		height: 50px;
-}
-
-/*==============================================================================
- Simple mobile menu opening and closing (IE9 or higher)
-==============================================================================*/
-
-.a-header {
-		position: relative; /* Håller kvar knappen på rätt ställe*/
-		float: left;
-		width: 100%; /* Anger storleken på headerns bredd, fältet där texten, innehållet ska finnas*/
-		margin: 0;
-		min-height: 50px;
-
-        background: rgb(0, 126, 205); /* färgen på bakgrunden där burger boxen sitter */
-
-		overflow: hidden;
-        
-}
-
-.a-header ul {
-		position: relative;
-		float: left;
-		width: 100%;
-		list-style: none;
-		margin: 0;
-		padding: 0; /* Hur långt innehållet, textfälten kommer upp ifrån vänster kant.  */
-}       
-
-.a-header ul a {
-		position: relative;
-		float: left; /* Radar upp innehåll, går inte att tas bort */
-		width: 100%; /*  Bredden på innehållet i menyn, texten */
-		height: 0;
-		line-height: 50px;
-		padding: 0 15px;
-		text-decoration: none;
-		overflow: hidden;
-		color: #333; /* Färgen på texten i menyn som kommer upp */
-		text-align: center; /* Bestämmer hur texten ska radas upp i menyn */
-        
-}
-
-.a-header ul a:hover,
-.a-header ul a:active,
-.a-header ul a:focus,
-.a-header ul a:visited {
-		text-decoration: solid;
-		background: rgb(40, 162, 237); /* Färgen när man hovrar över texten (på dator) på telefon när man håller in fingret på en av texterna */
-		border-bottom-color: #08c;
-}       
-
-/* Animate height of 'a' element in order to reveal the menu on check (IE9 or higher) */
-#main-nav:checked ~ ul a {
-	height: 50px; /* Mellanrummet, storleken imellan textfälten */
-    border:0.1px solid black; /* Kantstorlek runt texten för att lättare urskilja dem. */
-}   
 
 
 .backbutton {                         /* Tillbaka knappen */
@@ -304,8 +119,8 @@ span.boo {
 .footer { /* Bottendelen pÃ¥ varje sida  */
    position: relative;
     padding: 1rem;
-    background-color: rgb(64, 59, 59);
-    color: white;
+    background-color: rgb(0, 126, 205);
+    color: #e6e6e6;
     text-align: center;
     bottom: 0;
    
@@ -341,7 +156,7 @@ span.boo {
 
 }
 #sponsor{
-    background: 	rgb(0, 126, 205);
+    background: 	rgb(216, 216, 216);
     padding: 5px;
 
 

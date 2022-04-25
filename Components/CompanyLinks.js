@@ -5,7 +5,7 @@ function CompanyLinks({location}){ //maps out all locations where there is a com
     const router = useRouter();
     
     return location.map(({ id, companyId, mapLocation }, i) => {
-        if (companyId !== null) {
+        if (companyId !== null) {// will return an area position for the image
             return (
                    
                 <area shape="rect" coords={mapLocation} alt={id} href={`/company/${companyId}`}/>     
@@ -18,14 +18,3 @@ function CompanyLinks({location}){ //maps out all locations where there is a com
 }
 export default CompanyLinks;
 
-/*                <div key={i}>
-                    <button
-                    id={id}
-                    onClick={() =>
-                        router.push({ pathname: `/company/${companyId}`})
-                    }
-                    >
-                    {id}
-                    </button>
-                    <br />
-                </div> */

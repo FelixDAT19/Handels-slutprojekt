@@ -8,28 +8,28 @@ function competitions({ sponsors, competitions  }) {
   //competition page
 
   return (
-    <>
+    <div className="viewport">
       <MainMenu />
 
       <hr />
 
       <h1>Tävlingar</h1>
 
-      <div className="textbox">Handelsmässans egna tävling Handelsmässans egna tävling</div>
+      <div className="textbox">Handelsmässans egna tävling</div>
 
       <iframe
         src="https://docs.google.com/forms/d/e/1FAIpQLScDyejaHJdpMhmQXIMY-o_LAukSPwNwp7DKPe1Wu2Wx_dy7UA/viewform?embedded=true"
         className="iframecss"
       />
 
-      <h2 className="companyCompetitions">företags tävlingar</h2>
+      <br/>
 
       <LoadCompetitions competitions={competitions}/>
 
       <hr />
 
       <FooterMenu sponsors={sponsors} />
-    </>
+    </div>
   );
 }
 

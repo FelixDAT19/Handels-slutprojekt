@@ -6,13 +6,13 @@ import prisma from "/api/client";//imports
 
 function company({ placement, sponsors }) {
   return (
-    <>
+    <div className="viewport">
       <MainMenu />
 
       <LoadCompanies {...placement} />
 
       <FooterMenu sponsors={sponsors} />
-    </>
+    </div>
   );
 }
 export async function getStaticPaths() { // function to get url information so it can be queryd in the next function
@@ -29,7 +29,7 @@ export async function getStaticPaths() { // function to get url information so i
 export async function getStaticProps({ params }) { //function to query after company data
   const data = await prisma.company.findUnique({
     where: { id: parseInt(params.id) },
-    include: {offers: true, competitions: true},
+    include: {offers: true, competitions: true, placement:true},
     
   });
   const sponsors = await prisma.sponsors.findMany();

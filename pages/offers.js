@@ -7,7 +7,7 @@ import LoadOffers from "/Components/LoadOffers";
 function offers({ sponsors, offers }) {
   //maps out offers from companies that have noo food
   return (
-    <>
+    <div className="viewport">
       <MainMenu />
 
 
@@ -18,7 +18,7 @@ function offers({ sponsors, offers }) {
       <LoadOffers offers={offers}/>
 
       <FooterMenu sponsors={sponsors} />
-    </>
+    </div>
   );
 }
 

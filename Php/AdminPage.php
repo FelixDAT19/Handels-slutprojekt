@@ -11,7 +11,6 @@ require_once "functionsAdminPage.php";
 //Session to check if you are logged in
 session_start();
 if (empty($_SESSION['loggedin'])) {
-    $error[] = "'Username or password is incorrect'";
     header('Location: Login.php');
     exit;
 }
@@ -66,9 +65,15 @@ if (isset($_POST['deleteOpenHours'])) {
 
 <body>
     <header>
-        <h1><a href="Adminpage.php">Admin</a></h1>
-        <a href="Sponsors.php" class="btn">Sponsorer</a>
-        <a href="Addcompany.php" class="btn">Utställare</a>
+        <nav class="navbar">
+                <div class="navcontent">
+                <li><a class="btn adminbtn" href="Adminpage.php">Admin</a></li>
+                <li><a class="btn" href="Sponsors.php">Sponsorer</a></li>
+                <li><a class="btn" href="Addcompany.php">Utställare</a></li>
+            </div>
+        </nav>
+    </header>
+    <main>
         <table>
             <thead>
                 <tr>
@@ -83,13 +88,13 @@ if (isset($_POST['deleteOpenHours'])) {
                 ?>
             </tbody>
         </table>
-        <form autocomplete="off" method="POST">
+        <form method="POST">
             <select name="companies">
                 <?php
                 selectCompany($db);
                 ?>
             </select>
-            <input type="url" id="formUrl" name="formUrl" placeholder="Länk till ny tävling" maxlength="500">
+            <input type="url" id="formUrl" name="formUrl" placeholder="Länk till ny tävling" maxlength="500" autocomplete="off">
             <button name="createCompetition" type="submit">Lägg till</button>
         </form>
         <table>
@@ -105,14 +110,11 @@ if (isset($_POST['deleteOpenHours'])) {
                 ?>
             </tbody>
         </table>
-        <Form autocomplete="off" method="POST">
-            <input type="text" id="username" name="username" placeholder="Username">
-            <input type="password" id="password" name="password" placeholder="Password">
+        <Form method="POST">
+            <input type="text" id="username" name="username" placeholder="Username" autocomplete="off">
+            <input type="password" id="password" name="password" placeholder="Password" autocomplete="off">
             <button name="createAccount" type="submit">Create Account</button>
         </Form>
-    </header>
-
-    <main>
         <table>
             <thead>
                 <tr>
@@ -138,7 +140,7 @@ if (isset($_POST['deleteOpenHours'])) {
                     <td>$row[dateTime]</td>
                     <td>$row[device]</td>
                     <td>
-                    <form autocomplete='off' method='post'><input type='submit' name='delete[$row[randomId]]' value='delete'></form>
+                    <form method='post'><input type='submit' name='delete[$row[randomId]]' value='delete'></form>
                     </td>
                     </tr>";
                 }
@@ -164,7 +166,7 @@ if (isset($_POST['deleteOpenHours'])) {
                 while ($row = $stmt->fetch()) {
                     echo "<tr>
                     <td>$row[qrName]</td>
-                    <td>$row[companyUrl]</td>
+                    <td>$row[Url]</td>
                     <td>
                     <form method='post'><input type='submit' name='deleteQr[$row[id]]' value='Ta bort'></form>
                     </td>
@@ -174,9 +176,9 @@ if (isset($_POST['deleteOpenHours'])) {
             </tbody>
         </table>
         <div>
-            <form autocomplete="off" method="POST">
-                <input type="text" id="qrName" name="qrName" placeholder="Länk till qr-kod">
-                <input type="text" id="qrUrl" name="qrUrl" placeholder="Länk till qr-kod">
+            <form method="POST">
+                <input type="text" id="qrName" name="qrName" placeholder="Länk till qr-kod" autocomplete="off">
+                <input type="text" id="qrUrl" name="qrUrl" placeholder="Länk till qr-kod" autocomplete="off">
                 <button type="submit" name="addQrCode">Lägg till</button>
             </form>
         </div>
@@ -209,8 +211,8 @@ if (isset($_POST['deleteOpenHours'])) {
             </tbody>
         </table>
         <form method="POST">
-            <input type="text" id="openHours" name="openHours" placeholder="Öppettider">
-            <input type="text" id="openDates" name="openDates" placeholder="Datum">
+            <input type="text" id="openHours" name="openHours" placeholder="Öppettider" autocomplete="off">
+            <input type="text" id="openDates" name="openDates" placeholder="Datum" autocomplete="off">
             <button type="submit" Name="addOpenHours">Lägg till</button>
         </form>
     </main>

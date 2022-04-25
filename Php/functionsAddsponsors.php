@@ -67,7 +67,7 @@ function addSponsor($db, $sponsorName, $sponsorUrl, $logoUrl)
     $stmtAddSponsor->bindParam('logoUrl', $logoUrl, PDO::PARAM_STR);
 
     $stmtAddSponsor->execute();
-    $_SESSION['alert'] = "Sponsorn har lagts till";
+    $_SESSION['alertSuccess'] = "Sponsorn har lagts till";
     header("location:Sponsors.php");
     exit();
 }
@@ -81,7 +81,7 @@ function createSponsor($db)
 
     //Checks if the company you want to add already exists, adds it if it doesn't
     if (isset($sponsorName) && in_array($sponsorName, $a)) {
-        $_SESSION['alert'] = "Sponsorn finns redan";
+        $_SESSION['alertError'] = "Sponsorn finns redan";
         header("location:Sponsors.php");
         exit();
     } else {
