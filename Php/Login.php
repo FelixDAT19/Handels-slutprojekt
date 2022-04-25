@@ -12,32 +12,6 @@ require_once "Config.php";
 session_start();
 $_SESSION['loggedin'] = false;
 
-if (isset($_SESSION['alertError'])) {
-    if (isset($_SESSION['sponsorName'], $_SESSION['sponsorUrl'], $_SESSION['logoUrl'])) {
-        $companyName = $_SESSION['sponsorName'];
-        $companyInfo = $_SESSION['sponsorUrl'];
-        $externalUrl = $_SESSION['logoUrl'];
-
-        $_SESSION['sponsorName'] = "";
-        $_SESSION['sponsorUrl'] = "";
-        $_SESSION['logoUrl'] = "";
-    } else {
-        $companyName = "";
-        $companyInfo = "";
-        $externalUrl = "";
-        $logoUrl = "";
-        $foodCheck = "";
-        $placement = [];
-    }
-} else {
-    $companyName = "";
-    $companyInfo = "";
-    $externalUrl = "";
-    $logoUrl = "";
-    $foodCheck = "";
-    $placement = [];
-}
-
 //session to create alerts on actions
 if (isset($_SESSION['alertError'])) {
     if (isset($_SESSION["alertError"])) {
