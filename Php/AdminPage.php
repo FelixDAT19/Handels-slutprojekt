@@ -183,6 +183,34 @@ if (isset($_POST['deleteQr'])) {
             </tbody>
         </table>
 
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Namn:</th>
+                    <th>antal scanningar:</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                //creates sql & creates a list with qr-scan data.
+                $sql = "SELECT qrcodes.qrName, COUNT(*) AS `count`
+                FROM qrScan
+                INNER JOIN qrcodes ON qrscan.qrId=qrcodes.id GROUP BY qrId";
+
+                $stmt = $db->prepare($sql);
+                $result = $stmt->execute([]);
+
+                while ($row = $stmt->fetch()) {
+                    echo "<tr>
+                    <td>$row[qrName]</td>
+                    <td>$row[count]</td>
+                    </tr>";
+                }
+                ?>
+            </tbody>
+        </table>
+
         <table>
             <thead>
                 <tr>
