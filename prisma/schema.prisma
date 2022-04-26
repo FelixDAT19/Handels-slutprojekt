@@ -16,7 +16,7 @@ model adminlogin {
 model company {
   id           Int            @id @default(autoincrement())
   name         String         @db.VarChar(100)
-  companyInfo  String?        @db.VarChar(500)
+  companyInfo  String?        @db.VarChar(350)
   externalUrl  String?        @db.VarChar(500)
   logoUrl      String         @db.VarChar(500)
   foodCheck    Boolean
@@ -54,21 +54,21 @@ model placement {
 }
 
 model qrcodes {
-  id         Int      @id @default(autoincrement())
-  randomId   String   @db.VarChar(20)
-  companyUrl String   @db.VarChar(500)
-  qrName     String   @db.VarChar(50)
-  qrscan     qrscan[]
+  id       Int      @id @default(autoincrement())
+  randomId String   @db.VarChar(20)
+  Url      String   @db.VarChar(500)
+  qrName   String   @db.VarChar(50)
+  qrscan   qrscan[]
 }
 
 model qrscan {
   id       Int      @id @default(autoincrement())
-  randomId Int
-  dateTime DateTime @db.DateTime(0)
-  device   String   @db.VarChar(50)
-  qrcodes  qrcodes  @relation(fields: [randomId], references: [id], onUpdate: Restrict, map: "FK_qr")
+  qrId     Int
+  dateTime DateTime @default(now()) @db.DateTime(0)
+  device   String?  @db.VarChar(20)
+  qrcodes  qrcodes  @relation(fields: [qrId], references: [id], onUpdate: Restrict, map: "FK_qr")
 
-  @@index([randomId], map: "FK_qr")
+  @@index([qrId], map: "FK_qr")
 }
 
 model sponsors {
@@ -76,4 +76,10 @@ model sponsors {
   name       String @db.VarChar(50)
   logoUrl    String @db.VarChar(500)
   sponsorUrl String @db.VarChar(500)
+}
+
+model openhours {
+  id        Int    @id @default(autoincrement())
+  openHours String @db.Text
+  openDates String @db.Text
 }
