@@ -204,9 +204,8 @@ input[type=text], select {
   box-sizing: border-box;
 }
 
-
-input[type=url], select {
-
+input[type=password], select {
+ 
   padding: 12px 20px;
   margin: 5px;
   display: inline-block;
@@ -215,10 +214,10 @@ input[type=url], select {
   box-sizing: border-box;
 }
 
-input[type=password], select {
-  
+input[type=url], select {
+
   padding: 12px 20px;
-  margin: 8px 0;
+  margin: 5px;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
