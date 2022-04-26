@@ -39,6 +39,14 @@ if (isset($_POST['addOpenHours'])) {
 if (isset($_POST['deleteOpenHours'])) {
     deleteOpenHours($db);
 }
+if (isset($_POST['addQrCode'])) {
+    addQrCode($db);
+}
+
+if (isset($_POST['deleteQr'])) {
+    deleteQr($db);
+}
+
 
 ?>
 
