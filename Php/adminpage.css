@@ -3,9 +3,8 @@ html{
   font-family: 'Verdana', Arial, sans-serif !important;
 }
 
-body {
-  margin:0;
-  
+body{
+  margin: 0;
 }
 
 .dropbtn {
@@ -19,6 +18,7 @@ body {
 .dropdown {
     position: relative;
     display: inline-block;
+    margin: 5px;
 }
 
 .dropdown-content {
@@ -86,7 +86,7 @@ max-width: 75%;
   box-sizing: border-box;
 }
   
-  /*creates the look for the login button & changes color on hover*/
+/*creates the look for the login button & changes color on hover*/
 .loginbutton {
   width: 100%;
   background-color: #007ecd;
@@ -104,7 +104,12 @@ max-width: 75%;
 
 .success-msg,
 .error-msg {
-  margin: 10px 0;
+  position: sticky;
+  top: 5px;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 5px;
+  margin-bottom: 5px;
   padding: 10px;
   border-radius: 3px 3px 3px 3px;
   width: auto;
@@ -125,81 +130,74 @@ max-width: 75%;
 }
 
 /* Table look and size */
-  table {
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    border-radius: 5px 5px 0 0;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    white-space: nowrap;
-  }
-   /*  table tops colums color and size  */
-  table thead tr {
-    background-color: rgb(0, 126, 205);
-    color: #ffffff;
-    text-align: left;
-    font-weight: bold;
+table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  white-space: nowrap;
+}
+/*  table tops colums color and size  */
+table thead tr {
+  background-color: rgb(0, 126, 205);
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+}
   
-  }
+/*  tabel content colums size and padding*/
+table th,
+table td {
+  padding: 12px 15px;
+  max-width: 262px;
+  overflow-y:scroll;
+  overflow-y:hidden; 
+}
+
+/* Table bottoms border with color */
+table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
   
-  /*  tabel content colums size and padding*/
-  table th,
-  table td {
-    padding: 12px 15px;
-    max-width: 262px;
-    overflow-y:scroll;
-    overflow-y:hidden;
-   
-  }
-  /* Table bottoms border with color */
-  table tbody tr {
-    border-bottom: 1px solid #dddddd;
-  }
-  
-  table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-  }
-  /* Last border color  */
-  table tbody tr:last-of-type {
-    border-bottom: 2px solid rgb(0, 126, 205);
+table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+/* Last border color  */
+table tbody tr:last-of-type {
+  border-bottom: 2px solid rgb(0, 126, 205);
     
-  }
+}
   
-  table tbody tr.active-row {
-    font-weight: bold;
-    color: rgb(0, 126, 205);
-  }
+table tbody tr.active-row {
+  font-weight: bold;
+  color: rgb(0, 126, 205);
+}
   
-  table td + td { border-left:1px solid #dddddd;}
+table td + td {
+  border-left:1px solid #dddddd;
+}
 
-  
-  
+input[type=submit] {
+  width: 100%;
+  background-color: rgb(0, 126, 205);
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
-  input[type=submit] {
-    width: 100%;
-    background-color: rgb(0, 126, 205);
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-
-
-
-  input[type=submit]:hover {
-    background-color: rgb(0, 62, 205);
-  }
-  
-  
-
+input[type=submit]:hover {
+  background-color: rgb(0, 62, 205);
+}
 
 input[type=text], select {
  
   padding: 12px 20px;
-  margin: 8px 0;
+  margin: 5px;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -210,7 +208,7 @@ input[type=text], select {
 input[type=url], select {
 
   padding: 12px 20px;
-  margin: 8px 0;
+  margin: 5px;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -287,3 +285,34 @@ button {
   background-color: #006dcd;
 }
 
+button[type=submit]{
+  margin: 5px;
+}
+
+.Message-close {
+  position: absolute;
+  background-color: rgba(black, 0.3);
+  color: #fff;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  right: 5px;
+  top: 5px;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.inputbox{
+  background-color: #f1f1f1;
+  text-align: center;
+  max-width: 250px;
+}
+
+.selectcompany{
+  padding: 12px 20px;
+  margin: 5px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}

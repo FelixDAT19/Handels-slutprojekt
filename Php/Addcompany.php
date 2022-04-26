@@ -10,12 +10,13 @@ require_once "functionsAddcompany.php";
 
 session_start();
 
-//Session to check if you are logged in
+//Session to check if you are logged in & redirect if u aren't
 if (empty($_SESSION['loggedin'])) {
     header('Location: Login.php');
     exit;
 }
 
+//checks if the error or success-alerts are set on refresh/load, assigns previous inputs to variables & clears the sessions
 if (isset($_SESSION['alertError'])) {
     if (isset($_SESSION['companyName'], $_SESSION['companyInfo'], $_SESSION['externalUrl'], $_SESSION['logoUrl'], $_SESSION['foodCheck'], $_SESSION['place'])) {
         $companyName = $_SESSION['companyName'];
@@ -40,6 +41,7 @@ if (isset($_SESSION['alertError'])) {
         $placement = [];
     }
 } else {
+    //creates empty variables for the imputs if there are no previous inputs
     $companyName = "";
     $companyInfo = "";
     $externalUrl = "";
@@ -48,37 +50,13 @@ if (isset($_SESSION['alertError'])) {
     $placement = [];
 }
 
-//session to create alerts on actions
-if (isset($_SESSION['alertError'])) {
-    if (isset($_SESSION["alertError"])) {
-        $error = $_SESSION["alertError"];
-    } else {
-        $error = "";
-    }
-
-    echo "<div class='error-msg'>
-    <i class='fa fa-times-circle'></i>
-    $error
-  </div>";
-} elseif (isset($_SESSION['alertSuccess'])) {
-    if (isset($_SESSION["alertSuccess"])) {
-        $success = $_SESSION["alertSuccess"];
-    } else {
-        $success = "";
-    }
-
-    echo "<div class='success-msg'>
-    <i class='fa fa-check'></i>
-    $success
-  </div>";
-}
-
 //creates empty variables for the post data to be added to
 $_SESSION['editCompany'] = "";
 $chosenCompany = "";
 $offerInfo = "";
 $offerPrice = "";
 
+//connects to the database
 $db = connectDatabase();
 
 //makes sure one of the radio values are always checked.
@@ -136,7 +114,7 @@ if ($_POST) {
 <body>
     <header>
         <nav class="navbar">
-                <div class="navcontent">
+            <div class="navcontent">
                 <li><a class="btn adminbtn" href="Adminpage.php">Admin</a></li>
                 <li><a class="btn" href="Sponsors.php">Sponsorer</a></li>
                 <li><a class="btn" href="Addcompany.php">Utställare</a></li>
@@ -144,8 +122,35 @@ if ($_POST) {
         </nav>
     </header>
 
+    <main>
+        <?php
+        //session to create alerts on actions
+        if (isset($_SESSION['alertError'])) {
+            if (isset($_SESSION["alertError"])) {
+                $error = $_SESSION["alertError"];
+            } else {
+                $error = "";
+            }
+
+            echo "<div class='error-msg'>
+                <i class='fa fa-times-circle'></i>
+                $error
+                </div>";
+        } elseif (isset($_SESSION['alertSuccess'])) {
+            if (isset($_SESSION["alertSuccess"])) {
+                $success = $_SESSION["alertSuccess"];
+            } else {
+                $success = "";
+            }
+
+            echo "<div class='success-msg'>
+                <i class='fa fa-check'></i>
+                $success
+                </div>";
+        }
+        ?>
         <form method="POST">
-            <select name="companies">
+            <select class="selectcompany" name="companies">
                 <?php
                 selectCompany($db);
                 ?>
@@ -155,7 +160,6 @@ if ($_POST) {
             <label for="offerPrice">€</label>
             <button name="addOffer" type="submit" autocomplete="off">Lägg till</button>
         </form>
-    <main>
         <table>
             <thead>
                 <tr>
@@ -204,27 +208,28 @@ if ($_POST) {
                 ?>
             </tbody>
         </table>
-
-        <Form method="POST">
-            <input value="<?= $companyName; ?>" type="text" id="companyName" name="companyName" maxlength="100" placeholder="Företagsnamn" autocomplete="off">
-            <input value="<?= $companyInfo; ?>" type="text" id="companyInfo" name="companyInfo" maxlength="350" placeholder="Företagsinfo" autocomplete="off">
-            <input value="<?= $externalUrl; ?>" type="url" id="externalUrl" name="externalUrl" maxlength="500" placeholder="Företagets hemsida" autocomplete="off">
-            <input value="<?= $logoUrl; ?>" type="url" id="logoUrl" name="logoUrl" maxlength="500" placeholder="företagets logo" autocomplete="off">
-            <label>Är det ett matföretag?</label>
-            <input <?= $radiochecked['1']; ?> type="radio" id="foodCheck" name="foodCheck" value="1">
-            <label for="foodCheck">Ja</label>
-            <input <?= $radiochecked['0']; ?> type="radio" id="foodCheck" name="foodCheck" value="0">
-            <label for="foodCheck">Nej</label>
-            <div class="dropdown">
-                <div class="dropbtn">välj montrar</div>
-                <div class="dropdown-content">
-                    <?php
-                    selectPlacement($db, $placement);
-                    ?>
-                </div>
-            </div>
-            <button name="addCompany" type="submit">Lägg till</button>
-        </Form>
+        <div class="inputbox">
+            <Form method="POST">
+                <input value="<?= $companyName; ?>" type="text" id="companyName" name="companyName" maxlength="100" placeholder="Företagsnamn" autocomplete="off"><br>
+                <input value="<?= $companyInfo; ?>" type="text" id="companyInfo" name="companyInfo" maxlength="350" placeholder="Företagsinfo" autocomplete="off"><br>
+                <input value="<?= $externalUrl; ?>" type="url" id="externalUrl" name="externalUrl" maxlength="500" placeholder="Företagets hemsida" autocomplete="off"><br>
+                <input value="<?= $logoUrl; ?>" type="url" id="logoUrl" name="logoUrl" maxlength="500" placeholder="företagets logo" autocomplete="off"><br>
+                <label>Är det ett matföretag?</label>
+                <input <?= $radiochecked['1']; ?> type="radio" id="foodCheck" name="foodCheck" value="1">
+                <label for="foodCheck">Ja</label>
+                <input <?= $radiochecked['0']; ?> type="radio" id="foodCheck" name="foodCheck" value="0">
+                <label for="foodCheck">Nej</label><br>
+                <div class="dropdown">
+                    <div class="dropbtn">välj montrar</div>
+                    <div class="dropdown-content">
+                        <?php
+                        selectPlacement($db, $placement);
+                        ?>
+                    </div>
+                </div><br>
+                <button name="addCompany" type="submit">Lägg till</button>
+            </Form>
+        </div>
     </main>
 </body>
 
