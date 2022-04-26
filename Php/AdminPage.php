@@ -15,6 +15,7 @@ if (empty($_SESSION['loggedin'])) {
     exit;
 }
 
+//connect to the database
 $db = connectDatabase();
 
 if (isset($_POST['createAccount'])) {
@@ -202,7 +203,7 @@ if (isset($_POST['deleteQr'])) {
             </tbody>
         </table>
 
-        
+
         <table>
             <thead>
                 <tr>
