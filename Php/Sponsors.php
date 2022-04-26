@@ -12,20 +12,53 @@ session_start();
 
 //Session to check if you are logged in
 if (empty($_SESSION['loggedin'])) {
-    $error[] = "'Username or password is incorrect'";
     header('Location: Login.php');
     exit;
 }
 
-//session to create alerts on actions
-if (isset($_SESSION['alert'])) {
-    function alert($msg)
-    {
-        echo "<script type='text/javascript'>alert('$msg');</script>";
+if (isset($_SESSION['alertError'])) {
+    if (isset($_SESSION['sponsorName'], $_SESSION['sponsorUrl'], $_SESSION['logoUrl'])) {
+        $sponsorName = $_SESSION['sponsorName'];
+        $sponsorUrl = $_SESSION['sponsorUrl'];
+        $logoUrl = $_SESSION['logoUrl'];
+
+        $_SESSION['sponsorName'] = "";
+        $_SESSION['sponsorUrl'] = "";
+        $_SESSION['logoUrl'] = "";
+    } else {
+        $sponsorName = "";
+        $sponsorUrl = "";
+        $logoUrl = "";
     }
-    $message = $_SESSION['alert'];
-    alert($message);
-    unset($_SESSION['alert']);
+} else {
+    $sponsorName = "";
+    $sponsorUrl = "";
+    $logoUrl = "";
+}
+
+//session to create alerts on actions
+if (isset($_SESSION['alertError'])) {
+    if (isset($_SESSION["alertError"])) {
+        $error = $_SESSION["alertError"];
+    } else {
+        $error = "";
+    }
+
+    echo "<div class='error-msg'>
+    <i class='fa fa-times-circle'></i>
+    $error
+  </div>";
+} elseif (isset($_SESSION['alertSuccess'])) {
+    if (isset($_SESSION["alertSuccess"])) {
+        $success = $_SESSION["alertSuccess"];
+    } else {
+        $success = "";
+    }
+
+    echo "<div class='success-msg'>
+    <i class='fa fa-check'></i>
+    $success
+  </div>";
 }
 
 $db = connectDatabase();
@@ -42,15 +75,15 @@ if (isset($_POST['editSponsor']) && $_POST['editSponsor'] != "") {
     deleteSponsor($db);
 } elseif (isset($_POST['addSponsor'])) {
     if ($_POST['sponsorName'] == "") {
-        $_SESSION['alert'] = "Sponsornamn saknas";
+        $_SESSION['alertError'] = "Sponsornamn saknas";
         header("location:Sponsors.php");
         exit();
     } elseif ($_POST['sponsorUrl'] == "") {
-        $_SESSION['alert'] = "Länk till sponsorns hemsida saknas";
+        $_SESSION['alertError'] = "Länk till sponsorns hemsida saknas";
         header("location:Sponsors.php");
         exit();
     } elseif ($_POST['logoUrl'] == "") {
-        $_SESSION['alert'] = "Logo saknas";
+        $_SESSION['alertError'] = "Logo saknas";
         header("location:Sponsors.php");
         exit();
     } else {
@@ -71,9 +104,13 @@ if (isset($_POST['editSponsor']) && $_POST['editSponsor'] != "") {
 
 <body>
     <header>
-        <h1><a href="Adminpage.php">Admin</a></h1>
-        <a href="Sponsors.php" class="btn">Sponsorer</a>
-        <a href="Addcompany.php" class="btn">Utställare</a>
+        <nav class="navbar">
+                <div class="navcontent">
+                <li><a class="btn adminbtn" href="Adminpage.php">Admin</a></li>
+                <li><a class="btn" href="Sponsors.php">Sponsorer</a></li>
+                <li><a class="btn" href="Addcompany.php">Utställare</a></li>
+            </div>
+        </nav>
     </header>
     <main>
         <table>
@@ -92,12 +129,15 @@ if (isset($_POST['editSponsor']) && $_POST['editSponsor'] != "") {
             </tbody>
         </table>
         <Form method="POST">
-            <input value="<?= $sponsorName; ?>" type="text" id="sponsorName" name="sponsorName" maxlength="50" placeholder="Namn på sponsor">
-            <input value="<?= $sponsorUrl; ?>" type="url" id="sponsorUrl" name="sponsorUrl" maxlength="500" placeholder="Länk till Sponsorns hemsida">
-            <input value="<?= $logoUrl; ?>" type="url" id="logoUrl" name="logoUrl" maxlength="500" placeholder="Länk till logo">
+            <input value="<?= $sponsorName; ?>" type="text" id="sponsorName" name="sponsorName" maxlength="50" placeholder="Namn på sponsor" autocomplete="off">
+            <input value="<?= $sponsorUrl; ?>" type="url" id="sponsorUrl" name="sponsorUrl" maxlength="500" placeholder="Länk till Sponsorns hemsida" autocomplete="off">
+            <input value="<?= $logoUrl; ?>" type="url" id="logoUrl" name="logoUrl" maxlength="500" placeholder="Länk till logo" autocomplete="off">
             <button name="addSponsor" type="submit">Spara sponsor</button>
         </Form>
     </main>
 </body>
 
 </html>
+<?php
+unset($_SESSION['alertError']);
+unset($_SESSION['alertSuccess']);

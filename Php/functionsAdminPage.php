@@ -250,6 +250,7 @@ function addOpenHours($db)
         header("location:AdminPage.php");
         exit();
     }
+
 }
 function addQrCode($db)
 {
@@ -360,4 +361,5 @@ class QrCode
         return false;
     }
    
+
 }
