@@ -36,31 +36,6 @@ if (isset($_SESSION['alertError'])) {
     $logoUrl = "";
 }
 
-//session to create alerts on actions
-if (isset($_SESSION['alertError'])) {
-    if (isset($_SESSION["alertError"])) {
-        $error = $_SESSION["alertError"];
-    } else {
-        $error = "";
-    }
-
-    echo "<div class='error-msg'>
-    <i class='fa fa-times-circle'></i>
-    $error
-  </div>";
-} elseif (isset($_SESSION['alertSuccess'])) {
-    if (isset($_SESSION["alertSuccess"])) {
-        $success = $_SESSION["alertSuccess"];
-    } else {
-        $success = "";
-    }
-
-    echo "<div class='success-msg'>
-    <i class='fa fa-check'></i>
-    $success
-  </div>";
-}
-
 $db = connectDatabase();
 
 $sponsorName = "";
@@ -105,7 +80,7 @@ if (isset($_POST['editSponsor']) && $_POST['editSponsor'] != "") {
 <body>
     <header>
         <nav class="navbar">
-                <div class="navcontent">
+            <div class="navcontent">
                 <li><a class="btn adminbtn" href="Adminpage.php">Admin</a></li>
                 <li><a class="btn" href="Sponsors.php">Sponsorer</a></li>
                 <li><a class="btn" href="Addcompany.php">Utställare</a></li>
@@ -113,6 +88,31 @@ if (isset($_POST['editSponsor']) && $_POST['editSponsor'] != "") {
         </nav>
     </header>
     <main>
+        <?php
+        //session to create alerts on actions
+        if (isset($_SESSION['alertError'])) {
+            if (isset($_SESSION["alertError"])) {
+                $error = $_SESSION["alertError"];
+            } else {
+                $error = "";
+            }
+
+            echo "<div class='error-msg'>
+                    <i class='fa fa-times-circle'></i>
+                    $error
+                  </div>";
+        } elseif (isset($_SESSION['alertSuccess'])) {
+            if (isset($_SESSION["alertSuccess"])) {
+                $success = $_SESSION["alertSuccess"];
+            } else {
+                $success = "";
+            }
+
+            echo "<div class='success-msg'>
+                    <i class='fa fa-check'></i>
+                    $success
+                  </div>";
+        } ?>
         <table>
             <thead>
                 <tr>
@@ -128,12 +128,14 @@ if (isset($_POST['editSponsor']) && $_POST['editSponsor'] != "") {
                 ?>
             </tbody>
         </table>
-        <Form method="POST">
-            <input value="<?= $sponsorName; ?>" type="text" id="sponsorName" name="sponsorName" maxlength="50" placeholder="Namn på sponsor" autocomplete="off">
-            <input value="<?= $sponsorUrl; ?>" type="url" id="sponsorUrl" name="sponsorUrl" maxlength="500" placeholder="Länk till Sponsorns hemsida" autocomplete="off">
-            <input value="<?= $logoUrl; ?>" type="url" id="logoUrl" name="logoUrl" maxlength="500" placeholder="Länk till logo" autocomplete="off">
-            <button name="addSponsor" type="submit">Spara sponsor</button>
-        </Form>
+        <div class="inputbox">
+            <Form method="POST">
+                <input value="<?= $sponsorName; ?>" type="text" id="sponsorName" name="sponsorName" maxlength="50" placeholder="Namn på sponsor" autocomplete="off"> <br>
+                <input value="<?= $sponsorUrl; ?>" type="url" id="sponsorUrl" name="sponsorUrl" maxlength="500" placeholder="Länk till Sponsorns hemsida" autocomplete="off"><br>
+                <input value="<?= $logoUrl; ?>" type="url" id="logoUrl" name="logoUrl" maxlength="500" placeholder="Länk till logo" autocomplete="off"><br>
+                <button name="addSponsor" type="submit">Spara sponsor</button>
+            </Form>
+        </div>
     </main>
 </body>
 

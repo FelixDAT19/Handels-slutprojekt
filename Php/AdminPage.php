@@ -15,17 +15,6 @@ if (empty($_SESSION['loggedin'])) {
     exit;
 }
 
-//session to create alerts on actions
-if (isset($_SESSION['alert'])) {
-    function alert($msg)
-    {
-        echo "<script type='text/javascript'>alert('$msg');</script>";
-    }
-    $message = $_SESSION['alert'];
-    alert($message);
-    unset($_SESSION['alert']);
-}
-
 $db = connectDatabase();
 
 if (isset($_POST['createAccount'])) {
@@ -51,14 +40,6 @@ if (isset($_POST['deleteOpenHours'])) {
     deleteOpenHours($db);
 }
 
-if (isset($_POST['addQrCode'])) {
-    addQrCode($db);
-}
-
-if (isset($_POST['deleteQr'])) {
-    deleteQr($db);
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -74,7 +55,7 @@ if (isset($_POST['deleteQr'])) {
 <body>
     <header>
         <nav class="navbar">
-                <div class="navcontent">
+            <div class="navcontent">
                 <li><a class="btn adminbtn" href="Adminpage.php">Admin</a></li>
                 <li><a class="btn" href="Sponsors.php">Sponsorer</a></li>
                 <li><a class="btn" href="Addcompany.php">Utställare</a></li>
@@ -82,6 +63,32 @@ if (isset($_POST['deleteQr'])) {
         </nav>
     </header>
     <main>
+        <?php
+        //session to create alerts on actions
+        if (isset($_SESSION['alertError'])) {
+            if (isset($_SESSION["alertError"])) {
+                $error = $_SESSION["alertError"];
+            } else {
+                $error = "";
+            }
+
+            echo "<div class='error-msg'>
+                <i class='fa fa-times-circle'></i>
+                $error
+                </div>";
+        } elseif (isset($_SESSION['alertSuccess'])) {
+            if (isset($_SESSION["alertSuccess"])) {
+                $success = $_SESSION["alertSuccess"];
+            } else {
+                $success = "";
+            }
+
+            echo "<div class='success-msg'>
+                <i class='fa fa-check'></i>
+                $success
+                </div>";
+        }
+        ?>
         <table>
             <thead>
                 <tr>
@@ -96,15 +103,17 @@ if (isset($_POST['deleteQr'])) {
                 ?>
             </tbody>
         </table>
-        <form method="POST">
-            <select name="companies">
-                <?php
-                selectCompany($db);
-                ?>
-            </select>
-            <input type="url" id="formUrl" name="formUrl" placeholder="Länk till ny tävling" maxlength="500" autocomplete="off">
-            <button name="createCompetition" type="submit">Lägg till</button>
-        </form>
+        <div class="inputbox">
+            <form method="POST">
+                <select name="companies">
+                    <?php
+                    selectCompany($db);
+                    ?>
+                </select><br>
+                <input type="url" id="formUrl" name="formUrl" placeholder="Länk till ny tävling" maxlength="500" autocomplete="off"><br>
+                <button name="createCompetition" type="submit">Lägg till</button>
+            </form>
+        </div>
         <table>
             <thead>
                 <tr>
@@ -118,11 +127,13 @@ if (isset($_POST['deleteQr'])) {
                 ?>
             </tbody>
         </table>
-        <Form method="POST">
-            <input type="text" id="username" name="username" placeholder="Username" autocomplete="off">
-            <input type="password" id="password" name="password" placeholder="Password" autocomplete="off">
-            <button name="createAccount" type="submit">Create Account</button>
-        </Form>
+        <div class="inputbox">
+            <Form method="POST">
+                <input type="text" id="username" name="username" placeholder="Username" autocomplete="off"><br>
+                <input type="password" id="password" name="password" placeholder="Password" autocomplete="off"><br>
+                <button name="createAccount" type="submit">Create Account</button>
+            </Form>
+        </div>
         <table>
             <thead>
                 <tr>
@@ -135,9 +146,9 @@ if (isset($_POST['deleteQr'])) {
             <tbody>
                 <?php
                 //creates sql & creates a list with qr-scan data.
-                $sql = "SELECT qrcodes.qrName, qrscan.dateTime, qrscan.device, qrscan.qrId
+                $sql = "SELECT qrcodes.qrName, qrscan.dateTime, qrscan.device, qrscan.randomId
                 FROM qrScan
-                INNER JOIN qrcodes ON qrscan.qrId=qrcodes.id;";
+                INNER JOIN qrcodes ON qrScan.randomId=qrcodes.id;";
 
                 $stmt = $db->prepare($sql);
                 $result = $stmt->execute([]);
@@ -148,7 +159,7 @@ if (isset($_POST['deleteQr'])) {
                     <td>$row[dateTime]</td>
                     <td>$row[device]</td>
                     <td>
-                    <form method='post'><input type='submit' name='delete[$row[qrId]]' value='delete'></form>
+                    <form method='post'><input type='submit' name='delete[$row[randomId]]' value='delete'></form>
                     </td>
                     </tr>";
                 }
@@ -211,6 +222,7 @@ if (isset($_POST['deleteQr'])) {
             </tbody>
         </table>
 
+
         <table>
             <thead>
                 <tr>
@@ -239,10 +251,10 @@ if (isset($_POST['deleteQr'])) {
                 ?>
             </tbody>
         </table>
-        <div>
+        <div class="inputbox">
             <form method="POST">
-                <input type="text" id="qrName" name="qrName" placeholder="Länk till qr-kod" autocomplete="off">
-                <input type="text" id="qrUrl" name="qrUrl" placeholder="Länk till qr-kod" autocomplete="off">
+                <input type="text" id="qrName" name="qrName" placeholder="Namn på qr-kod" autocomplete="off"><br>
+                <input type="text" id="qrUrl" name="qrUrl" placeholder="Länk till qr-kod" autocomplete="off"><br>
                 <button type="submit" name="addQrCode">Lägg till</button>
             </form>
         </div>
@@ -274,12 +286,17 @@ if (isset($_POST['deleteQr'])) {
                 ?>
             </tbody>
         </table>
-        <form method="POST">
-            <input type="text" id="openHours" name="openHours" placeholder="Öppettider" autocomplete="off">
-            <input type="text" id="openDates" name="openDates" placeholder="Datum" autocomplete="off">
-            <button type="submit" Name="addOpenHours">Lägg till</button>
-        </form>
+        <div class="inputbox">
+            <form method="POST">
+                <input type="text" id="openHours" name="openHours" placeholder="Öppettider" autocomplete="off"><br>
+                <input type="text" id="openDates" name="openDates" placeholder="Datum" autocomplete="off"><br>
+                <button type="submit" Name="addOpenHours">Lägg till</button>
+            </form>
+        </div>
     </main>
 </body>
 
 </html>
+<?php
+unset($_SESSION['alertError']);
+unset($_SESSION['alertSuccess']);
