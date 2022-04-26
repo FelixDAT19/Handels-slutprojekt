@@ -146,9 +146,9 @@ if (isset($_POST['deleteOpenHours'])) {
             <tbody>
                 <?php
                 //creates sql & creates a list with qr-scan data.
-                $sql = "SELECT qrcodes.qrName, qrscan.dateTime, qrscan.device, qrscan.randomId
+                $sql = "SELECT qrcodes.qrName, qrscan.dateTime, qrscan.device, qrscan.qrId
                 FROM qrScan
-                INNER JOIN qrcodes ON qrScan.randomId=qrcodes.id;";
+                INNER JOIN qrcodes ON qrScan.qrId=qrcodes.id;";
 
                 $stmt = $db->prepare($sql);
                 $result = $stmt->execute([]);
@@ -159,7 +159,7 @@ if (isset($_POST['deleteOpenHours'])) {
                     <td>$row[dateTime]</td>
                     <td>$row[device]</td>
                     <td>
-                    <form method='post'><input type='submit' name='delete[$row[randomId]]' value='delete'></form>
+                    <form method='post'><input type='submit' name='delete[$row[qrId]]' value='delete'></form>
                     </td>
                     </tr>";
                 }
