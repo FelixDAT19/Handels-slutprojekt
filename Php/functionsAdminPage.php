@@ -259,11 +259,11 @@ function addQrCode($db)
     $qrName = $_POST["qrName"];
 
     if (!isset($qrCodeLink) or $qrCodeLink == "") {
-        $_SESSION['alert'] = "qr länk saknas saknas";
+        $_SESSION['alertError'] = "qr länk saknas saknas";
         header("location:AdminPage.php");
         exit();
     } elseif (!isset($qrName) or $qrName == "") {
-        $_SESSION['alert'] = "qr namn saknas";
+        $_SESSION['alertError'] = "qr namn saknas";
         header("location:AdminPage.php");
         exit();
     } else {
@@ -286,7 +286,7 @@ function addQrCode($db)
         $qc->QRCODE(400, $qrName);
 
 
-        $_SESSION['alert'] = "QR-kod har lagts till";
+        $_SESSION['alertSuccess'] = "QR-kod har lagts till";
         header("location:AdminPage.php");
 
     }
