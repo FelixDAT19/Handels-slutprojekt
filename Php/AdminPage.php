@@ -263,7 +263,7 @@ if (isset($_POST['deleteQr'])) {
         <div class="inputbox">
             <form method="POST">
                 <input type="text" id="qrName" name="qrName" placeholder="Namn på qr-kod" autocomplete="off"><br>
-                <input type="text" id="qrUrl" name="qrUrl" placeholder="Länk till qr-kod" autocomplete="off"><br>
+                <input type="url" id="qrUrl" name="qrUrl" placeholder="Länk till qr-kod" autocomplete="off"><br>
                 <button type="submit" name="addQrCode">Lägg till</button>
             </form>
         </div>
