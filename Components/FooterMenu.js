@@ -11,7 +11,7 @@ function FooterMenu({sponsors}){ //footer page with sponsors
                 <p id="footerText">
                     placeholder@email.ax
                     <br/>
-                    Sidan är skapad av grupp 2
+                    <a href="https://www.datanom.ax/~viktork/Handelsmassan/">Handelsmassan</a>
                 </p>
 
             </div>
