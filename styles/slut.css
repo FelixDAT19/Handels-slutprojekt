@@ -39,7 +39,7 @@ body {
 h1 {
 	
     text-align: center;
-    font-size: 2em;
+    font-size: 2rem;
     box-sizing: border-box;
 
     font-weight: 400; /* Tjocklek på texten */
@@ -48,7 +48,7 @@ h1 {
 }
 h2 {
 
-    font-size: 1.2em;
+    font-size: 1.2rem;
     box-sizing: border-box;
     font-weight: 400; /* Tjockleken på txten */
     
@@ -56,9 +56,9 @@ h2 {
 }
 
 p {
-    font-size: 1em; /* 1 em = 16 px, default på en webbläsare */
+    font-size: 1rem; /* 1 em = 16 px, default på en webbläsare */
 }
-/* ALL CSS KOD NEDANFÖR ÄR FÖR BURGER MENYN */
+
 
 .sponsorImage {
     max-width: 70%;
@@ -118,12 +118,15 @@ p {
 
 .footer { /* Bottendelen pÃ¥ varje sida  */
    position: relative;
-    padding: 1rem;
+    padding: 0.5rem;
     background-color: rgb(0, 126, 205);
     color: #e6e6e6;
     text-align: center;
     bottom: 0;
    
+}
+#footerText{
+    margin:  3px;
 }
 
 .textbox {                  /* text ruta till tävlingssidan */
