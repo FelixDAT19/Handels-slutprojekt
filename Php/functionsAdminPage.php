@@ -1,4 +1,5 @@
 <?php
+require_once "qrCodeClass.php";
 
 function deleteUser($db)
 {
@@ -82,6 +83,36 @@ function checkDupesCompetitions($db)
         array_push($a, $arrayContent);
     };
     return $a;
+}
+
+function checkDupesQr($db)
+{
+    $return = new stdClass();
+    //creates sql used to check for already existing companies.
+    $sqlNodupes = "SELECT * FROM qrcodes;";
+
+    $stmtNodupes = $db->prepare($sqlNodupes);
+
+    $stmtNodupes->execute([]);
+
+    $rowNodupes = $stmtNodupes->fetchAll();
+
+    $a = array();
+    $b = array();
+
+    //checks the company table & compares the input to the already existing companies
+    foreach ($rowNodupes as $qrs) {
+
+        $arrayContenta = $qrs['qrName'];
+        array_push($a, $arrayContenta);
+
+        $arrayContentb = $qrs['Url'];
+        array_push($b, $arrayContentb);
+    };
+    $return->qrName = $a;
+    $return->Url = $b;
+
+    return $return;
 }
 
 function userList($db)
@@ -251,44 +282,59 @@ function addOpenHours($db)
         exit();
     }
 }
+
 function addQrCode($db)
 {
     $randomString = generateRandomString();
 
-    $qrCodeLink = $_POST["qrUrl"];
-    $qrName = $_POST["qrName"];
+    $qrName = trim(htmlspecialchars($_POST["qrName"]));
+    $qrCodeLink = trim(htmlspecialchars($_POST["qrUrl"]));
 
-    if (!isset($qrCodeLink) or $qrCodeLink == "") {
-        $_SESSION['alertError'] = "qr länk saknas saknas";
-        header("location:AdminPage.php");
-        exit();
-    } elseif (!isset($qrName) or $qrName == "") {
+    if (!isset($qrName) or $qrName == "") {
         $_SESSION['alertError'] = "qr namn saknas";
         header("location:AdminPage.php");
         exit();
-    } else {
-
-        $sqlAddQrCodes= "INSERT INTO qrcodes (randomId, Url, qrName) VALUES (:randomId, :qrCodeLink, :qrName );";
-
-        $stmtAddQrCodes = $db->prepare($sqlAddQrCodes);
-
-        $stmtAddQrCodes->bindParam('randomId', $randomString, PDO::PARAM_STR);
-        $stmtAddQrCodes->bindParam('qrCodeLink', $qrCodeLink, PDO::PARAM_STR);
-        $stmtAddQrCodes->bindParam('qrName', $qrName, PDO::PARAM_STR);
-
-
-        $stmtAddQrCodes->execute();
-
-        $qc = new QRCODE();
-
-        $qc->URL("https://www.datanom.ax/~felixf/qrID?=".$randomString);
-
-        $qc->QRCODE(400, $qrName);
-
-
-        $_SESSION['alertSuccess'] = "QR-kod har lagts till";
+    } elseif (!isset($qrCodeLink) or $qrCodeLink == "") {
+        $_SESSION['alertError'] = "qr länk saknas";
         header("location:AdminPage.php");
         exit();
+    } else {
+        $getQrInfo = checkDupesQr($db);
+        $qrNames = $getQrInfo->qrName;
+        $Urls = $getQrInfo->Url;
+
+        //Checks if the company you want to add already exists, adds it if it doesn't
+        if (in_array($qrName, $qrNames)) {
+            $_SESSION['alertError'] = "en qr-kod med namnet finns redan";
+            header("location:AdminPage.php");
+            exit();
+        } elseif (in_array($qrCodeLink, $Urls)) {
+            $_SESSION['alertError'] = "Det finns redan en qr med denna Url";
+            header("location:AdminPage.php");
+            exit();
+        } else {
+            $sqlAddQrCodes = "INSERT INTO qrcodes (randomId, Url, qrName) VALUES (:randomId, :qrCodeLink, :qrName );";
+
+            $stmtAddQrCodes = $db->prepare($sqlAddQrCodes);
+
+            $stmtAddQrCodes->bindParam('randomId', $randomString, PDO::PARAM_STR);
+            $stmtAddQrCodes->bindParam('qrCodeLink', $qrCodeLink, PDO::PARAM_STR);
+            $stmtAddQrCodes->bindParam('qrName', $qrName, PDO::PARAM_STR);
+
+
+            $stmtAddQrCodes->execute();
+
+            $qc = new SaveQRCODE();
+
+            $qc->URL("https://www.datanom.ax/~felixf/qrID?=" . $randomString);
+
+            $qc->QRCODE(400, $qrName);
+
+            var_dump($qrName, $qrCodeLink, $qrNames, $Urls);
+            $_SESSION['alertSuccess'] = "QR-kod har lagts till";
+            header("location:AdminPage.php");
+            exit();
+        }
     }
 }
 
@@ -306,7 +352,8 @@ function deleteQr($db)
     $_POST['deleteQrCode'] = "";
 };
 
-function generateRandomString($length = 10) {
+function generateRandomString($length = 10)
+{
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
     $randomString = '';
@@ -314,51 +361,4 @@ function generateRandomString($length = 10) {
         $randomString .= $characters[rand(0, $charactersLength - 1)];
     }
     return $randomString;
-}
-
-class QrCode
-{
-
-    //URL OF GOOGLE CHART API
-    private $apiUrl = 'http://chart.apis.google.com/chart';
-    // DATA TO CREATE QR CODE
-    private $data;
-
-
-    // Function which is used to generate the URL type of QR Code.
-    public function URL($url = null)
-    {
-        $this->data = preg_match("#^https?\:\/\/#", $url) ? $url :    "http://{$url}";
-    }
-
-
-
-    //Function which is used to save the qrcode image file.
-    public function QRCODE($size = 400, $filename = null)
-    {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $this->apiUrl);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, "chs={$size}x{$size}&cht=qr&chl=" . urlencode($this->data));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HEADER, false);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
-        $img = curl_exec($ch);
-        curl_close($ch);
-        if ($img) {
-            if ($filename) {
-                if (!preg_match("#\.png$#i", $filename)) {
-                    $filename .= ".png";
-                }
-                return file_put_contents($filename, $img);
-            } else {
-                header("Content-type: image/png");
-                print $img;
-                return true;
-            }
-        }
-        return false;
-    }
-
-
 }
