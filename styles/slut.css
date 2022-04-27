@@ -61,7 +61,8 @@ p {
 
 
 .sponsorImage {
-    max-width: 70%;
+    max-width: 300px;
+    max-height: 150px;
     margin:auto;
     display:block;
     padding: 40px;
