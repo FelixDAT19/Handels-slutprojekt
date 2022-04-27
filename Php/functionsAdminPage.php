@@ -288,7 +288,7 @@ function addQrCode($db)
 
         $_SESSION['alertSuccess'] = "QR-kod har lagts till";
         header("location:AdminPage.php");
-
+        exit();
     }
 }
 
