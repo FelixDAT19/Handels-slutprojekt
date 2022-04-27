@@ -244,12 +244,19 @@ input[type=radio], select {
 }
 
 button {
-  background-color: #007ecd;
+  background-color: rgb(0, 126, 205);
   color: white;
-  padding: 12px;
-  font-size: 16px;
+  padding: 14px 20px;
+  margin: 8px 0;
   border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
+
+button:hover {
+  background-color: #0067cd;
+}
+
 
 .navbar {
   list-style-type: none;
