@@ -33,13 +33,15 @@ class SaveQrCode
                 if (!preg_match("#\.png$#i", $filename)) {
                     $filename .= ".png";
                 }
-                return file_put_contents($filename, $img);
+                file_put_contents($filename, $img);  
+                return $filename; 
+                
             } else {
                 header("Content-type: image/png");
                 print $img;
                 return true;
             }
         }
-        return false;
+        return null;
     }
 }

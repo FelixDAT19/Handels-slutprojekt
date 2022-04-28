@@ -100,6 +100,7 @@ if (isset($_POST['deleteQrData'])) {
                 $success
                 </div>";
         }
+
         ?>
         <table>
             <thead>
@@ -240,6 +241,7 @@ if (isset($_POST['deleteQrData'])) {
                 <tr>
                     <th>Qr-kod:</th>
                     <th>Länkad sida:</th>
+                    <th>QR koden:</th>
                     <th>Ta bort qr-kod:</th>
                 </tr>
             </thead>
@@ -257,9 +259,13 @@ if (isset($_POST['deleteQrData'])) {
                 $result = $stmt->execute([]);
 
                 while ($row = $stmt->fetch()) {
+                    $filename = $row['qrName'].".png";
+
+
                     echo "<tr>
                     <td>$row[qrName]</td>
                     <td>$row[Url]</td>
+                    <td><a href=$filename download><img src=$filename alt=$filename width='150' height='150'></a></td>
                     <td>
                     <form method='post' onsubmit='return deleteQRcode($row[id])'><input type='submit' name='deleteQr[$row[id]]'  value='Ta bort'></form>
                     </td>
@@ -315,5 +321,9 @@ if (isset($_POST['deleteQrData'])) {
 
 </html>
 <?php
+
+
+
 unset($_SESSION['alertError']);
 unset($_SESSION['alertSuccess']);
+

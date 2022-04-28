@@ -328,9 +328,14 @@ function addQrCode($db)
 
             $qc->URL("https://www.datanom.ax/~williame/handelsmessan/qrscan.php?qrId=" . $randomString);
 
-            $qc->QRCODE(400, $qrName);
+            if($qc->QRCODE(400, $qrName)===null){
+                $_SESSION['alertError'] = "QR-kod har inte lagts till";
 
-            $_SESSION['alertSuccess'] = "QR-kod har lagts till";
+            } else {
+                $_SESSION['alertSuccess'] = "QR-kod har lagts till";
+            }
+
+            
             header("location:AdminPage.php");
             exit();
         }
