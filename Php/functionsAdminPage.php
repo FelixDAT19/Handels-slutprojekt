@@ -326,7 +326,7 @@ function addQrCode($db)
 
             $qc = new SaveQRCODE();
 
-            $qc->URL("https://www.datanom.ax/~williame/handelsmessan/qrscan.php?qrId=" . $randomString);
+            $qc->URL("https://datanom.ax/~williame/Handelsmessan/qrscan.php?qrId=" . $randomString);
 
             if($qc->QRCODE(400, $qrName)===null){
                 $_SESSION['alertError'] = "QR-kod har inte lagts till";

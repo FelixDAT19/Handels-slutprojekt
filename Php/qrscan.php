@@ -3,7 +3,7 @@ require_once "Config.php";
 
 session_start();
 if (!isset($_GET["qrId"])) {
-   header("Location: https://beamish-donut-ff7d1c.netlify.app/");
+   header("Location: https://handelsmessan.netlify.app/");
    var_dump("hej ho"); 
 } else {
 
@@ -23,7 +23,7 @@ if (!isset($_GET["qrId"])) {
     var_dump($id);
 
     if (!isset($qrid) or $qrid == "" or $url == "") {
-        header("Location: https://beamish-donut-ff7d1c.netlify.app/");
+        header("Location: https://handelsmessan.netlify.app/");
         var_dump($qrid);
         
     } else if (!isset($device)) {
