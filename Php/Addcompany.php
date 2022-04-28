@@ -165,17 +165,18 @@ if ($_POST) {
             </tbody>
         </table>
 
-        <form method="POST">
-            <select class="selectcompany" name="companies">
-                <?php
-                selectCompany($db);
-                ?>
-            </select>
-            <input type="text" id="offerInfo" name="offerInfo" maxlength="150" placeholder="Kort info om erbjudandet" autocomplete="off"><br>
-            <input type="number" id="offerPrice" name="offerPrice" maxlength="20" placeholder="Pris på produkt" autocomplete="off">
-            <label for="offerPrice">€</label><br>
-            <button name="addOffer" type="submit" autocomplete="off">Lägg till</button>
-        </form>
+        <div class="inputbox">
+            <form method="POST">
+                <select class="selectCompany" name="companies">
+                    <?php
+                    selectCompany($db);
+                    ?>
+                </select><br>
+                <input type="text" id="offerInfo" name="offerInfo" maxlength="150" placeholder="Kort info om erbjudandet" autocomplete="off"><br>
+                <input type="number" id="offerPrice" name="offerPrice" maxlength="20" placeholder="Pris på produkt" autocomplete="off"><br>
+                <button name="addOffer" type="submit" autocomplete="off">Lägg till</button>
+            </form>
+        </div>
         <table>
             <thead>
                 <tr>
@@ -190,21 +191,6 @@ if ($_POST) {
             <tbody>
                 <?php
                 companyList($db);
-                ?>
-            </tbody>
-        </table>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Monter:</th>
-                    <th>Bokad av:</th>
-                    <th>Töm monter:</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                placementList($db);
                 ?>
             </tbody>
         </table>
@@ -231,6 +217,22 @@ if ($_POST) {
                 <button name="addCompany" type="submit">Lägg till</button>
             </Form>
         </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Monter:</th>
+                    <th>Bokad av:</th>
+                    <th>Töm monter:</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                placementList($db);
+                ?>
+            </tbody>
+        </table>
+
     </main>
 </body>
 
