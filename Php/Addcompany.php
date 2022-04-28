@@ -149,15 +149,31 @@ if ($_POST) {
                 </div>";
         }
         ?>
+        <table>
+            <thead>
+                <tr>
+                    <th>Företag:</th>
+                    <th>Erbjudande:</th>
+                    <th>Pris</th>
+                    <th>Ta bort:</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                offerList($db);
+                ?>
+            </tbody>
+        </table>
+
         <form method="POST">
             <select class="selectcompany" name="companies">
                 <?php
                 selectCompany($db);
                 ?>
             </select>
-            <input type="text" id="offerInfo" name="offerInfo" maxlength="150" placeholder="Kort info om erbjudandet" autocomplete="off">
+            <input type="text" id="offerInfo" name="offerInfo" maxlength="150" placeholder="Kort info om erbjudandet" autocomplete="off"><br>
             <input type="number" id="offerPrice" name="offerPrice" maxlength="20" placeholder="Pris på produkt" autocomplete="off">
-            <label for="offerPrice">€</label>
+            <label for="offerPrice">€</label><br>
             <button name="addOffer" type="submit" autocomplete="off">Lägg till</button>
         </form>
         <table>
@@ -193,21 +209,6 @@ if ($_POST) {
             </tbody>
         </table>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Företag:</th>
-                    <th>Erbjudande:</th>
-                    <th>Pris</th>
-                    <th>Ta bort:</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                offerList($db);
-                ?>
-            </tbody>
-        </table>
         <div class="inputbox">
             <Form method="POST">
                 <input value="<?= $companyName; ?>" type="text" id="companyName" name="companyName" maxlength="100" placeholder="Företagsnamn" autocomplete="off"><br>
