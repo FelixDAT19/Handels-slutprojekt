@@ -114,7 +114,7 @@ if (isset($_POST['deleteQr'])) {
         </table>
         <div class="inputbox">
             <form method="POST">
-                <select name="companies">
+                <select name="companies" class="competitionCompany">
                     <?php
                     selectCompany($db);
                     ?>
