@@ -59,6 +59,16 @@ $offerPrice = "";
 //connects to the database
 $db = connectDatabase();
 
+if (!function_exists('array_key_first')) {
+    function array_key_first(array $arr)
+    {
+        foreach ($arr as $key => $unused) {
+            return $key;
+        }
+        return NULL;
+    }
+}
+
 //makes sure one of the radio values are always checked.
 if ($foodCheck == "") {
     $radiochecked = ['0' => "", '1' => ""];
@@ -107,7 +117,7 @@ if ($_POST) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="adminpage.css">
+    <link rel="stylesheet" href="AdminPage.css">
     <title>Add company</title>
 </head>
 
