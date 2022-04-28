@@ -48,6 +48,9 @@ if (isset($_POST['deleteQr'])) {
     deleteQr($db);
 }
 
+if (isset($_POST['deleteQrData'])) {
+    deleteQrData($db);
+}
 
 ?>
 
@@ -155,7 +158,7 @@ if (isset($_POST['deleteQr'])) {
             <tbody>
                 <?php
                 //creates sql & creates a list with qr-scan data.
-                $sql = "SELECT qrcodes.qrName, qrscan.dateTime, qrscan.device, qrscan.qrId
+                $sql = "SELECT qrcodes.qrName, qrscan.dateTime, qrscan.device, qrscan.qrId, qrscan.id AS scanId
                 FROM qrScan
                 INNER JOIN qrcodes ON qrScan.qrId=qrcodes.id;";
 
@@ -168,7 +171,7 @@ if (isset($_POST['deleteQr'])) {
                     <td>$row[dateTime]</td>
                     <td>$row[device]</td>
                     <td>
-                    <form method='post'><input type='submit' name='delete[$row[qrId]]' value='delete'></form>
+                    <form method='post'><input type='submit' name='deleteQrData[$row[scanId]]' value='Ta bort'></form>
                     </td>
                     </tr>";
                 }
@@ -241,6 +244,11 @@ if (isset($_POST['deleteQr'])) {
                 </tr>
             </thead>
             <tbody>
+                <script>
+                    function deleteQRcode(id) {
+                        return (confirm("Vill du radera Qr-koden och all data som hör till den?"));
+                    }
+                </script>
                 <?php
                 //creates sql & creates a list with the different qr-codes that exist
                 $sql = "SELECT * FROM qrcodes";
@@ -253,7 +261,7 @@ if (isset($_POST['deleteQr'])) {
                     <td>$row[qrName]</td>
                     <td>$row[Url]</td>
                     <td>
-                    <form method='post'><input type='submit' name='deleteQr[$row[id]]' value='Ta bort'></form>
+                    <form method='post' onsubmit='return deleteQRcode($row[id])'><input type='submit' name='deleteQr[$row[id]]'  value='Ta bort'></form>
                     </td>
                     </tr>";
                 }

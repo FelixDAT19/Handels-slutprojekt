@@ -330,7 +330,6 @@ function addQrCode($db)
 
             $qc->QRCODE(400, $qrName);
 
-            var_dump($qrName, $qrCodeLink, $qrNames, $Urls);
             $_SESSION['alertSuccess'] = "QR-kod har lagts till";
             header("location:AdminPage.php");
             exit();
@@ -338,10 +337,37 @@ function addQrCode($db)
     }
 }
 
+function deleteQrData($db)
+{
+    $deleteQrData = array_key_first($_POST['deleteQrData']);
+    var_dump($deleteQrData);
+    //sql for deleting the qr-data
+    $sqlDeleteQrData = "DELETE FROM qrscan WHERE id=$deleteQrData";
+
+    $stmtDeleteQrData = $db->prepare($sqlDeleteQrData);
+
+    $stmtDeleteQrData->execute();
+
+    $deleteQrData = "";
+    $_POST['deleteQrData'] = "";
+
+    $_SESSION['alertSuccess'] = "Datan har raderats";
+    header("location:AdminPage.php");
+    exit();
+}
+
 function deleteQr($db)
 {
     $deleteQrCode = array_key_first($_POST['deleteQr']);
 
+    //sql for deleting the qr-data
+    $sqlDeleteQrData = "DELETE FROM qrscan WHERE qrId=$deleteQrCode";
+
+    $stmtDeleteQrData = $db->prepare($sqlDeleteQrData);
+
+    $stmtDeleteQrData->execute();
+
+    //Sql for deleting the qr
     $sqlDeleteQrCode = "DELETE FROM qrcodes WHERE id=$deleteQrCode";
 
     $stmtDeleteQrCode = $db->prepare($sqlDeleteQrCode);
@@ -349,7 +375,11 @@ function deleteQr($db)
     $stmtDeleteQrCode->execute();
 
     $deleteQrCode = "";
-    $_POST['deleteQrCode'] = "";
+    $_POST['deleteQr'] = "";
+
+    $_SESSION['alertSuccess'] = "QR-koden har raderats";
+    header("location:AdminPage.php");
+    exit();
 };
 
 function generateRandomString($length = 10)
