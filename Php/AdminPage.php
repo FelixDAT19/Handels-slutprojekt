@@ -259,7 +259,7 @@ if (isset($_POST['deleteQrData'])) {
                 $result = $stmt->execute([]);
 
                 while ($row = $stmt->fetch()) {
-                    $filename = $row['qrName'] . ".png";
+                    $filename = "qrcodes/".$row['qrName'] . ".png";
 
 
                     echo "<tr>

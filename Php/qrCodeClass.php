@@ -7,6 +7,8 @@ class SaveQrCode
     // DATA TO CREATE QR CODE
     private $data;
 
+   
+
 
     // Function which is used to generate the URL type of QR Code.
     public function URL($url = null)
@@ -19,6 +21,8 @@ class SaveQrCode
     //Function which is used to save the qrcode image file.
     public function QRCODE($size = 400, $filename = null)
     {
+
+        $location = 'qrcodes/';
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $this->apiUrl);
         curl_setopt($ch, CURLOPT_POST, true);
@@ -33,6 +37,7 @@ class SaveQrCode
                 if (!preg_match("#\.png$#i", $filename)) {
                     $filename .= ".png";
                 }
+                $filename = $location.$filename;
                 return file_put_contents($filename, $img); 
                 
             } else {
