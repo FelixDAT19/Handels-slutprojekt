@@ -33,8 +33,7 @@ class SaveQrCode
                 if (!preg_match("#\.png$#i", $filename)) {
                     $filename .= ".png";
                 }
-                file_put_contents($filename, $img);  
-                return $filename; 
+                return file_put_contents($filename, $img); 
                 
             } else {
                 header("Content-type: image/png");

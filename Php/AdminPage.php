@@ -265,7 +265,7 @@ if (isset($_POST['deleteQrData'])) {
                     echo "<tr>
                     <td>$row[qrName]</td>
                     <td>$row[Url]</td>
-                    <td><a href=$filename download><img src=$filename alt=$filename width='150' height='150'></a></td>
+                    <td><a href=$filename download><img src='$filename' alt='$filename' width='150' height='150'></a></td>
                     <td>
                     <form method='post' onsubmit='return deleteQRcode($row[id])'><input type='submit' name='deleteQr[$row[id]]'  value='Ta bort'></form>
                     </td>
