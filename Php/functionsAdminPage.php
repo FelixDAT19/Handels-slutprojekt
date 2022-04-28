@@ -1,6 +1,16 @@
 <?php
 require_once "qrCodeClass.php";
 
+if (!function_exists('array_key_first')) {
+    function array_key_first(array $arr)
+    {
+        foreach ($arr as $key => $unused) {
+            return $key;
+        }
+        return NULL;
+    }
+}
+
 function deleteUser($db)
 {
     $deleteUser = array_key_first($_POST['deleteUser']);
@@ -328,14 +338,13 @@ function addQrCode($db)
 
             $qc->URL("https://datanom.ax/~williame/Handelsmessan/qrscan.php?qrId=" . $randomString);
 
-            if($qc->QRCODE(400, $qrName)===null){
+            if ($qc->QRCODE(400, $qrName) === null) {
                 $_SESSION['alertError'] = "QR-kod har inte lagts till";
-
             } else {
                 $_SESSION['alertSuccess'] = "QR-kod har lagts till";
             }
 
-            
+
             header("location:AdminPage.php");
             exit();
         }

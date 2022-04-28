@@ -74,6 +74,16 @@ if (empty($_SESSION['editCompany']) or $_SESSION['editCompany'] == "") {
 
 $db = connectDatabase();
 
+if (!function_exists('array_key_first')) {
+    function array_key_first(array $arr)
+    {
+        foreach ($arr as $key => $unused) {
+            return $key;
+        }
+        return NULL;
+    }
+}
+
 $selectedCompany = $_SESSION['editCompany'];
 
 if (isset($_POST['deletePlace']) && $_POST['deletePlace'] != "") {
