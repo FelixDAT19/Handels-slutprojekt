@@ -118,7 +118,7 @@ if (isset($_POST['deleteQrData'])) {
         </table>
         <div class="inputbox">
             <form method="POST">
-                <select name="companies" class="competitionCompany">
+                <select name="companies" class="selectCompany">
                     <?php
                     selectCompany($db);
                     ?>
@@ -259,7 +259,7 @@ if (isset($_POST['deleteQrData'])) {
                 $result = $stmt->execute([]);
 
                 while ($row = $stmt->fetch()) {
-                    $filename = $row['qrName'].".png";
+                    $filename = $row['qrName'] . ".png";
 
 
                     echo "<tr>
@@ -326,4 +326,3 @@ if (isset($_POST['deleteQrData'])) {
 
 unset($_SESSION['alertError']);
 unset($_SESSION['alertSuccess']);
-
