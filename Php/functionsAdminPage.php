@@ -326,7 +326,7 @@ function addQrCode($db)
 
             $qc = new SaveQRCODE();
 
-            $qc->URL("https://www.datanom.ax/~felixf/qrID?=" . $randomString);
+            $qc->URL("https://www.datanom.ax/~williame/handelsmessan/qrscan.php?qrId=" . $randomString);
 
             $qc->QRCODE(400, $qrName);
 
