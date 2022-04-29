@@ -219,9 +219,11 @@ if ($_POST) {
                 <div class="dropdown">
                     <div class="dropbtn">välj montrar</div>
                     <div class="dropdown-content">
-                        <?php
-                        selectPlacement($db, $placement);
-                        ?>
+                        <div class="grid-container">
+                            <?php
+                            selectPlacement($db, $placement);
+                            ?>
+                        </div>
                     </div>
                 </div><br>
                 <button name="addCompany" type="submit">Lägg till</button>
