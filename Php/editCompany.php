@@ -183,9 +183,11 @@ if (isset($_SESSION['editCompany'])) {
                 <div class="dropdown">
                     <div class="dropbtn">välj montrar</div>
                     <div class="dropdown-content">
-                        <?php
-                        selectPlacement($db, $selectedCompany, $placement);
-                        ?>
+                        <div class="grid-container">
+                            <?php
+                            selectPlacement($db, $selectedCompany, $placement);
+                            ?>
+                        </div>
                     </div>
                 </div><br>
                 <button name="submitChanges" type="submit">Genomför ändringar</button>
