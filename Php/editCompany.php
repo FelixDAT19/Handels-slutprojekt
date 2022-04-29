@@ -148,7 +148,7 @@ if (isset($_SESSION['editCompany'])) {
     <header>
         <nav class="navbar">
             <div class="navcontent">
-                <li><a class="btn adminbtn" href="Adminpage.php">Admin</a></li>
+                <li><a class="btn adminbtn" href="AdminPage.php">Admin</a></li>
                 <li><a class="btn" href="Sponsors.php">Sponsorer</a></li>
                 <li><a class="btn" href="Addcompany.php">Utställare</a></li>
             </div>

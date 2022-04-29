@@ -7,7 +7,7 @@ class SaveQrCode
     // DATA TO CREATE QR CODE
     private $data;
 
-   
+
 
 
     // Function which is used to generate the URL type of QR Code.
@@ -37,9 +37,8 @@ class SaveQrCode
                 if (!preg_match("#\.png$#i", $filename)) {
                     $filename .= ".png";
                 }
-                $filename = $location.$filename;
-                return file_put_contents($filename, $img); 
-                
+                $filename = $location . $filename;
+                return file_put_contents($filename, $img);
             } else {
                 header("Content-type: image/png");
                 print $img;

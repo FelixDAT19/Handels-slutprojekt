@@ -117,7 +117,7 @@ if ($_POST) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="AdminPage.css">
+    <link rel="stylesheet" href="adminpage.css">
     <title>Add company</title>
 </head>
 
@@ -125,7 +125,7 @@ if ($_POST) {
     <header>
         <nav class="navbar">
             <div class="navcontent">
-                <li><a class="btn adminbtn" href="Adminpage.php">Admin</a></li>
+                <li><a class="btn adminbtn" href="AdminPage.php">Admin</a></li>
                 <li><a class="btn" href="Sponsors.php">Sponsorer</a></li>
                 <li><a class="btn" href="Addcompany.php">Utställare</a></li>
             </div>
