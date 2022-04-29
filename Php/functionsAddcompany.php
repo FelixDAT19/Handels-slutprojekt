@@ -244,9 +244,9 @@ function offerList($db)
 
     while ($row = $stmt->fetch()) {
         echo "<tr>
-        <td>$row[name]</td>
-        <td>$row[offer]</td>
-        <td>$row[price]</td>
+        <td title='$row[name]'>$row[name]</td>
+        <td title='$row[offer]'>$row[offer]</td>
+        <td title='$row[price]'>$row[price]</td>
         <td>
         <form method='post'><input type='submit' name='deleteOffer[$row[id]]' value='ta bort'></form>
         </td>
@@ -267,8 +267,8 @@ function placementList($db)
 
     while ($row = $stmt->fetch()) {
         echo "<tr>
-            <td>$row[id]</td>
-            <td>$row[name]</td>
+            <td title='$row[id]'>$row[id]</td>
+            <td title='$row[name]'>$row[name]</td>
             <td>
             <form method='post'><input type='submit' name='deletePlace[$row[id]]' value='töm'></form>
             </td>
@@ -287,10 +287,10 @@ function companyList($db)
 
     while ($row = $stmt->fetch()) {
         echo "<tr>
-        <td>$row[name]</td>
-        <td>$row[companyInfo]</td>
-        <td>$row[externalUrl]</td>
-        <td>$row[logoUrl]</td>
+        <td title='$row[name]'>$row[name]</td>
+        <td title='$row[companyInfo]'>$row[companyInfo]</td>
+        <td title='$row[externalUrl]'>$row[externalUrl]</td>
+        <td title='$row[logoUrl]'>$row[logoUrl]</td>
         <td>
         <form method='post'><input type='submit' name='editCompany[$row[id]]' value='ändra'></form>
         </td>

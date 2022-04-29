@@ -23,8 +23,8 @@ function placementList($db, $selectedCompany)
 
     while ($row = $stmt->fetch()) {
         echo "<tr>
-            <td>$row[id]</td>
-            <td>$row[name]</td>
+            <td title='$row[id]'>$row[id]</td>
+            <td title='$row[name]'>$row[name]</td>
             <td>
             <form method='post'><input type='submit' name='deletePlace[$row[id]]' value='töm'></form>
             </td>
