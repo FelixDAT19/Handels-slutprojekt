@@ -353,6 +353,7 @@ function addQrCode($db)
 
 function deleteQrData($db)
 {
+    $location = 'qrcodes/';
     $deleteQrData = array_key_first($_POST['deleteQrData']);
     var_dump($deleteQrData);
     //sql for deleting the qr-data
@@ -374,12 +375,25 @@ function deleteQr($db)
 {
     $deleteQrCode = array_key_first($_POST['deleteQr']);
 
+    $location = 'qrcodes/';
+
     //sql for deleting the qr-data
     $sqlDeleteQrData = "DELETE FROM qrscan WHERE qrId=$deleteQrCode";
 
     $stmtDeleteQrData = $db->prepare($sqlDeleteQrData);
 
     $stmtDeleteQrData->execute();
+
+    $sql = "SELECT * FROM qrcodes WHERE id = $deleteQrCode";
+
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+
+    $row = $stmt->fetch();
+    $filename = $location.$row['qrName'] . ".png";
+
+    unlink($filename);
+
 
     //Sql for deleting the qr
     $sqlDeleteQrCode = "DELETE FROM qrcodes WHERE id=$deleteQrCode";
