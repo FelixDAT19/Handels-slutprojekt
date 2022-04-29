@@ -77,12 +77,8 @@ function createOffer($db)
             $_SESSION['alertError'] = "Erbjudandebeskrivning saknas";
             header("location:Addcompany.php");
             exit();
-        } elseif ($_POST['offerPrice'] == "") {
-            $_SESSION['alertError'] = "Pris saknas";
-            header("location:Addcompany.php");
-            exit();
-        } elseif ($_POST['offerPrice'] <= 0) {
-            $_SESSION['alertError'] = "Priset kan inte vara 0 eller mindre";
+        } elseif ($_POST['offerPrice'] < 0) {
+            $_SESSION['alertError'] = "Priset kan inte vara mindre än 0";
             header("location:Addcompany.php");
             exit();
         } else {
