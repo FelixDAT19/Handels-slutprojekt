@@ -155,6 +155,7 @@ if (isset($_SESSION['editCompany'])) {
         </nav>
     </header>
     <main>
+    <div class="tablebox">
         <table>
             <thead>
                 <tr>
@@ -169,6 +170,7 @@ if (isset($_SESSION['editCompany'])) {
                 ?>
             </tbody>
         </table>
+</div>
         <div class="inputbox">
             <Form method="POST">
                 <input value="<?= $companyName; ?>" type="text" id="companyName" name="companyName" maxlength="100" autocomplete="off"><br>
