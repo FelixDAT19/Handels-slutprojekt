@@ -95,7 +95,11 @@ function createOffer($db)
             $stmtAddOffer->bindParam('offerInfo', $offerInfo, PDO::PARAM_STR);
             $stmtAddOffer->bindParam('offerPrice', $offerPrice, PDO::PARAM_INT);
 
-            $result = $stmtAddOffer->execute();
+            $stmtAddOffer->execute();
+
+            $_SESSION['alertSuccess'] = "Erbjudandet har lagts till";
+            header("location:Addcompany.php");
+            exit();
         }
     }
 }
