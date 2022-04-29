@@ -93,7 +93,7 @@ if (isset($_POST['editSponsor']) && $_POST['editSponsor'] != "") {
             <div class="navcontent">
                 <li><a class="btn adminbtn" href="AdminPage.php">Admin</a></li>
                 <li><a class="btn" href="Sponsors.php">Sponsorer</a></li>
-                <li><a class="btn" href="AdminPage.php">Utställare</a></li>
+                <li><a class="btn" href="Addcompany.php">Utställare</a></li>
             </div>
         </nav>
     </header>
