@@ -196,7 +196,7 @@ table td + td {
 
 .tablebox{
   max-height: 50rem;
-  margin: 25px 0;
+  margin: 25px;
   overflow: auto;
   width: min-content;
 }
@@ -335,6 +335,8 @@ button[type=submit]{
   background-color: #f1f1f1;
   text-align: center;
   max-width: 300px;
+  margin: 25px;
+  height: min-content;
 }
 .selectCompany{ 
   width: 90%;
@@ -347,4 +349,20 @@ button[type=submit]{
   box-sizing: border-box;
 }
 
+.contentbox{
+  width: 100%;
+  height: min-content;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  border-top: 1.5px solid black;
+  border-bottom: 1.5px solid black;
+}
 
+.contentbox .tablebox{
+  float: left;
+}
+
+.contentbox .inputbox{
+  float: left;
+}

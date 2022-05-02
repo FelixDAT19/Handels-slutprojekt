@@ -169,6 +169,58 @@ if (isset($_POST['deleteQrData'])) {
         </div>
 
         <div class="contentbox">
+
+            <div class="tablebox">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Qr-kod:</th>
+                            <th>Länkad sida:</th>
+                            <th>QR koden:</th>
+                            <th>Ta bort qr-kod:</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <script>
+                            function deleteQRcode(id) {
+                                return (confirm("Vill du radera Qr-koden och all data som hör till den?"));
+                            }
+                        </script>
+                        <?php
+                        //creates sql & creates a list with the different qr-codes that exist
+                        $sql = "SELECT * FROM qrcodes";
+
+                        $stmt = $db->prepare($sql);
+                        $result = $stmt->execute([]);
+
+                        while ($row = $stmt->fetch()) {
+                            $filename = "qrcodes/" . $row['qrName'] . ".png";
+
+
+                            echo "<tr>
+                    <td>$row[qrName]</td>
+                    <td>$row[Url]</td>
+                    <td><a href='$filename' download><img src='$filename' alt='$filename' width='100' height='100'></a></td>
+                    <td>
+                    <form method='post' onsubmit='return deleteQRcode($row[id])'><input type='submit' name='deleteQr[$row[id]]'  value='Ta bort'></form>
+                    </td>
+                    </tr>";
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="inputbox">
+                <form method="POST">
+                    <input type="text" id="qrName" name="qrName" placeholder="Namn på qr-kod" autocomplete="off"><br>
+                    <input type="url" id="qrUrl" name="qrUrl" placeholder="Länk till qr-kod" autocomplete="off"><br>
+                    <button type="submit" name="addQrCode">Lägg till</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="contentbox">
             <div class="tablebox">
                 <table>
                     <thead>
@@ -204,7 +256,9 @@ if (isset($_POST['deleteQrData'])) {
                     </tbody>
                 </table>
             </div>
+        </div>
 
+        <div class="contentbox">
             <div class="tablebox">
                 <table>
                     <thead>
@@ -261,55 +315,6 @@ if (isset($_POST['deleteQrData'])) {
                         ?>
                     </tbody>
                 </table>
-            </div>
-
-            <div class="tablebox">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Qr-kod:</th>
-                            <th>Länkad sida:</th>
-                            <th>QR koden:</th>
-                            <th>Ta bort qr-kod:</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <script>
-                            function deleteQRcode(id) {
-                                return (confirm("Vill du radera Qr-koden och all data som hör till den?"));
-                            }
-                        </script>
-                        <?php
-                        //creates sql & creates a list with the different qr-codes that exist
-                        $sql = "SELECT * FROM qrcodes";
-
-                        $stmt = $db->prepare($sql);
-                        $result = $stmt->execute([]);
-
-                        while ($row = $stmt->fetch()) {
-                            $filename = "qrcodes/" . $row['qrName'] . ".png";
-
-
-                            echo "<tr>
-                    <td>$row[qrName]</td>
-                    <td>$row[Url]</td>
-                    <td><a href='$filename' download><img src='$filename' alt='$filename' width='100' height='100'></a></td>
-                    <td>
-                    <form method='post' onsubmit='return deleteQRcode($row[id])'><input type='submit' name='deleteQr[$row[id]]'  value='Ta bort'></form>
-                    </td>
-                    </tr>";
-                        }
-                        ?>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="inputbox">
-                <form method="POST">
-                    <input type="text" id="qrName" name="qrName" placeholder="Namn på qr-kod" autocomplete="off"><br>
-                    <input type="url" id="qrUrl" name="qrUrl" placeholder="Länk till qr-kod" autocomplete="off"><br>
-                    <button type="submit" name="addQrCode">Lägg till</button>
-                </form>
             </div>
         </div>
 
