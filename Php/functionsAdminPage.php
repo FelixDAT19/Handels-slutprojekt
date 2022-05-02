@@ -322,7 +322,9 @@ function addQrCode($db)
             $_SESSION['alertError'] = "Det finns redan en qr med denna Url";
             header("location:AdminPage.php");
             exit();
-        } else {
+        } else { 
+
+            // sql to save new qrcode link and random string to used when scanned
             $sqlAddQrCodes = "INSERT INTO qrcodes (randomId, Url, qrName) VALUES (:randomId, :qrCodeLink, :qrName );";
 
             $stmtAddQrCodes = $db->prepare($sqlAddQrCodes);
@@ -334,11 +336,11 @@ function addQrCode($db)
 
             $stmtAddQrCodes->execute();
 
-            $qc = new SaveQRCODE();
+            $qc = new SaveQRCODE(); //class to create a new qr code
 
-            $qc->URL("https://datanom.ax/~williame/Handelsmessan/qrscan.php?qrId=" . $randomString);
+            $qc->URL("https://datanom.ax/~williame/Handelsmessan/qrscan.php?qrId=" . $randomString); // sets the url of the qr code to go to qrscan.php with random string as get data
 
-            if ($qc->QRCODE(400, $qrName) === null) {
+            if ($qc->QRCODE(400, $qrName) === null) { // creates the qr code and saves it
                 $_SESSION['alertError'] = "QR-kod har inte lagts till";
             } else {
                 $_SESSION['alertSuccess'] = "QR-kod har lagts till";
@@ -392,7 +394,7 @@ function deleteQr($db)
     $row = $stmt->fetch();
     $filename = $location . $row['qrName'] . ".png";
 
-    unlink($filename);
+    unlink($filename); // removes the qrcode from the server
 
 
     //Sql for deleting the qr
@@ -410,7 +412,7 @@ function deleteQr($db)
     exit();
 };
 
-function generateRandomString($length = 10)
+function generateRandomString($length = 10) // function to generate a random string
 {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);

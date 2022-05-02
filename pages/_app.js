@@ -5,11 +5,13 @@ import'/styles/offer.css';
 import'/styles/company.css';
 import'/styles/competitions.css';
 import'/styles/mainMenu.scss';
+//style imports
+
 import { useEffect } from 'react'; //import of css and useeffect
 
 export default function MyApp({ Component, pageProps }) {
 
-    useEffect(() => { //settings for service worker
+    useEffect(() => { //settings for service worker for pwa
         if("serviceWorker" in navigator) {
           window.addEventListener("load", function () {
            navigator.serviceWorker.register("/sw.js").then(

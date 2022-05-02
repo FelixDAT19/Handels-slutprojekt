@@ -1,17 +1,17 @@
 
 
-function LoadCompetitions({competitions}){
+function LoadCompetitions({competitions}){ //import of all competitions
     
     return(
         <div className="competitionCompetitions">
         <nav className="companyDropdownNav">
-            <label htmlFor="btn" className="first dropdownButton">Företags Tävlingar
+            <label htmlFor="btn" className="first dropdownButton">Företags Tävlingar {/* dropdown button */}
             <span className="fas fa-caret-down"></span>
             </label>
             <input type="checkbox" id="btn" className="dropdownCheckbox"/>
             <ul className="menuCompany firstUl">
 
-            {competitions.map(({company ,formUrl}, u) => ( 
+            {competitions.map(({company ,formUrl}, u)  => ( // puts the competition links inside of the dropdown 
                 <li key={u} className="listItems firstLI"><a href={formUrl} className="competitionLink">{company.name}</a></li>
             ))}    
         
@@ -26,18 +26,3 @@ function LoadCompetitions({competitions}){
 
 export default LoadCompetitions;
 
-/*
-
-        <div className="companyCompetitions">
-
-            {competitions.map(({companyId, company ,formUrl}, u) => ( //maps out competitions that are from other companies
-                <div key={u}>
-                        
-                        <a href={formUrl} className="competitionLink">{company.name}</a>
-                    <br/>
-                </div>
-            ))}
-
-        </div>
-
-*/

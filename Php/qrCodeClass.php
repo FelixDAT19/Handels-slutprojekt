@@ -32,14 +32,16 @@ class SaveQrCode
         curl_setopt($ch, CURLOPT_TIMEOUT, 30);
         $img = curl_exec($ch);
         curl_close($ch);
+        // creates the qrcode image
+
         if ($img) {
-            if ($filename) {
+            if ($filename) { //checks if the file name has png in it
                 if (!preg_match("#\.png$#i", $filename)) {
                     $filename .= ".png";
                 }
                 $filename = $location . $filename;
-                return file_put_contents($filename, $img);
-            } else {
+                return file_put_contents($filename, $img); // saves the qrcode
+            } else { //displays the qrcode if no filename
                 header("Content-type: image/png");
                 print $img;
                 return true;

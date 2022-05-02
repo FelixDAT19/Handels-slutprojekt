@@ -1,7 +1,11 @@
 import MainMenu from "/Components/MainMenu";
 import FooterMenu from "/Components/FooterMenu";
-import prisma from "/api/client";
 import LoadCompetitions from "/Components/LoadCompetitions";
+// component imports
+
+import prisma from "/api/client";
+//prisma connection import
+
 
 
 function competitions({ sponsors, competitions  }) {
@@ -9,7 +13,7 @@ function competitions({ sponsors, competitions  }) {
 
   return (
     <div className="viewport">
-      <MainMenu />
+      <MainMenu /* burger menu */ />
 
       <hr />
 
@@ -20,15 +24,15 @@ function competitions({ sponsors, competitions  }) {
       <iframe
         src="https://docs.google.com/forms/d/e/1FAIpQLScDyejaHJdpMhmQXIMY-o_LAukSPwNwp7DKPe1Wu2Wx_dy7UA/viewform?embedded=true"
         className="iframecss"
-      />
+      /> {/* local competition */}
 
       <br/>
 
-      <LoadCompetitions competitions={competitions}/>
+      <LoadCompetitions competitions={competitions} /* sends all the competitions to the loadCompetitions component *//>
 
       <hr />
 
-      <FooterMenu sponsors={sponsors} />
+      <FooterMenu sponsors={sponsors}  /* sends all the sponsors to the sponsor component *//>
     </div>
   );
 }
@@ -45,6 +49,6 @@ export async function getStaticProps() { //query for competition data and sponso
       sponsors,
       competitions,
     },
-  };
+  }; // returns competition data and sponsor data
 }
 export default competitions;
