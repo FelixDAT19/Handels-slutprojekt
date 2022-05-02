@@ -65,6 +65,28 @@ function deleteOffer($db)
     $stmtDeleteOffer->execute();
 }
 
+function checkDupesOffer($db)
+{
+    //creates sql used to check for already existing companies.
+    $sqlNodupes = "SELECT * FROM offers";
+
+    $stmtNodupes = $db->prepare($sqlNodupes);
+
+    $stmtNodupes->execute([]);
+
+    $rowNodupes = $stmtNodupes->fetchAll();
+
+    $a = array();
+
+    //checks the company table & compares the input to the already existing companies
+    foreach ($rowNodupes as $names) {
+
+        $arrayContent = ($names['offer'] . $names['companyId']);
+        array_push($a, $arrayContent);
+    };
+    return $a;
+}
+
 function createOffer($db)
 {
     if (!isset($_POST['companies'])) {
@@ -85,21 +107,29 @@ function createOffer($db)
             $chosenCompany = $_POST['companies'];
             $offerInfo = trim(htmlspecialchars($_POST['offerInfo']));
             $offerPrice = trim(htmlspecialchars($_POST['offerPrice']));
-
-            $sqlAddOffer = "INSERT INTO offers (companyId, offer, price)
+            $a = checkDupesOffer($db);
+            $compareOffer = ($offerInfo . $chosenCompany);
+            //Checks if the company you want to add already exists, adds it if it doesn't
+            if (in_array($compareOffer, $a)) {
+                $_SESSION['alertError'] = "Erbjudandet finns redan";
+                header("location:Addcompany.php");
+                exit();
+            } else {
+                $sqlAddOffer = "INSERT INTO offers (companyId, offer, price)
             VALUES (:chosenCompany, :offerInfo, :offerPrice);";
 
-            $stmtAddOffer = $db->prepare($sqlAddOffer);
+                $stmtAddOffer = $db->prepare($sqlAddOffer);
 
-            $stmtAddOffer->bindParam('chosenCompany', $chosenCompany, PDO::PARAM_STR);
-            $stmtAddOffer->bindParam('offerInfo', $offerInfo, PDO::PARAM_STR);
-            $stmtAddOffer->bindParam('offerPrice', $offerPrice, PDO::PARAM_INT);
+                $stmtAddOffer->bindParam('chosenCompany', $chosenCompany, PDO::PARAM_STR);
+                $stmtAddOffer->bindParam('offerInfo', $offerInfo, PDO::PARAM_STR);
+                $stmtAddOffer->bindParam('offerPrice', $offerPrice, PDO::PARAM_INT);
 
-            $stmtAddOffer->execute();
+                $stmtAddOffer->execute();
 
-            $_SESSION['alertSuccess'] = "Erbjudandet har lagts till";
-            header("location:Addcompany.php");
-            exit();
+                $_SESSION['alertSuccess'] = "Erbjudandet har lagts till";
+                header("location:Addcompany.php");
+                exit();
+            }
         }
     }
 }
