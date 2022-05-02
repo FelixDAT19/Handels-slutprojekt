@@ -6,7 +6,7 @@ function OpenHours({openHours}){
 
             {openHours.map(({openHours,openDates}, g) => ( //maps out opening hours
                 <div key={g}>
-                    <p>{openHours} {openDates}</p>
+                    <p>{openDates} {openHours}</p>
                 </div>
             ))}
 
