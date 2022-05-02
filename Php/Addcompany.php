@@ -159,6 +159,7 @@ if ($_POST) {
                 </div>";
         }
         ?>
+        <div class="tablebox">
         <table>
             <thead>
                 <tr>
@@ -174,6 +175,7 @@ if ($_POST) {
                 ?>
             </tbody>
         </table>
+    </div>
 
         <div class="inputbox">
             <form method="POST">
@@ -187,6 +189,8 @@ if ($_POST) {
                 <button name="addOffer" type="submit" autocomplete="off">Lägg till</button>
             </form>
         </div>
+
+        <div class="tablebox">
         <table>
             <thead>
                 <tr>
@@ -204,6 +208,7 @@ if ($_POST) {
                 ?>
             </tbody>
         </table>
+    </div>
 
         <div class="inputbox">
             <Form method="POST">
@@ -230,6 +235,7 @@ if ($_POST) {
             </Form>
         </div>
 
+        <div class="tablebox">
         <table>
             <thead>
                 <tr>
@@ -244,6 +250,7 @@ if ($_POST) {
                 ?>
             </tbody>
         </table>
+    </div>
 
     </main>
 </body>

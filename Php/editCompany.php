@@ -155,6 +155,7 @@ if (isset($_SESSION['editCompany'])) {
         </nav>
     </header>
     <main>
+    <div class="tablebox">
         <table>
             <thead>
                 <tr>
@@ -169,6 +170,7 @@ if (isset($_SESSION['editCompany'])) {
                 ?>
             </tbody>
         </table>
+</div>
         <div class="inputbox">
             <Form method="POST">
                 <input value="<?= $companyName; ?>" type="text" id="companyName" name="companyName" maxlength="100" autocomplete="off"><br>
@@ -183,9 +185,11 @@ if (isset($_SESSION['editCompany'])) {
                 <div class="dropdown">
                     <div class="dropbtn">välj montrar</div>
                     <div class="dropdown-content">
-                        <?php
-                        selectPlacement($db, $selectedCompany, $placement);
-                        ?>
+                        <div class="grid-container">
+                            <?php
+                            selectPlacement($db, $selectedCompany, $placement);
+                            ?>
+                        </div>
                     </div>
                 </div><br>
                 <button name="submitChanges" type="submit">Genomför ändringar</button>

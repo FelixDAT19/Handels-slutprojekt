@@ -112,6 +112,7 @@ if (isset($_POST['deleteQrData'])) {
         }
 
         ?>
+        <div class="tablebox">
         <table>
             <thead>
                 <tr>
@@ -126,6 +127,7 @@ if (isset($_POST['deleteQrData'])) {
                 ?>
             </tbody>
         </table>
+    </div>
         <div class="inputbox">
             <form method="POST">
                 <select name="companies" class="selectCompany">
@@ -137,6 +139,8 @@ if (isset($_POST['deleteQrData'])) {
                 <button name="createCompetition" type="submit">Lägg till</button>
             </form>
         </div>
+
+        <div class="tablebox">
         <table>
             <thead>
                 <tr>
@@ -150,6 +154,8 @@ if (isset($_POST['deleteQrData'])) {
                 ?>
             </tbody>
         </table>
+    </div>
+
         <div class="inputbox">
             <Form method="POST">
                 <input type="text" id="username" name="username" placeholder="Username" autocomplete="off"><br>
@@ -157,6 +163,8 @@ if (isset($_POST['deleteQrData'])) {
                 <button name="createAccount" type="submit">Create Account</button>
             </Form>
         </div>
+
+        <div class="tablebox">
         <table>
             <thead>
                 <tr>
@@ -189,7 +197,9 @@ if (isset($_POST['deleteQrData'])) {
                 ?>
             </tbody>
         </table>
-
+            </div>
+        
+            <div class="tablebox">
         <table>
             <thead>
                 <tr>
@@ -216,8 +226,9 @@ if (isset($_POST['deleteQrData'])) {
                 ?>
             </tbody>
         </table>
+            </div>
 
-
+            <div class="tablebox">
         <table>
             <thead>
                 <tr>
@@ -244,8 +255,9 @@ if (isset($_POST['deleteQrData'])) {
                 ?>
             </tbody>
         </table>
+            </div>
 
-
+            <div class="tablebox">
         <table>
             <thead>
                 <tr>
@@ -284,6 +296,8 @@ if (isset($_POST['deleteQrData'])) {
                 ?>
             </tbody>
         </table>
+            </div>
+
         <div class="inputbox">
             <form method="POST">
                 <input type="text" id="qrName" name="qrName" placeholder="Namn på qr-kod" autocomplete="off"><br>
@@ -291,6 +305,8 @@ if (isset($_POST['deleteQrData'])) {
                 <button type="submit" name="addQrCode">Lägg till</button>
             </form>
         </div>
+
+        <div class="tablebox">
         <table>
             <thead>
                 <tr>
@@ -319,6 +335,8 @@ if (isset($_POST['deleteQrData'])) {
                 ?>
             </tbody>
         </table>
+            </div>
+
         <div class="inputbox">
             <form method="POST">
                 <input type="text" id="openHours" name="openHours" placeholder="Öppettider" autocomplete="off"><br>

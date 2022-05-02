@@ -147,8 +147,6 @@ max-width: 75%;
 /* Table look and size */
 table {
   border-collapse: collapse;
-  margin: 25px 0;
-  font-size: 0.9em;
   border-radius: 5px 5px 0 0;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
@@ -160,15 +158,17 @@ table thead tr {
   color: #ffffff;
   text-align: left;
   font-weight: bold;
+  top: 0;
+  position: sticky;
 }
   
 /*  tabel content colums size and padding*/
 table th,
 table td {
   padding: 12px 15px;
-  max-width: 262px;
-  overflow-y:scroll;
-  overflow-y:hidden; 
+  max-width: 12rem;
+  overflow:hidden;
+  text-overflow: ellipsis;
 }
 
 /* Table bottoms border with color */
@@ -192,6 +192,13 @@ table tbody tr.active-row {
   
 table td + td {
   border-left:1px solid #dddddd;
+}
+
+.tablebox{
+  max-height: 50rem;
+  margin: 25px 0;
+  overflow: auto;
+  width: min-content;
 }
 
 input[type=submit] {

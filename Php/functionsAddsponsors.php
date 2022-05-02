@@ -55,9 +55,9 @@ function sponsorList($db)
 
     while ($row = $stmtSponsorList->fetch()) {
         echo "<tr>
-        <td>$row[name]</td>
-        <td>$row[sponsorUrl]</td>
-        <td>$row[logoUrl]</td>
+        <td title='$row[name]'>$row[name]</td>
+        <td title='$row[sponsorUrl]'>$row[sponsorUrl]</td>
+        <td title='$row[logoUrl]'>$row[logoUrl]</td>
         <td>
         <form method='post'><input type='submit' name='deleteSponsor[$row[id]]' value='ta bort'></form>
         </td>

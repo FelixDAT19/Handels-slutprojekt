@@ -23,8 +23,8 @@ function placementList($db, $selectedCompany)
 
     while ($row = $stmt->fetch()) {
         echo "<tr>
-            <td>$row[id]</td>
-            <td>$row[name]</td>
+            <td title='$row[id]'>$row[id]</td>
+            <td title='$row[name]'>$row[name]</td>
             <td>
             <form method='post'><input type='submit' name='deletePlace[$row[id]]' value='töm'></form>
             </td>
@@ -60,17 +60,17 @@ function selectPlacement($db, $selectedCompany, $placement)
     foreach ($row as $places) {
 
         if ($places['companyId'] == $selectedCompany && isset($_SESSION['alertError']) == false) {
-            echo ("<input type='checkbox' value='$places[id]' name='place[]' checked>$places[id]");
+            echo ("<div class='grid-item'><input type='checkbox' value='$places[id]' name='place[]' checked>$places[id]</div>");
         } elseif ($places['companyId'] == null && isset($_SESSION['alertError']) == false) {
-            echo ("<input type='checkbox' value='$places[id]' name='place[]'>$places[id]");
+            echo ("<div class='grid-item'><input type='checkbox' value='$places[id]' name='place[]'>$places[id]</div>");
         } elseif (isset($_SESSION['alertError']) == true && $places['companyId'] == null) {
             if (in_array($places['id'], $placement)) {
-                echo ("<input type='checkbox' value='$places[id]' name='place[]' checked>$places[id]");
+                echo ("<div class='grid-item'><input type='checkbox' value='$places[id]' name='place[]' checked>$places[id]</div>");
             } else {
-                echo ("<input type='checkbox' value='$places[id]' name='place[]'>$places[id]");
+                echo ("<div class='grid-item'><input type='checkbox' value='$places[id]' name='place[]'>$places[id]</div>");
             }
         } else {
-            echo ("<input type='checkbox' disabled>$places[id]");
+            echo ("<div class='grid-item'><input type='checkbox' disabled>$places[id]</div>");
         }
     }
 }

@@ -136,7 +136,7 @@ function userList($db)
 
     while ($row = $stmtUserList->fetch()) {
         echo "<tr>
-        <td>$row[username]</td>
+        <td title='$row[username]'>$row[username]</td>
         <td>
         <form method='post'><input type='submit' name='deleteUser[$row[id]]' value='ta bort'></form>
         </td>
@@ -200,8 +200,8 @@ function competitionList($db)
 
     while ($row = $stmtCompetitionList->fetch()) {
         echo "<tr>
-        <td>$row[name]</td>
-        <td>$row[formUrl]</td>
+        <td title='$row[name]'>$row[name]</td>
+        <td title='$row[formUrl]'>$row[formUrl]</td>
         <td>
             <form method='post'><input type='submit' name='deleteCompetition[$row[compId]]' value='ta bort'></form>
         </td>
@@ -390,7 +390,7 @@ function deleteQr($db)
     $stmt->execute();
 
     $row = $stmt->fetch();
-    $filename = $location.$row['qrName'] . ".png";
+    $filename = $location . $row['qrName'] . ".png";
 
     unlink($filename);
 

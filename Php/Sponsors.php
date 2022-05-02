@@ -91,9 +91,9 @@ if (isset($_POST['editSponsor']) && $_POST['editSponsor'] != "") {
     <header>
         <nav class="navbar">
             <div class="navcontent">
-                <li><a class="btn adminbtn" href="Adminpage.php">Admin</a></li>
+                <li><a class="btn adminbtn" href="AdminPage.php">Admin</a></li>
                 <li><a class="btn" href="Sponsors.php">Sponsorer</a></li>
-                <li><a class="btn" href="AdminPage.php">Utställare</a></li>
+                <li><a class="btn" href="Addcompany.php">Utställare</a></li>
             </div>
         </nav>
     </header>
@@ -123,6 +123,8 @@ if (isset($_POST['editSponsor']) && $_POST['editSponsor'] != "") {
                     $success
                   </div>";
         } ?>
+
+<div class="tablebox">
         <table>
             <thead>
                 <tr>
@@ -138,6 +140,7 @@ if (isset($_POST['editSponsor']) && $_POST['editSponsor'] != "") {
                 ?>
             </tbody>
         </table>
+    </div>
         <div class="inputbox">
             <Form method="POST">
                 <input value="<?= $sponsorName; ?>" type="text" id="sponsorName" name="sponsorName" maxlength="50" placeholder="Namn på sponsor" autocomplete="off"> <br>
