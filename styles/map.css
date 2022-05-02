@@ -1,7 +1,9 @@
-.imageMap {
+map.css
+
+.imageMap { /* The size and placement of the map*/
     width: 330px;
     height: 600px;
-    display: block;
+    display: block; /* Display block takes upp the entire size of the line it is on. */
     margin-left: auto;
     margin-right: auto;
 }

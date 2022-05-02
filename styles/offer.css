@@ -1,16 +1,18 @@
-.companyOffer{
+offer.css
+
+.companyOffer{ /* The offer boxes and its alignment & size */
     margin-right: 20px;
     margin-left: 20px;
     margin-bottom: 1%;
-    border: 5px solid #bebebe;
-    margin-bottom: 8%;/* Avståndet emellan erbjudande listan och länkarna */
+    border: 5px solid #bebebe; /* Borders around the box */
+    margin-bottom: 8%;/* Distance between offer listan and the links */
 }
-.companyOfferName{
+.companyOfferName{ /* The highlighted black text in the offer blocks  */
     text-align: center;
 }
-.offerInformation{
+.offerInformation{ /* The individual rows in the box with the alignment and color */
     display: flex;
-    flex-direction: row;
+    flex-direction: row; /* sets how flex item placement works so it is like a row */
     box-sizing: border-box;
     background-color: #cecece;
     margin-left: 10px;
@@ -19,18 +21,19 @@
     
 }
 
-.offerInformation:nth-child(odd) {
+.offerInformation:nth-child(odd) { /* The child gets another color then the even rows in the box. */
 
     background-color: rgb(180, 180, 180);
 
 }
 .offerName{
-    flex: 1 1 auto;
+    flex: 1 1 auto; /*.offerNAme is sized according to its width & height absorbs free space in the container, shrinks to minimum size to fit container. */
 
 }
-.offerPrice{
+.offerPrice{ /* Displays the individual rows(offerName) price with alignment, size */
     margin-left: 30px;
     font-size: 16px;
     font-weight: 700;
     text-align: right;
 }
+

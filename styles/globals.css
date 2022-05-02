@@ -1,12 +1,12 @@
 html,
 
 
-a {
+a {  /* Inherits these values over all the page */
   color: inherit;
   text-decoration: none;
   
 }
 
 * {
-  box-sizing: border-box;
+  box-sizing: border-box; /* Includes padding and border on all elements with width and height */
 }

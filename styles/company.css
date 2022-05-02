@@ -1,15 +1,15 @@
 .companyGeneral {
-    text-align: center;
+    text-align: center; /* Company general is the area of company information before companyOffer(the offerbox with prices) */
 }
 .competitionLink {
     padding: 14px 30px;
-    text-decoration:solid; /* Tar bort understrecket i länkarna */
-    display: flex; /* Skapar mellanrum emellan olika divs */
-    margin-right: 30px; /* Högerkants mellanrum */
-    margin-left: 20px;
+    text-decoration:solid; /* Takes away the underline in the links */
+    display: flex; /*  Creates space between different divs(buttons with .companyLink next to each other) */
+    margin-right: 30px; /* Rigth space edge  */
+    margin-left: 20px; /* Left space edge  */
     margin-bottom: 10px;
     align-items: center; /* */
-    background-color: #0a85c2;
+    background-color: #0a85c2; /*  Color of button  */
     border-radius: 10px;
     border-style: none;
     box-shadow: none;
@@ -35,14 +35,14 @@
     
   }
   
-.companyLink {
+.companyLink { /* The link button with it's appearance */
     padding: 14px 30px;
-    text-decoration:solid; /* Tar bort understrecket i länkarna */
-    display: flex; /* Skapar mellanrum emellan olika divs */
-    margin-right: 30px; /* Högerkants mellanrum */
-    margin-left: 20px; /* Vänsterkansts mellanrum */
-    align-items: center; /* */
-    background-color: #0a85c2;
+    text-decoration:solid; /* Takes away the underline in the links */
+    display: flex; /* Creates space between different divs(buttons with .companyLink next to each other) */
+    margin-right: 30px; /* Rigth space edge  */
+    margin-left: 20px; /* Left space edge */
+    align-items: center; 
+    background-color: #0a85c2; /* Color of button */
     border-radius: 10px;
     border-style: none;
     box-shadow: none;
@@ -54,7 +54,7 @@
     letter-spacing: normal;
     line-height: 1.5;
     font-weight: 500;
-    justify-content: center; /* Centrerar texten */
+    justify-content: center; /* centers the text */
     outline: none;
     overflow: hidden;
     max-width: 1780px;
@@ -68,12 +68,12 @@
 }
   
 
-.companyWebsite{
+.companyWebsite{ /* The area wich the link button resides with alignment of text*/
     text-align: center;
     margin-bottom: 2%;
 }
 
-.companyPage{
+.companyPage{ /* The area wich contains all information about the company above the sponsor and footer area  */
 
     margin-left: 1%;
     margin-right: 1%;
@@ -84,7 +84,7 @@
 
 
 
-.companyInfo{
+.companyInfo{ /* The displayed <p> information text about each company and its layout */
     text-align: left;
     margin: 5%;
     line-height: 1.5;
