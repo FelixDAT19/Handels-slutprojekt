@@ -92,7 +92,7 @@ max-width: 75%;
 }
 
 .logininput {
-  width: 100%;
+  width: 100% !important;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -159,7 +159,6 @@ table thead tr {
   text-align: left;
   font-weight: bold;
   top: 0;
-  position: sticky;
 }
   
 /*  tabel content colums size and padding*/
@@ -196,7 +195,7 @@ table td + td {
 
 .tablebox{
   max-height: 50rem;
-  margin: 25px 0;
+  margin: 25px;
   overflow: auto;
   width: min-content;
 }
@@ -217,7 +216,7 @@ input[type=submit]:hover {
 }
 
 input[type=text], select {
- 
+  width: 90%;
   padding: 12px 20px;
   margin: 5px;
   display: inline-block;
@@ -237,7 +236,7 @@ input[type=password], select {
 }
 
 input[type=url], select {
-
+  width: 90%;
   padding: 12px 20px;
   margin: 5px;
   display: inline-block;
@@ -247,6 +246,7 @@ input[type=url], select {
 }
 
 input[type=number], select {
+  width: 90%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -334,7 +334,9 @@ button[type=submit]{
 .inputbox{
   background-color: #f1f1f1;
   text-align: center;
-  max-width: 300px;
+  max-width: 500px;
+  margin: 25px;
+  height: min-content;
 }
 .selectCompany{ 
   width: 90%;
@@ -345,4 +347,53 @@ button[type=submit]{
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+}
+
+.contentbox{
+  width: 100%;
+  height: min-content;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  border-top: 1.5px solid black;
+  border-bottom: 1.5px solid black;
+}
+
+.contentbox .tablebox{
+  float: left;
+}
+
+.contentbox .inputbox{
+  float: left;
+}
+
+.companybox{
+  width: 100%;
+  height: min-content;
+  display: inline-block;
+  border-top: 1.5px solid black;
+  border-bottom: 1.5px solid black;
+}
+
+.companybox .inputbox{
+  margin: auto;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.companybox .tablebox{
+  margin: auto;
+  margin-bottom: 25px;
+  margin-top: 25px;
+}
+
+textarea{
+  width: 90%;
+  padding: 12px 20px;
+  margin: 5px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  height: 200px;
 }

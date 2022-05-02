@@ -124,30 +124,32 @@ if (isset($_POST['editSponsor']) && $_POST['editSponsor'] != "") {
                   </div>";
         } ?>
 
-<div class="tablebox">
-        <table>
-            <thead>
-                <tr>
-                    <th>Namn:</th>
-                    <th>Hemsida:</th>
-                    <th>Länk till Logo:</th>
-                    <th>Ta bort:</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                sponsorList($db);
-                ?>
-            </tbody>
-        </table>
-    </div>
-        <div class="inputbox">
-            <Form method="POST">
-                <input value="<?= $sponsorName; ?>" type="text" id="sponsorName" name="sponsorName" maxlength="50" placeholder="Namn på sponsor" autocomplete="off"> <br>
-                <input value="<?= $sponsorUrl; ?>" type="url" id="sponsorUrl" name="sponsorUrl" maxlength="500" placeholder="Länk till Sponsorns hemsida" autocomplete="off"><br>
-                <input value="<?= $logoUrl; ?>" type="url" id="logoUrl" name="logoUrl" maxlength="500" placeholder="Länk till logo" autocomplete="off"><br>
-                <button name="addSponsor" type="submit">Spara sponsor</button>
-            </Form>
+        <div class="contentbox">
+            <div class="tablebox">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Namn:</th>
+                            <th>Hemsida:</th>
+                            <th>Länk till Logo:</th>
+                            <th>Ta bort:</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        sponsorList($db);
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="inputbox">
+                <Form method="POST">
+                    <input value="<?= $sponsorName; ?>" type="text" id="sponsorName" name="sponsorName" maxlength="50" placeholder="Namn på sponsor" autocomplete="off"> <br>
+                    <input value="<?= $sponsorUrl; ?>" type="url" id="sponsorUrl" name="sponsorUrl" maxlength="500" placeholder="Länk till Sponsorns hemsida" autocomplete="off"><br>
+                    <input value="<?= $logoUrl; ?>" type="url" id="logoUrl" name="logoUrl" maxlength="500" placeholder="Länk till logo" autocomplete="off"><br>
+                    <button name="addSponsor" type="submit">Spara sponsor</button>
+                </Form>
+            </div>
         </div>
     </main>
 </body>
