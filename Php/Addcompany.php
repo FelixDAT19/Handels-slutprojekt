@@ -235,7 +235,7 @@ if ($_POST) {
             </Form>
         </div>
 
-        <div class="tablebox">
+        <div class="tablebox ">
         <table>
             <thead>
                 <tr>

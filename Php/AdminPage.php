@@ -112,6 +112,7 @@ if (isset($_POST['deleteQrData'])) {
         }
 
         ?>
+        <div class="contentbox">
         <div class="tablebox">
         <table>
             <thead>
@@ -139,7 +140,9 @@ if (isset($_POST['deleteQrData'])) {
                 <button name="createCompetition" type="submit">Lägg till</button>
             </form>
         </div>
+    </div>
 
+    <div class="contentbox">
         <div class="tablebox">
         <table>
             <thead>
@@ -154,7 +157,7 @@ if (isset($_POST['deleteQrData'])) {
                 ?>
             </tbody>
         </table>
-    </div>
+        </div>
 
         <div class="inputbox">
             <Form method="POST">
@@ -163,7 +166,9 @@ if (isset($_POST['deleteQrData'])) {
                 <button name="createAccount" type="submit">Create Account</button>
             </Form>
         </div>
+    </div>
 
+    <div class="contentbox">
         <div class="tablebox">
         <table>
             <thead>
@@ -305,7 +310,9 @@ if (isset($_POST['deleteQrData'])) {
                 <button type="submit" name="addQrCode">Lägg till</button>
             </form>
         </div>
+            </div>
 
+            <div class="contentbox">
         <div class="tablebox">
         <table>
             <thead>
@@ -344,6 +351,7 @@ if (isset($_POST['deleteQrData'])) {
                 <button type="submit" Name="addOpenHours">Lägg till</button>
             </form>
         </div>
+            </div>
     </main>
 </body>
 
