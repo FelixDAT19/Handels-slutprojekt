@@ -192,7 +192,7 @@ if ($_POST) {
             </div>
         </div>
 
-        <div class="contentbox">
+        <div class="companybox">
             <div class="tablebox">
                 <table>
                     <thead>
@@ -216,7 +216,7 @@ if ($_POST) {
             <div class="inputbox">
                 <Form method="POST">
                     <input value="<?= $companyName; ?>" type="text" id="companyName" name="companyName" maxlength="100" placeholder="Företagsnamn" autocomplete="off"><br>
-                    <input value="<?= $companyInfo; ?>" type="text" id="companyInfo" name="companyInfo" maxlength="350" placeholder="Företagsinfo" autocomplete="off"><br>
+                    <textarea value="<?= $companyInfo; ?>" type="textarea" id="companyInfo" name="companyInfo" maxlength="350" placeholder="Företagsinfo" autocomplete="off"></textarea><br>
                     <input value="<?= $externalUrl; ?>" type="url" id="externalUrl" name="externalUrl" maxlength="500" placeholder="Företagets hemsida" autocomplete="off"><br>
                     <input value="<?= $logoUrl; ?>" type="url" id="logoUrl" name="logoUrl" maxlength="500" placeholder="företagets logo" autocomplete="off"><br>
                     <label>Är det ett matföretag?</label>
