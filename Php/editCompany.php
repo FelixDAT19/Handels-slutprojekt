@@ -155,45 +155,47 @@ if (isset($_SESSION['editCompany'])) {
         </nav>
     </header>
     <main>
-    <div class="tablebox">
-        <table>
-            <thead>
-                <tr>
-                    <th>Monter:</th>
-                    <th>Bokad av:</th>
-                    <th>Töm monter:</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                placementList($db, $selectedCompany);
-                ?>
-            </tbody>
-        </table>
-</div>
-        <div class="inputbox">
-            <Form method="POST">
-                <input value="<?= $companyName; ?>" type="text" id="companyName" name="companyName" maxlength="100" autocomplete="off"><br>
-                <input value="<?= $companyInfo; ?>" type="text" id="companyInfo" name="companyInfo" maxlength="350" autocomplete="off"><br>
-                <input value="<?= $externalUrl; ?>" type="url" id="externalUrl" name="externalUrl" maxlength="500" autocomplete="off"><br>
-                <input value="<?= $logoUrl; ?>" type="url" id="logoUrl" name="logoUrl" maxlength="500" autocomplete="off"><br>
-                <label>Är det ett matföretag?</label>
-                <input <?= $radiochecked['1']; ?> type="radio" id="foodCheck" name="foodCheck" value="1">
-                <label for="foodCheck">Ja</label>
-                <input <?= $radiochecked['0']; ?> type="radio" id="foodCheck" name="foodCheck" value="0">
-                <label for="foodCheck">Nej</label><br>
-                <div class="dropdown">
-                    <div class="dropbtn">välj montrar</div>
-                    <div class="dropdown-content">
-                        <div class="grid-container">
-                            <?php
-                            selectPlacement($db, $selectedCompany, $placement);
-                            ?>
+        <div class="contentbox">
+            <div class="tablebox">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Monter:</th>
+                            <th>Bokad av:</th>
+                            <th>Töm monter:</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        placementList($db, $selectedCompany);
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="inputbox">
+                <Form method="POST">
+                    <input value="<?= $companyName; ?>" type="text" id="companyName" name="companyName" maxlength="100" autocomplete="off"><br>
+                    <input value="<?= $companyInfo; ?>" type="text" id="companyInfo" name="companyInfo" maxlength="350" autocomplete="off"><br>
+                    <input value="<?= $externalUrl; ?>" type="url" id="externalUrl" name="externalUrl" maxlength="500" autocomplete="off"><br>
+                    <input value="<?= $logoUrl; ?>" type="url" id="logoUrl" name="logoUrl" maxlength="500" autocomplete="off"><br>
+                    <label>Är det ett matföretag?</label>
+                    <input <?= $radiochecked['1']; ?> type="radio" id="foodCheck" name="foodCheck" value="1">
+                    <label for="foodCheck">Ja</label>
+                    <input <?= $radiochecked['0']; ?> type="radio" id="foodCheck" name="foodCheck" value="0">
+                    <label for="foodCheck">Nej</label><br>
+                    <div class="dropdown">
+                        <div class="dropbtn">välj montrar</div>
+                        <div class="dropdown-content">
+                            <div class="grid-container">
+                                <?php
+                                selectPlacement($db, $selectedCompany, $placement);
+                                ?>
+                            </div>
                         </div>
-                    </div>
-                </div><br>
-                <button name="submitChanges" type="submit">Genomför ändringar</button>
-            </Form>
+                    </div><br>
+                    <button name="submitChanges" type="submit">Genomför ändringar</button>
+                </Form>
+            </div>
         </div>
     </main>
 </body>

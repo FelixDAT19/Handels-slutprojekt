@@ -159,99 +159,104 @@ if ($_POST) {
                 </div>";
         }
         ?>
-        <div class="tablebox">
-        <table>
-            <thead>
-                <tr>
-                    <th>Företag:</th>
-                    <th>Erbjudande:</th>
-                    <th>Pris</th>
-                    <th>Ta bort:</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                offerList($db);
-                ?>
-            </tbody>
-        </table>
-    </div>
+        <div class="contentbox">
+            <div class="tablebox">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Företag:</th>
+                            <th>Erbjudande:</th>
+                            <th>Pris</th>
+                            <th>Ta bort:</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        offerList($db);
+                        ?>
+                    </tbody>
+                </table>
+            </div>
 
-        <div class="inputbox">
-            <form method="POST">
-                <select class="selectCompany" name="companies">
-                    <?php
-                    selectCompany($db);
-                    ?>
-                </select><br>
-                <input type="text" id="offerInfo" name="offerInfo" maxlength="150" placeholder="Kort info om erbjudandet" autocomplete="off"><br>
-                <input type="number" id="offerPrice" name="offerPrice" maxlength="20" placeholder="Pris på produkt" autocomplete="off"><br>
-                <button name="addOffer" type="submit" autocomplete="off">Lägg till</button>
-            </form>
+            <div class="inputbox">
+                <form method="POST">
+                    <select class="selectCompany" name="companies">
+                        <?php
+                        selectCompany($db);
+                        ?>
+                    </select><br>
+                    <input type="text" id="offerInfo" name="offerInfo" maxlength="150" placeholder="Kort info om erbjudandet" autocomplete="off"><br>
+                    <input type="number" id="offerPrice" name="offerPrice" maxlength="20" placeholder="Pris på produkt" autocomplete="off"><br>
+                    <button name="addOffer" type="submit" autocomplete="off">Lägg till</button>
+                </form>
+            </div>
         </div>
 
-        <div class="tablebox">
-        <table>
-            <thead>
-                <tr>
-                    <th>Företag:</th>
-                    <th>Företagsinfo:</th>
-                    <th>Företagets hemsida:</th>
-                    <th>Logons url:</th>
-                    <th>Ändra:</th>
-                    <th>Ta bort:</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                companyList($db);
-                ?>
-            </tbody>
-        </table>
-    </div>
+        <div class="contentbox">
+            <div class="tablebox">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Företag:</th>
+                            <th>Företagsinfo:</th>
+                            <th>Företagets hemsida:</th>
+                            <th>Logons url:</th>
+                            <th>Ändra:</th>
+                            <th>Ta bort:</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        companyList($db);
+                        ?>
+                    </tbody>
+                </table>
+            </div>
 
-        <div class="inputbox">
-            <Form method="POST">
-                <input value="<?= $companyName; ?>" type="text" id="companyName" name="companyName" maxlength="100" placeholder="Företagsnamn" autocomplete="off"><br>
-                <input value="<?= $companyInfo; ?>" type="text" id="companyInfo" name="companyInfo" maxlength="350" placeholder="Företagsinfo" autocomplete="off"><br>
-                <input value="<?= $externalUrl; ?>" type="url" id="externalUrl" name="externalUrl" maxlength="500" placeholder="Företagets hemsida" autocomplete="off"><br>
-                <input value="<?= $logoUrl; ?>" type="url" id="logoUrl" name="logoUrl" maxlength="500" placeholder="företagets logo" autocomplete="off"><br>
-                <label>Är det ett matföretag?</label>
-                <input <?= $radiochecked['1']; ?> type="radio" id="foodCheck" name="foodCheck" value="1">
-                <label for="foodCheck">Ja</label>
-                <input <?= $radiochecked['0']; ?> type="radio" id="foodCheck" name="foodCheck" value="0">
-                <label for="foodCheck">Nej</label><br>
-                <div class="dropdown">
-                    <div class="dropbtn">välj montrar</div>
-                    <div class="dropdown-content">
-                        <div class="grid-container">
-                            <?php
-                            selectPlacement($db, $placement);
-                            ?>
+            <div class="inputbox">
+                <Form method="POST">
+                    <input value="<?= $companyName; ?>" type="text" id="companyName" name="companyName" maxlength="100" placeholder="Företagsnamn" autocomplete="off"><br>
+                    <input value="<?= $companyInfo; ?>" type="text" id="companyInfo" name="companyInfo" maxlength="350" placeholder="Företagsinfo" autocomplete="off"><br>
+                    <input value="<?= $externalUrl; ?>" type="url" id="externalUrl" name="externalUrl" maxlength="500" placeholder="Företagets hemsida" autocomplete="off"><br>
+                    <input value="<?= $logoUrl; ?>" type="url" id="logoUrl" name="logoUrl" maxlength="500" placeholder="företagets logo" autocomplete="off"><br>
+                    <label>Är det ett matföretag?</label>
+                    <input <?= $radiochecked['1']; ?> type="radio" id="foodCheck" name="foodCheck" value="1">
+                    <label for="foodCheck">Ja</label>
+                    <input <?= $radiochecked['0']; ?> type="radio" id="foodCheck" name="foodCheck" value="0">
+                    <label for="foodCheck">Nej</label><br>
+                    <div class="dropdown">
+                        <div class="dropbtn">välj montrar</div>
+                        <div class="dropdown-content">
+                            <div class="grid-container">
+                                <?php
+                                selectPlacement($db, $placement);
+                                ?>
+                            </div>
                         </div>
-                    </div>
-                </div><br>
-                <button name="addCompany" type="submit">Lägg till</button>
-            </Form>
+                    </div><br>
+                    <button name="addCompany" type="submit">Lägg till</button>
+                </Form>
+            </div>
         </div>
 
-        <div class="tablebox ">
-        <table>
-            <thead>
-                <tr>
-                    <th>Monter:</th>
-                    <th>Bokad av:</th>
-                    <th>Töm monter:</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                placementList($db);
-                ?>
-            </tbody>
-        </table>
-    </div>
-
+        <div class="contentbox">
+            <div class="tablebox ">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Monter:</th>
+                            <th>Bokad av:</th>
+                            <th>Töm monter:</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        placementList($db);
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </main>
 </body>
 
