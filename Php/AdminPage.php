@@ -179,7 +179,8 @@ if (isset($_POST['deleteQrData'])) {
                 //creates sql & creates a list with qr-scan data.
                 $sql = "SELECT qrcodes.qrName, qrscan.dateTime, qrscan.device, qrscan.qrId, qrscan.id AS scanId
                 FROM qrScan
-                INNER JOIN qrcodes ON qrScan.qrId=qrcodes.id;";
+                INNER JOIN qrcodes ON qrScan.qrId=qrcodes.id
+                ORDER BY qrscan.device, qrscan.dateTime;";
 
                 $stmt = $db->prepare($sql);
                 $result = $stmt->execute([]);
