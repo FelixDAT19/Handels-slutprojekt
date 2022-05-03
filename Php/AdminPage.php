@@ -18,6 +18,7 @@ if (empty($_SESSION['loggedin'])) {
 //connect to the database
 $db = connectDatabase();
 
+//creates the function array_key_first if the server runs a php version that doesn't support it
 if (!function_exists('array_key_first')) {
     function array_key_first(array $arr)
     {
@@ -29,36 +30,45 @@ if (!function_exists('array_key_first')) {
 }
 
 if (isset($_POST['createAccount'])) {
+    //checks if the user is trying to add a new admin-account
     createUser($db);
 }
 
 if (isset($_POST['deleteUser'])) {
+    //checks if the user is trying to delete a user
     deleteUser($db);
 }
 
 if (isset($_POST['deleteCompetition'])) {
+    //checks if the user is trying to delete a competition
     deleteCompetition($db);
 }
 
 if (isset($_POST['createCompetition'])) {
+    //checks if the user is trying to create a competition
     createCompetition($db);
 }
 if (isset($_POST['addOpenHours'])) {
+    //checks if the user is trying to add open hours
     addOpenhours($db);
 }
 
 if (isset($_POST['deleteOpenHours'])) {
+    //checks if the user is trying to delete open hours
     deleteOpenHours($db);
 }
 if (isset($_POST['addQrCode'])) {
+    //checks if the user is trying to add a qr code
     addQrCode($db);
 }
 
 if (isset($_POST['deleteQr'])) {
+    //checks if the user is trying to delete a qr code
     deleteQr($db);
 }
 
 if (isset($_POST['deleteQrData'])) {
+    //checks if the user is trying to delete gr data
     deleteQrData($db);
 }
 

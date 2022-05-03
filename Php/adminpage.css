@@ -396,4 +396,6 @@ textarea{
   border-radius: 4px;
   box-sizing: border-box;
   height: 200px;
+  font-size: 14px;
+  font-family: 'Verdana', Arial, sans-serif !important;
 }
