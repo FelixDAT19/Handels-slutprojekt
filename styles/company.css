@@ -3,9 +3,9 @@
 }
 .competitionLink {
     padding: 14px 30px;
-    text-decoration:solid; /* Tar bort understrecket i länkarna */
-    display: flex; /* Skapar mellanrum emellan olika divs */
-    margin-right: 30px; /* Högerkants mellanrum */
+    text-decoration:solid; /* Takes away the underlines in the links */
+    display: flex; /* Creates space between different divs */
+    margin-right: 30px; /* Rightborders space */
     margin-left: 20px;
     margin-bottom: 10px;
     align-items: center; /* */
@@ -21,7 +21,7 @@
     letter-spacing: normal;
     line-height: 1.5;
     font-weight: 500;
-    justify-content: center; /* Centrerar texten */
+    justify-content: center; /* Centers the text */
     outline: none;
     overflow: hidden;
     max-width: 1780px;
@@ -37,24 +37,24 @@
   
 .companyLink {
     padding: 14px 30px;
-    text-decoration:solid; /* Tar bort understrecket i länkarna */
-    display: flex; /* Skapar mellanrum emellan olika divs */
-    margin-right: 30px; /* Högerkants mellanrum */
-    margin-left: 20px; /* Vänsterkansts mellanrum */
+    text-decoration:solid; /*Takes away the underlines in the links */
+    display: flex; /*  Creates space between different divs */
+    margin-right: 30px; /* Rightborders space */
+    margin-left: 20px; /* Left borders space */
     align-items: center; /* */
     background-color: #0a85c2;
     border-radius: 10px;
     border-style: none;
     box-shadow: none;
     box-sizing: border-box;
-    color: #ffffff;
+    color: #ffffff; /* The color of the text around inside the link button */
     font-size: 15px;
     font-weight: 500;
     height: 50px;
     letter-spacing: normal;
     line-height: 1.5;
     font-weight: 500;
-    justify-content: center; /* Centrerar texten */
+    justify-content: center; /* Centers the text */
     outline: none;
     overflow: hidden;
     max-width: 1780px;
