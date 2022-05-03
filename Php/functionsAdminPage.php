@@ -333,14 +333,9 @@ function addQrCode($db)
             $_SESSION['alertError'] = "Det finns redan en qr med denna Url";
             header("location:AdminPage.php");
             exit();
-<<<<<<< HEAD
         } else {
-            //creates sql to add the qrcode to the database, binds params & exeutes
-=======
-        } else { 
 
             // sql to save new qrcode link and random string to used when scanned
->>>>>>> 2b4c3a9eb0cf87c451badaa26f6284698fc0cc89
             $sqlAddQrCodes = "INSERT INTO qrcodes (randomId, Url, qrName) VALUES (:randomId, :qrCodeLink, :qrName );";
 
             $stmtAddQrCodes = $db->prepare($sqlAddQrCodes);
