@@ -1,23 +1,17 @@
-//imports
 import LoadCompanies from "/Components/LoadCompanies";
 import MainMenu from "/Components/MainMenu";
 import FooterMenu from "/Components/FooterMenu";
-//component imports
-
 import React from "react";
-
-import prisma from "/api/client";
-// prisam client connection
-
+import prisma from "/api/client";//imports
 
 function company({ placement, sponsors }) {
   return (
     <div className="viewport">
       <MainMenu />
 
-      <LoadCompanies {...placement} /* sends the specific company data to load companies component */ />
+      <LoadCompanies {...placement} />
 
-      <FooterMenu sponsors={sponsors} /* sends all the sponsors to the sponsor component */ />
+      <FooterMenu sponsors={sponsors} />
     </div>
   );
 }
@@ -25,7 +19,7 @@ export async function getStaticPaths() { // function to get url information so i
   const data = await prisma.company.findMany({ orderBy: [{ id: "asc" }] }); //query for all data location data
   const companies = [...JSON.parse(JSON.stringify(data))];
 
-  const paths = companies.map((company) => ({ // takes url data so it can be used to get that specific companys data
+  const paths = companies.map((company) => ({ // makes it the url data so it can be used to query
     params: { id: company.id.toString() },
   }));
 

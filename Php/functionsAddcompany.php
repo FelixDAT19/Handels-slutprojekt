@@ -1,5 +1,5 @@
 <?php
-
+//creates the function array_key_first if the server runs a php version that doesn't support it
 if (!function_exists('array_key_first')) {
     function array_key_first(array $arr)
     {
@@ -12,6 +12,7 @@ if (!function_exists('array_key_first')) {
 
 function deletePlace($db)
 {
+    //checks the id of the chosen place & replaces the companyid with null
     $deletePlace = array_key_first($_POST['deletePlace']);
     $sqlDeletePlace = "UPDATE placement
             SET companyId = NULL 
@@ -36,11 +37,13 @@ function deleteCompany($db)
 
     $stmtDeleteCPlace->execute();
 
+    //creates sql to delete the offers that belong to the selected company & executes
     $sqlDeleteOffer = "DELETE FROM offers WHERE companyId=$deleteCompany";
 
     $stmtDeleteOffer = $db->prepare($sqlDeleteOffer);
     $stmtDeleteOffer->execute();
 
+    //creates sql to delete the competitions that belong to the selected company & executes
     $sqlDeleteCompetition = "DELETE FROM competitions WHERE companyId=$deleteCompany";
 
     $stmtDeleteCompetition = $db->prepare($sqlDeleteCompetition);
@@ -57,6 +60,7 @@ function deleteCompany($db)
 
 function deleteOffer($db)
 {
+    //deletes the offer with the selected id
     $deleteOffer = array_key_first($_POST['deleteOffer']);
     $sqlDeleteOffer = "DELETE FROM offers WHERE id=$deleteOffer;";
 
@@ -67,7 +71,7 @@ function deleteOffer($db)
 
 function checkDupesOffer($db)
 {
-    //creates sql used to check for already existing companies.
+    //creates sql used to check for already existing offers.
     $sqlNodupes = "SELECT * FROM offers";
 
     $stmtNodupes = $db->prepare($sqlNodupes);
@@ -78,7 +82,7 @@ function checkDupesOffer($db)
 
     $a = array();
 
-    //checks the company table & compares the input to the already existing companies
+    //checks the offers table & compares the input to the already existing offers
     foreach ($rowNodupes as $names) {
 
         $arrayContent = ($names['offer'] . $names['companyId']);
@@ -89,12 +93,13 @@ function checkDupesOffer($db)
 
 function createOffer($db)
 {
+    //checks the users inputs & gives error message if the inputs are incorrect
     if (!isset($_POST['companies'])) {
         $_SESSION['alertError'] = "Välj ett företag";
         header("location:Addcompany.php");
         exit();
     } elseif (isset($_POST['companies']) && $_POST['companies'] != "") {
-        //Checks all fields are filled in & that the price is more than 0, and sends error alert of not
+        //Checks all fields are filled in correctly
         if ($_POST['offerInfo'] == "") {
             $_SESSION['alertError'] = "Erbjudandebeskrivning saknas";
             header("location:Addcompany.php");
@@ -104,19 +109,21 @@ function createOffer($db)
             header("location:Addcompany.php");
             exit();
         } else {
+            //assigns the inputs to different variables
             $chosenCompany = $_POST['companies'];
             $offerInfo = trim(htmlspecialchars($_POST['offerInfo']));
             $offerPrice = trim(htmlspecialchars($_POST['offerPrice']));
             $a = checkDupesOffer($db);
             $compareOffer = ($offerInfo . $chosenCompany);
-            //Checks if the company you want to add already exists, adds it if it doesn't
+            //Checks if the offer you want to add already exists, adds it if it doesn't
             if (in_array($compareOffer, $a)) {
                 $_SESSION['alertError'] = "Erbjudandet finns redan";
                 header("location:Addcompany.php");
                 exit();
             } else {
+                //creates sql to add the offer to the database & executes
                 $sqlAddOffer = "INSERT INTO offers (companyId, offer, price)
-            VALUES (:chosenCompany, :offerInfo, :offerPrice);";
+                VALUES (:chosenCompany, :offerInfo, :offerPrice);";
 
                 $stmtAddOffer = $db->prepare($sqlAddOffer);
 
@@ -333,7 +340,7 @@ function companyList($db)
 
 function selectCompany($db)
 {
-    //prepares sql & binds params.
+    //creates sql  & executes
     $sqlSelectCompany = "SELECT * FROM company ORDER BY id;";
 
     $stmtSelectCompany = $db->prepare($sqlSelectCompany);

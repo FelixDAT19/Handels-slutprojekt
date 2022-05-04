@@ -16,6 +16,7 @@ if (empty($_SESSION['loggedin'])) {
     exit;
 }
 
+//checks if the error or success-alerts are set on refresh/load, assigns previous inputs to variables & clears the sessions
 if (isset($_SESSION['alertError'])) {
     if (isset($_SESSION['sponsorName'], $_SESSION['sponsorUrl'], $_SESSION['logoUrl'])) {
         $sponsorName = $_SESSION['sponsorName'];
@@ -31,6 +32,7 @@ if (isset($_SESSION['alertError'])) {
         $logoUrl = "";
     }
 } else {
+    //creates empty variables if there are no previous inputs
     $sponsorName = "";
     $sponsorUrl = "";
     $logoUrl = "";
@@ -38,6 +40,7 @@ if (isset($_SESSION['alertError'])) {
 
 $db = connectDatabase();
 
+//creates the function array_key_first if the server runs a php version that doesn't support it
 if (!function_exists('array_key_first')) {
     function array_key_first(array $arr)
     {
@@ -48,17 +51,11 @@ if (!function_exists('array_key_first')) {
     }
 }
 
-$sponsorName = "";
-$sponsorUrl = "";
-$logoUrl = "";
-if (isset($_POST['editSponsor']) && $_POST['editSponsor'] != "") {
-    $_SESSION['editSponsor'] = array_key_first($_POST['editSponsor']);
-    header("location:editSponsor.php");
-    exit();
-} elseif (isset($_POST['deleteSponsor']) && $_POST['deleteSponsor'] != "") {
+if (isset($_POST['deleteSponsor']) && $_POST['deleteSponsor'] != "") {
     //checks if the user has selected to delete a place, creates sql & deletes the post from the placement
     deleteSponsor($db);
 } elseif (isset($_POST['addSponsor'])) {
+    //checks if the user is trying to add a new sponsor & checks that the inputs are correct.
     if ($_POST['sponsorName'] == "") {
         $_SESSION['alertError'] = "Sponsornamn saknas";
         header("location:Sponsors.php");
@@ -72,6 +69,7 @@ if (isset($_POST['editSponsor']) && $_POST['editSponsor'] != "") {
         header("location:Sponsors.php");
         exit();
     } else {
+        //adds the sponsor if the inputs are correct
         createSponsor($db);
     }
 }
@@ -107,6 +105,7 @@ if (isset($_POST['editSponsor']) && $_POST['editSponsor'] != "") {
                 $error = "";
             }
 
+            //gets the error message from the error session & prints it out
             echo "<div class='error-msg'>
                     <i class='fa fa-times-circle'></i>
                     $error
@@ -118,6 +117,7 @@ if (isset($_POST['editSponsor']) && $_POST['editSponsor'] != "") {
                 $success = "";
             }
 
+            //gets the success message from the success session & prints it out
             echo "<div class='success-msg'>
                     <i class='fa fa-check'></i>
                     $success

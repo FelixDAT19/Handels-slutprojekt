@@ -20,6 +20,7 @@ if (isset($_SESSION['alertError'])) {
         $error = "";
     }
 
+    //gets the error message from the error session & prints it out
     echo "<div class='error-msg'>
     <i class='fa fa-times-circle'></i>
     $error
@@ -30,13 +31,14 @@ if (isset($_SESSION['alertError'])) {
     } else {
         $success = "";
     }
-
+    //gets the success message from the success session & prints it out
     echo "<div class='success-msg'>
     <i class='fa fa-check'></i>
     $success
   </div>";
 }
 
+//connects to the database
 $db = connectDatabase();
 
 if (isset($_POST['login'])) {

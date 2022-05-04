@@ -1,28 +1,28 @@
 function MainMenu() {
   
-  if (process.browser) { // needed for the code to work becuse document doesnt work on server side generated code
+  if (process.browser) {
     const nav = document.querySelector('#nav');
     const menu = document.querySelector('#menu');
     const menuToggle = document.querySelector('.nav__toggle');
-    let isMenuOpen = false; //variables for the toggles
+    let isMenuOpen = false;
 
 
-    
-    menuToggle.addEventListener('click', e => { // to toggle if it is active or not
+    // TOGGLE MENU ACTIVE STATE
+    menuToggle.addEventListener('click', e => {
       e.preventDefault();
       isMenuOpen = !isMenuOpen;
       
-     
-      menuToggle.setAttribute('aria-expanded', String(isMenuOpen)); // toggle a11y attributes and active class
+      // toggle a11y attributes and active class
+      menuToggle.setAttribute('aria-expanded', String(isMenuOpen));
       menu.hidden = !isMenuOpen;
-      nav.classList.toggle('nav--open'); 
+      nav.classList.toggle('nav--open');
     });
 
 
 }
   
 
-  const linksMenu = [ //json data with the the items the burger menu contains and where they go
+  const linksMenu = [ //json data with information on where links are supposed to go
   {
       link: "/",
       name: "Hem",
@@ -54,7 +54,7 @@ function MainMenu() {
     
       <header className="header" role="banner">
        
-          <a href="/"><img src="/files/logo.png" className='logo'/></a> {/* logo for handelsmässan */}
+          <a href="/"><img src="/files/logo.png" className='logo'/></a>
      
         <nav id="nav" className="nav" role="navigation">
         
@@ -75,7 +75,7 @@ function MainMenu() {
           </ul>
           
       
-          <a href="#nav" className="nav__toggle" role="button" aria-expanded="false" aria-controls="menu"> {/* burger icon */}
+          <a href="#nav" className="nav__toggle" role="button" aria-expanded="false" aria-controls="menu">
             <svg className="menuicon" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
               <title>Navbar</title>
               <g>
@@ -89,7 +89,7 @@ function MainMenu() {
           </a>
           
         
-          <div className="splash"></div> {/* blue background */}
+          <div className="splash"></div>
       
       </nav>
     

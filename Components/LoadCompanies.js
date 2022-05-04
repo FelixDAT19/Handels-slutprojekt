@@ -1,7 +1,7 @@
 import React from "react";
 
 
-function LoadCompanies({ id, name, companyInfo, externalUrl, logoUrl, offers, competitions, placement }) /* import of all the company data */ {
+function LoadCompanies({ id, name, companyInfo, externalUrl, logoUrl, offers, competitions, placement }) {
 
   
   //site to load in specific comapny and map out its data
@@ -9,12 +9,12 @@ function LoadCompanies({ id, name, companyInfo, externalUrl, logoUrl, offers, co
   return (
     <div className="companyPage">
       <img src={logoUrl} alt="company logo" className="companyImage"/>
-      <div className="companyGeneral"> {/* specific companys logo */}
+      <div className="companyGeneral">
 
-        <h1 className="companyName">{name}</h1> {/* the comany name */}
-        <p className="companyInfo">{companyInfo}</p> {/* info a bout the company */}
+        <h1 className="companyName">{name}</h1>
+        <p className="companyInfo">{companyInfo}</p>
         <p>Platser:</p>
-        {placement.map((i, key) /* all the placements a company has */ => 
+        {placement.map((i, key) => 
           <span key={key}>{i.id+ " "}</span>
         )}
         <br/>
@@ -23,14 +23,14 @@ function LoadCompanies({ id, name, companyInfo, externalUrl, logoUrl, offers, co
 
       <div className="companyOffer">
         <h3 className="companyOfferName">Erbjudanden</h3>
-        {offers.map(({offer, price}, s) => (//offers that the specific company has
+        {offers.map(({offer, price}, s) => (//offers
           <div key={s} className="offerInformation">
               <div className="offerName">{offer}</div>
               <div className="offerPrice">{price+" €"}</div>
           </div>
         ))}
       </div>
-      {competitions.map(({formUrl}, d) => ( //competition that the specific company has
+      {competitions.map(({formUrl}, d) => ( //competitions
         <div key={d} >
             <a href={formUrl} className="competitionLink">Tävling</a>
         </div>
@@ -38,7 +38,7 @@ function LoadCompanies({ id, name, companyInfo, externalUrl, logoUrl, offers, co
     <br/>
     <div className="companyWebsite">
 
-      <a href={externalUrl} className="companyLink">{externalUrl}</a> {/* link to the companys own website */}
+      <a href={externalUrl} className="companyLink">{externalUrl}</a>
 
     </div>
 

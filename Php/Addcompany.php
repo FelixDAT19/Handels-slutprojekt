@@ -10,7 +10,7 @@ require_once "functionsAddcompany.php";
 
 session_start();
 
-//Session to check if you are logged in & redirect if u aren't
+//Session to check if you are logged in & redirect to the login page if you aren't
 if (empty($_SESSION['loggedin'])) {
     header('Location: Login.php');
     exit;
@@ -41,7 +41,7 @@ if (isset($_SESSION['alertError'])) {
         $placement = [];
     }
 } else {
-    //creates empty variables for the imputs if there are no previous inputs
+    //creates empty variables for the inputs if there are no previous inputs
     $companyName = "";
     $companyInfo = "";
     $externalUrl = "";
@@ -59,6 +59,7 @@ $offerPrice = "";
 //connects to the database
 $db = connectDatabase();
 
+//creates the function array_key_first if the server runs a php version that doesn't support it
 if (!function_exists('array_key_first')) {
     function array_key_first(array $arr)
     {
@@ -86,8 +87,10 @@ if ($foodCheck == "") {
     }
 }
 
+//checks if the POST-variable is set
 if ($_POST) {
     if (isset($_POST['editCompany']) && $_POST['editCompany'] != "") {
+        //checks if the user is trying to edit a company & redirects to editCompany
         $_SESSION['editCompany'] = array_key_first($_POST['editCompany']);
         header("location:editCompany.php");
         exit();
@@ -141,7 +144,7 @@ if ($_POST) {
             } else {
                 $error = "";
             }
-
+            //gets the error message from the error session & prints it out
             echo "<div class='error-msg'>
                 <i class='fa fa-times-circle'></i>
                 $error
@@ -152,7 +155,7 @@ if ($_POST) {
             } else {
                 $success = "";
             }
-
+            //gets the success message from the success session & prints it out
             echo "<div class='success-msg'>
                 <i class='fa fa-check'></i>
                 $success
@@ -262,5 +265,6 @@ if ($_POST) {
 
 </html>
 <?php
+//clears the success & error messages on refresh
 unset($_SESSION['alertError']);
 unset($_SESSION['alertSuccess']);

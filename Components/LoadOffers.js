@@ -3,13 +3,13 @@ function LoadOffers({offers}){ //loads offers from companies that dont offer foo
 
     
 
-    return offers.map(({ name, foodCheck, offers }, p) => { //used to map out the names
-        if (foodCheck === false && offers != "") { // check if the company is not a food company and if not it displays the company and offers
+    return offers.map(({ name, foodCheck, offers }, p) => {
+        if (foodCheck === false && offers != "") {
             return (
                 <div key={p} className="companyOffer">
                     <h3 className="companyOfferName">{name}</h3>
                     
-                    {offers.map(({ offer, price}, f) => ( // displays the company offers under specific company
+                    {offers.map(({ offer, price}, f) => (
                         <div key={f} className="offerInformation">
                             <div className="offerName">{offer}</div>
                             <div className="offerPrice">{price+" €"}</div>

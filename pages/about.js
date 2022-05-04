@@ -2,33 +2,32 @@ import MainMenu from "/Components/MainMenu";
 import FooterMenu from "/Components/FooterMenu";
 import prisma from "/api/client";
 
-function events({ sponsors }) {
-  //event page with pdf iframe
+function about({ sponsors }) {
+  //about page
   return (
     <div className="viewport">
       <MainMenu />
 
-      <h1>Program</h1>
-
+      <h1>Om</h1>
       <br />
-
-      <iframe src="/files/programblad.pdf" className="iframecss"/>
-
-      <br />
+      <p>öppettider</p>
+      <p>12-19</p>
+      <p>10-18</p>
+      <br/>
 
       <FooterMenu sponsors={sponsors} />
     </div>
   );
 }
 
-export async function getStaticProps() { // fetches sponsors
+export async function getStaticProps() { //fetches data from database
   const dataSponsor = await prisma.sponsors.findMany();
-  const sponsors = [...JSON.parse(JSON.stringify(dataSponsor))];
+  const sponsors = [...JSON.parse(JSON.stringify(dataSponsor))]; //turns data in to json array
 
   return {
     props: {
       sponsors,
     },
-  };
+  }; // returns sponsor data
 }
-export default events;
+export default about;

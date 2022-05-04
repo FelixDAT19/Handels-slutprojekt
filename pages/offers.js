@@ -17,7 +17,7 @@ function offers({ sponsors, offers }) {
 
       <LoadOffers offers={offers}/>
 
-      <FooterMenu sponsors={sponsors}  /* sends all the sponsors to the sponsor component *//>
+      <FooterMenu sponsors={sponsors} />
     </div>
   );
 }

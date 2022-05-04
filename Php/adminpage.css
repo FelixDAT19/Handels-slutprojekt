@@ -1,27 +1,27 @@
 html{
   font-size: 14px;
-  font-family: 'Verdana', Arial, sans-serif !important;
+  font-family: 'Verdana', Arial, sans-serif !important; /* Lists the fonts that are to be used all over the admin site !important forces the fonts to be shown as the font-family */
 }
 
-body{
+body{ 
   margin: 0;
 }
-
-.dropbtn {
+/*  The dropdown list when choosing monters for a company*/
+.dropbtn { 
     background-color: #007ecd;
     color: white;
     padding: 12px;
     font-size: 16px;
     border: none;
 }
-
-.dropdown {
+/* The code for when the dropdown button opens */
+.dropdown { 
     position: relative;
     display: inline-block;
     margin: 5px;
 }
-
-.dropdown-content {
+/* The content in the opened dropdown */
+.dropdown-content { 
     display: none;
     position: absolute;
     background-color: #f1f1f1;
@@ -36,20 +36,20 @@ body{
     text-decoration: none;
     display: block;
 }
-
-.dropdown-content a:hover {
+/* When you are hovering offer the dropdown content */
+.dropdown-content a:hover { 
     background-color: #ddd;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-content { 
     display: block;
 }
 
 .dropdown:hover .dropbtn {
     background-color: #007ecd;
 }
-
-.grid-container {
+/* The grid wich contains all the items monter 1 - 107 */
+.grid-container { 
   display: grid;
   grid-template-columns: auto auto auto;
   background-color: #2196F3;
@@ -57,7 +57,8 @@ body{
   max-height: 25rem;
   overflow: auto;
 }
-.grid-item {
+/* The induvidual grid items(monter) */
+.grid-item { 
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(0, 0, 0, 0.8);
   padding: 20px;
@@ -65,7 +66,7 @@ body{
 }
 
 /*css for loginpage*/
-/*makes sure the form & picture are centered*/
+/*makes sure the form & picture are centered */
 .center-screen {
   display: flex;
   justify-content: center;
@@ -76,12 +77,12 @@ body{
   flex-wrap: wrap;
   margin: 15% 25% 15% 25%;
 }
-
-.loginimg{
+/* Size of login logo on login page */
+.loginimg{ 
 max-width: 75%;
 }
-
-.loginform{
+/* Size of login form on login page */
+.loginform{ 
   width: 40%;
 }
 
@@ -91,7 +92,7 @@ max-width: 75%;
   padding: 10px 18px;
 }
 
-.logininput {
+.logininput { /* The size and alignment of the two input fields on login */
   width: 100% !important;
   padding: 12px 20px;
   margin: 8px 0;
@@ -116,8 +117,8 @@ max-width: 75%;
 .loginbutton:hover {
   background-color: #0067cd;
 }
-
-.success-msg,
+/* The size and position of all msg dispays on the admin site */
+.success-msg, 
 .error-msg {
   position: sticky;
   top: 5px;
@@ -130,7 +131,7 @@ max-width: 75%;
   width: auto;
   max-width: 700px;
 }
-  
+  /* Input went through whitout any problems*/
 .success-msg {
   color: #270;
   background-color: #DFF2BF;
@@ -138,7 +139,8 @@ max-width: 75%;
 .warning-msg {
   color: #9F6000;
   background-color: #FEEFB3;
-}
+} 
+/* Displays when there is a wrong input in a field/information missing */
 .error-msg {
   color: #D8000C;
   background-color: #FFBABA;
@@ -192,14 +194,14 @@ table tbody tr.active-row {
 table td + td {
   border-left:1px solid #dddddd;
 }
-
+ /* The div class containing the table and it's height and the scroll funktion */
 .tablebox{
   max-height: 50rem;
   margin: 25px;
   overflow: auto;
   width: min-content;
 }
-
+/* The input buttons in the table and their appearance, size and alignment */
 input[type=submit] {
   width: 100%;
   background-color: rgb(0, 126, 205);
@@ -208,13 +210,13 @@ input[type=submit] {
   margin: 8px 0;
   border: none;
   border-radius: 4px;
-  cursor: pointer;
+  cursor: pointer; /* Activates the hand pointer when hovering over the button */
 }
-
+/* Makes it so when you hover over the button it changes to another color to make it more visable */
 input[type=submit]:hover {
   background-color: rgb(0, 62, 205);
 }
-
+/* Creates the Apperance, size and alignment of all the text fields on the adminsite*/
 input[type=text], select {
   width: 90%;
   padding: 12px 20px;
@@ -224,7 +226,7 @@ input[type=text], select {
   border-radius: 4px;
   box-sizing: border-box;
 }
-
+/* Creates the Apperance, size and alignment of all the password fields on the adminsite*/
 input[type=password], select {
  
   padding: 12px 20px;
@@ -234,7 +236,7 @@ input[type=password], select {
   border-radius: 4px;
   box-sizing: border-box;
 }
-
+/* Creates the Apperance, size and alignment of all the url fields on the adminsite*/
 input[type=url], select {
   width: 90%;
   padding: 12px 20px;
@@ -255,7 +257,7 @@ input[type=number], select {
   box-sizing: border-box;
 }
 
-
+/* Creates the Apperance, size and alignment of all the radio buttons fields on the adminsite (Yes or no circles)*/
 input[type=radio], select {
   padding: 12px 20px;
   margin: 8px 0;
@@ -265,7 +267,7 @@ input[type=radio], select {
   box-sizing: border-box;
   
 }
-
+/* The apperance of all buttons on the admin site outside the tables(in the forms) */
 button {
   background-color: rgb(0, 126, 205);
   color: white;
@@ -275,12 +277,12 @@ button {
   border-radius: 4px;
   cursor: pointer;
 }
-
+/* The color of the buttons in the forms change color when you hover over them  */
 button:hover {
   background-color: #0067cd;
 }
 
-
+/* The top menu over all of the adminsite(navigationbar) and its apperance, color, position  */
 .navbar {
   list-style-type: none;
   margin: 0;
@@ -291,7 +293,7 @@ button:hover {
   width: 100%;
   height: 50px;
 }
-
+/*  The buttons (Sponsorer, Utställare) residing in the navbar*/
 .btn {
   display: block;
   color: white;
@@ -299,7 +301,7 @@ button:hover {
   float: left;
   padding: 17px 10px 16px 10px;
 }
-
+/* The admin button in the navbar */
 .adminbtn{
   display: block;
   color: white;
@@ -313,11 +315,11 @@ button:hover {
 .navbtn a:hover {
   background-color: #006dcd;
 }
-
+/* A little bit of margin to the buttons in the forms */
 button[type=submit]{
   margin: 5px;
 }
-
+/* Closes the messages after 3 seconds (succes, error, warning messages) */
 .Message-close {
   position: absolute;
   background-color: rgba(black, 0.3);
@@ -330,7 +332,7 @@ button[type=submit]{
   opacity: 0;
   cursor: pointer;
 }
-
+/* The div for the forms */
 .inputbox{
   background-color: #f1f1f1;
   text-align: center;
@@ -348,7 +350,7 @@ button[type=submit]{
   border-radius: 4px;
   box-sizing: border-box;
 }
-
+/* The content box aligns the tables and forms together as a div with the tables on the right side and the forms to the left */
 .contentbox{
   width: 100%;
   height: min-content;
@@ -366,7 +368,7 @@ button[type=submit]{
 .contentbox .inputbox{
   float: left;
 }
-
+/* The table and form div with the form under the table (On the site utställare)  */
 .companybox{
   width: 100%;
   height: min-content;
@@ -374,19 +376,19 @@ button[type=submit]{
   border-top: 1.5px solid black;
   border-bottom: 1.5px solid black;
 }
-
+/* The Form */
 .companybox .inputbox{
   margin: auto;
   margin-top: 25px;
   margin-bottom: 25px;
 }
-
+/*The table */
 .companybox .tablebox{
   margin: auto;
   margin-bottom: 25px;
   margin-top: 25px;
 }
-
+/* The big textarea filed on the form  */
 textarea{
   width: 90%;
   padding: 12px 20px;
@@ -396,4 +398,6 @@ textarea{
   border-radius: 4px;
   box-sizing: border-box;
   height: 200px;
+  font-size: 14px;
+  font-family: 'Verdana', Arial, sans-serif !important;
 }

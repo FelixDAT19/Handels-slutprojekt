@@ -1,5 +1,5 @@
 <?php
-
+//creates the function array_key_first if the server runs a php version that doesn't support it
 if (!function_exists('array_key_first')) {
     function array_key_first(array $arr)
     {
@@ -12,6 +12,7 @@ if (!function_exists('array_key_first')) {
 
 function deleteSponsor($db)
 {
+    //creates sql to delete sponsor & executes
     $deleteSponsor = array_key_first($_POST['deleteSponsor']);
     $sqlDeleteSponsor = "DELETE FROM sponsors WHERE id=$deleteSponsor";
 
@@ -21,28 +22,6 @@ function deleteSponsor($db)
 
     $_POST['deletePSponsor'] = "";
 };
-
-function checkDupes($db)
-{
-    //creates sql used to check for already existing companies.
-    $sqlNodupes = "SELECT * FROM sponsors;";
-
-    $stmtNodupes = $db->prepare($sqlNodupes);
-
-    $stmtNodupes->execute([]);
-
-    $rowNodupes = $stmtNodupes->fetchAll();
-
-    $a = array();
-
-    //checks the company table & compares the input to the already existing companies
-    foreach ($rowNodupes as $names) {
-
-        $arrayContent = $names['name'];
-        array_push($a, $arrayContent);
-    };
-    return $a;
-}
 
 function sponsorList($db)
 {
@@ -65,8 +44,31 @@ function sponsorList($db)
     }
 }
 
+function checkDupes($db)
+{
+    //creates sql used to check for already existing companies.
+    $sqlNodupes = "SELECT * FROM sponsors;";
+
+    $stmtNodupes = $db->prepare($sqlNodupes);
+
+    $stmtNodupes->execute([]);
+
+    $rowNodupes = $stmtNodupes->fetchAll();
+
+    $a = array();
+
+    //Inserts the sponsors from the database into array
+    foreach ($rowNodupes as $names) {
+
+        $arrayContent = $names['name'];
+        array_push($a, $arrayContent);
+    };
+    return $a;
+}
+
 function addSponsor($db, $sponsorName, $sponsorUrl, $logoUrl)
 {
+    //creates sql to add sponsor to database, binds params & executes
     $sqlAddSponsor = "INSERT INTO sponsors (name, sponsorUrl, logoUrl)
                 VALUES (:sponsorName, :sponsorUrl, :logoUrl);";
 
@@ -84,6 +86,7 @@ function addSponsor($db, $sponsorName, $sponsorUrl, $logoUrl)
 
 function createSponsor($db)
 {
+    //checks if the sponsor you're trying to add is a duplicate, assigns the inputs to variables & runs the addSponsor-function
     $a = checkDupes($db);
     $sponsorName = trim(htmlspecialchars($_POST['sponsorName']));
     $sponsorUrl = trim(htmlspecialchars($_POST['sponsorUrl']));

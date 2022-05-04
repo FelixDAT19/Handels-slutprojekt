@@ -16,6 +16,7 @@ if (empty($_SESSION['loggedin'])) {
     exit;
 }
 
+//checks if the error or success-alerts are set on refresh/load, assigns previous inputs to variables & clears the sessions
 if (isset($_SESSION['alertError'])) {
     if (isset($_SESSION['companyName'], $_SESSION['companyInfo'], $_SESSION['externalUrl'], $_SESSION['logoUrl'], $_SESSION['foodCheck'], $_SESSION['place'])) {
         $companyName = $_SESSION['companyName'];
@@ -40,6 +41,7 @@ if (isset($_SESSION['alertError'])) {
         $placement = [];
     }
 } else {
+    //creates empty variables if the inputs aren't set
     $companyName = "";
     $companyInfo = "";
     $externalUrl = "";
@@ -56,6 +58,7 @@ if (isset($_SESSION['alertError'])) {
         $error = "";
     }
 
+    //gets the error message from the error session & prints it out
     echo "<div class='alertError'> $error </div>";
 } elseif (isset($_SESSION['alertSuccess'])) {
     if (isset($_SESSION["alertSuccess"])) {
@@ -64,16 +67,20 @@ if (isset($_SESSION['alertError'])) {
         $success = "";
     }
 
+    //gets the success message from the success session & prints it out
     echo "<div class='alertSuccess'> $success </div>";
 }
 
+//checks if the edit-data is set & redirects to addcompany if it's not
 if (empty($_SESSION['editCompany']) or $_SESSION['editCompany'] == "") {
     header("location:Addcompany.php");
     exit();
 }
 
+//connects to the database
 $db = connectDatabase();
 
+//creates the function array_key_first if the server runs a php version that doesn't support it
 if (!function_exists('array_key_first')) {
     function array_key_first(array $arr)
     {
@@ -92,6 +99,7 @@ if (isset($_POST['deletePlace']) && $_POST['deletePlace'] != "") {
 }
 
 if (isset($_SESSION['editCompany'])) {
+    //checks if the session editcompany is set & gets the selected companys data from the database.
     $getCompanyInfo = getCompanyInfo($db, $selectedCompany, $selectedCompany);
     $companyName = $getCompanyInfo->companyName;
     $companyInfo = $getCompanyInfo->companyInfo;
@@ -100,6 +108,7 @@ if (isset($_SESSION['editCompany'])) {
     $foodCheck = $getCompanyInfo->foodCheck;
     $oldPlacement = $getCompanyInfo->oldPlacement;
 
+    //compares the radio value with the database & checks the value from the database. 
     $radiochecked = ['0' => "", '1' => ""];
     if (isset($_POST['foodCheck'])) {
         $radiochecked[$_POST['foodCheck']] = "checked";
@@ -107,6 +116,7 @@ if (isset($_SESSION['editCompany'])) {
         $radiochecked[$foodCheck] = "checked";
     }
     if (isset($_POST['submitChanges'])) {
+        //checks if the user is trying to submit changes & checks if all inputs are valid. If they aren't it gives an error message
         if ($_POST['companyName'] == "") {
             $_SESSION['alertError'] = "Företagsnamn saknas";
             header("location:editCompany.php");
@@ -128,6 +138,7 @@ if (isset($_SESSION['editCompany'])) {
             header("location:editCompany.php");
             exit();
         } else {
+            //if the inputs are correct it makes the changes in the database
             updateCompany($db, $selectedCompany, $oldPlacement, $placement);
         }
     }
@@ -175,7 +186,7 @@ if (isset($_SESSION['editCompany'])) {
             <div class="inputbox">
                 <Form method="POST">
                     <input value="<?= $companyName; ?>" type="text" id="companyName" name="companyName" maxlength="100" autocomplete="off"><br>
-                    <input value="<?= $companyInfo; ?>" type="text" id="companyInfo" name="companyInfo" maxlength="350" autocomplete="off"><br>
+                    <textarea type="text" id="companyInfo" name="companyInfo" maxlength="350" autocomplete="off"><?= $companyInfo; ?></textarea><br>
                     <input value="<?= $externalUrl; ?>" type="url" id="externalUrl" name="externalUrl" maxlength="500" autocomplete="off"><br>
                     <input value="<?= $logoUrl; ?>" type="url" id="logoUrl" name="logoUrl" maxlength="500" autocomplete="off"><br>
                     <label>Är det ett matföretag?</label>
