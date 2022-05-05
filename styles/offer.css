@@ -2,7 +2,7 @@
     margin-right: 20px;
     margin-left: 20px;
     margin-bottom: 1%;
-    border: 5px solid #D3D3D3;
+    border: 5px solid #bebebe;
     margin-bottom: 8%;/* Avståndet emellan erbjudande listan och länkarna */
 }
 .companyOfferName{
@@ -13,7 +13,7 @@
     display: flex;
     flex-direction: row;
     box-sizing: border-box;
-    background-color: #f1f1f1;
+    background-color: #cecece;
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 5px;
@@ -22,7 +22,7 @@
 
 .offerInformation:nth-child(odd) {
 
-    background-color: rgb(216, 212, 212);
+    background-color: rgb(180, 180, 180);
 
 }
 .offerName{

@@ -1,8 +1,5 @@
- 
- <?php
-
- /*
-
+<?php
+/*
 function connectDatabase(): PDO
 {
     $dbDSN = "mysql:dbname=handels;host=127.0.0.1;port=3306;charset=utf8";
@@ -18,16 +15,15 @@ function connectDatabase(): PDO
     }
     return $db;
 }
-
 */
-
-
 function connectDatabase(): PDO
 {
+    //specifies the database info
     $dbDSN = "mysql:dbname=heroku_f3b40c52a301cf5;host=eu-cdbr-west-02.cleardb.net;port=3306;charset=utf8";
     $dbUser = "b158ff6542ad9b";
     $dbPassword = "da525471";
 
+    //tries to connect to the database & gives error if it fails
     try {
         $db = new PDO($dbDSN, $dbUser, $dbPassword);
     } catch (PDOException $ex) {

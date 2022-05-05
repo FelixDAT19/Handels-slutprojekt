@@ -1,26 +1,31 @@
 html{
   font-size: 14px;
-  font-family: 'Verdana', Arial, sans-serif !important;
+  font-family: 'Verdana', Arial, sans-serif !important; /* Lists the fonts that are to be used all over the admin site !important forces the fonts to be shown as the font-family */
 }
 
-.dropbtn {
+body{ 
+  margin: 0;
+}
+/*  The dropdown list when choosing monters for a company*/
+.dropbtn { 
     background-color: #007ecd;
     color: white;
     padding: 12px;
     font-size: 16px;
     border: none;
 }
-
-.dropdown {
+/* The code for when the dropdown button opens */
+.dropdown { 
     position: relative;
     display: inline-block;
+    margin: 5px;
 }
-
-.dropdown-content {
+/* The content in the opened dropdown */
+.dropdown-content { 
     display: none;
     position: absolute;
     background-color: #f1f1f1;
-    min-width: 160px;
+    min-width: 200px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
@@ -31,21 +36,37 @@ html{
     text-decoration: none;
     display: block;
 }
-
-.dropdown-content a:hover {
+/* When you are hovering offer the dropdown content */
+.dropdown-content a:hover { 
     background-color: #ddd;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-content { 
     display: block;
 }
 
 .dropdown:hover .dropbtn {
     background-color: #007ecd;
 }
+/* The grid wich contains all the items monter 1 - 107 */
+.grid-container { 
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: #2196F3;
+  padding: 10px;
+  max-height: 25rem;
+  overflow: auto;
+}
+/* The induvidual grid items(monter) */
+.grid-item { 
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  text-align: center;
+}
 
 /*css for loginpage*/
-/*makes sure the form & picture are centered*/
+/*makes sure the form & picture are centered */
 .center-screen {
   display: flex;
   justify-content: center;
@@ -56,12 +77,12 @@ html{
   flex-wrap: wrap;
   margin: 15% 25% 15% 25%;
 }
-
-.loginimg{
+/* Size of login logo on login page */
+.loginimg{ 
 max-width: 75%;
 }
-
-.loginform{
+/* Size of login form on login page */
+.loginform{ 
   width: 40%;
 }
 
@@ -71,8 +92,8 @@ max-width: 75%;
   padding: 10px 18px;
 }
 
-.logininput {
-  width: 100%;
+.logininput { /* The size and alignment of the two input fields on login */
+  width: 100% !important;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -81,7 +102,7 @@ max-width: 75%;
   box-sizing: border-box;
 }
   
-  /*creates the look for the login button & changes color on hover*/
+/*creates the look for the login button & changes color on hover*/
 .loginbutton {
   width: 100%;
   background-color: #007ecd;
@@ -96,16 +117,21 @@ max-width: 75%;
 .loginbutton:hover {
   background-color: #0067cd;
 }
-
-.success-msg,
+/* The size and position of all msg dispays on the admin site */
+.success-msg, 
 .error-msg {
-  margin: 10px 0;
+  position: sticky;
+  top: 5px;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 5px;
+  margin-bottom: 5px;
   padding: 10px;
   border-radius: 3px 3px 3px 3px;
   width: auto;
   max-width: 700px;
 }
-  
+  /* Input went through whitout any problems*/
 .success-msg {
   color: #270;
   background-color: #DFF2BF;
@@ -113,109 +139,108 @@ max-width: 75%;
 .warning-msg {
   color: #9F6000;
   background-color: #FEEFB3;
-}
+} 
+/* Displays when there is a wrong input in a field/information missing */
 .error-msg {
   color: #D8000C;
   background-color: #FFBABA;
 }
 
 /* Table look and size */
-  table {
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    border-radius: 5px 5px 0 0;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    white-space: nowrap;
-  }
-   /*  table tops colums color and size  */
-  table thead tr {
-    background-color: rgb(0, 126, 205);
-    color: #ffffff;
-    text-align: left;
-    font-weight: bold;
+table {
+  border-collapse: collapse;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  white-space: nowrap;
+}
+/*  table tops colums color and size  */
+table thead tr {
+  background-color: rgb(0, 126, 205);
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+  top: 0;
+}
   
-  }
+/*  tabel content colums size and padding*/
+table th,
+table td {
+  padding: 12px 15px;
+  max-width: 12rem;
+  overflow:hidden;
+  text-overflow: ellipsis;
+}
+
+/* Table bottoms border with color */
+table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
   
-  /*  tabel content colums size and padding*/
-  table th,
-  table td {
-    padding: 12px 15px;
-    max-width: 262px;
-    overflow-y:scroll;
-    overflow-y:hidden;
-   
-  }
-  /* Table bottoms border with color */
-  table tbody tr {
-    border-bottom: 1px solid #dddddd;
-  }
-  
-  table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-  }
-  /* Last border color  */
-  table tbody tr:last-of-type {
-    border-bottom: 2px solid rgb(0, 126, 205);
+table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+/* Last border color  */
+table tbody tr:last-of-type {
+  border-bottom: 2px solid rgb(0, 126, 205);
     
-  }
+}
   
-  table tbody tr.active-row {
-    font-weight: bold;
-    color: rgb(0, 126, 205);
-  }
+table tbody tr.active-row {
+  font-weight: bold;
+  color: rgb(0, 126, 205);
+}
   
-  table td + td { border-left:1px solid #dddddd;}
-
-  
-  
-
-  input[type=submit] {
-    width: 100%;
-    background-color: rgb(0, 126, 205);
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-
-
-
-  input[type=submit]:hover {
-    background-color: rgb(0, 62, 205);
-  }
-  
-  
-
-
+table td + td {
+  border-left:1px solid #dddddd;
+}
+ /* The div class containing the table and it's height and the scroll funktion */
+.tablebox{
+  max-height: 50rem;
+  margin: 25px;
+  overflow: auto;
+  width: min-content;
+}
+/* The input buttons in the table and their appearance, size and alignment */
+input[type=submit] {
+  width: 100%;
+  background-color: rgb(0, 126, 205);
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer; /* Activates the hand pointer when hovering over the button */
+}
+/* Makes it so when you hover over the button it changes to another color to make it more visable */
+input[type=submit]:hover {
+  background-color: rgb(0, 62, 205);
+}
+/* Creates the Apperance, size and alignment of all the text fields on the adminsite*/
 input[type=text], select {
+  width: 90%;
+  padding: 12px 20px;
+  margin: 5px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+/* Creates the Apperance, size and alignment of all the password fields on the adminsite*/
+input[type=password], select {
  
   padding: 12px 20px;
-  margin: 8px 0;
+  margin: 5px;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
 }
-
-
+/* Creates the Apperance, size and alignment of all the url fields on the adminsite*/
 input[type=url], select {
-
+  width: 90%;
   padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-input[type=password], select {
-  
-  padding: 12px 20px;
-  margin: 8px 0;
+  margin: 5px;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -223,6 +248,7 @@ input[type=password], select {
 }
 
 input[type=number], select {
+  width: 90%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -231,7 +257,7 @@ input[type=number], select {
   box-sizing: border-box;
 }
 
-
+/* Creates the Apperance, size and alignment of all the radio buttons fields on the adminsite (Yes or no circles)*/
 input[type=radio], select {
   padding: 12px 20px;
   margin: 8px 0;
@@ -239,16 +265,24 @@ input[type=radio], select {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+  
 }
-
+/* The apperance of all buttons on the admin site outside the tables(in the forms) */
 button {
-  background-color: #007ecd;
+  background-color: rgb(0, 126, 205);
   color: white;
-  padding: 12px;
-  font-size: 16px;
+  padding: 14px 20px;
+  margin: 8px 0;
   border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+/* The color of the buttons in the forms change color when you hover over them  */
+button:hover {
+  background-color: #0067cd;
 }
 
+/* The top menu over all of the adminsite(navigationbar) and its apperance, color, position  */
 .navbar {
   list-style-type: none;
   margin: 0;
@@ -259,7 +293,7 @@ button {
   width: 100%;
   height: 50px;
 }
-
+/*  The buttons (Sponsorer, Utställare) residing in the navbar*/
 .btn {
   display: block;
   color: white;
@@ -267,7 +301,7 @@ button {
   float: left;
   padding: 17px 10px 16px 10px;
 }
-
+/* The admin button in the navbar */
 .adminbtn{
   display: block;
   color: white;
@@ -281,4 +315,89 @@ button {
 .navbtn a:hover {
   background-color: #006dcd;
 }
+/* A little bit of margin to the buttons in the forms */
+button[type=submit]{
+  margin: 5px;
+}
+/* Closes the messages after 3 seconds (succes, error, warning messages) */
+.Message-close {
+  position: absolute;
+  background-color: rgba(black, 0.3);
+  color: #fff;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  right: 5px;
+  top: 5px;
+  opacity: 0;
+  cursor: pointer;
+}
+/* The div for the forms */
+.inputbox{
+  background-color: #f1f1f1;
+  text-align: center;
+  max-width: 500px;
+  margin: 25px;
+  height: min-content;
+}
+.selectCompany{ 
+  width: 90%;
+  display: block;
+  padding: 12px 20px;
+  margin: 5px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+/* The content box aligns the tables and forms together as a div with the tables on the right side and the forms to the left */
+.contentbox{
+  width: 100%;
+  height: min-content;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  border-top: 1.5px solid black;
+  border-bottom: 1.5px solid black;
+}
 
+.contentbox .tablebox{
+  float: left;
+}
+
+.contentbox .inputbox{
+  float: left;
+}
+/* The table and form div with the form under the table (On the site utställare)  */
+.companybox{
+  width: 100%;
+  height: min-content;
+  display: inline-block;
+  border-top: 1.5px solid black;
+  border-bottom: 1.5px solid black;
+}
+/* The Form */
+.companybox .inputbox{
+  margin: auto;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+/*The table */
+.companybox .tablebox{
+  margin: auto;
+  margin-bottom: 25px;
+  margin-top: 25px;
+}
+/* The big textarea filed on the form  */
+textarea{
+  width: 90%;
+  padding: 12px 20px;
+  margin: 5px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  height: 200px;
+  font-size: 14px;
+  font-family: 'Verdana', Arial, sans-serif !important;
+}

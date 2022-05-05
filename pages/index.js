@@ -3,18 +3,15 @@ import FooterMenu from "/Components/FooterMenu";
 import CompanyLinks from "/Components/CompanyLinks";
 import prisma from "/api/client";
 import CompanyList from "/Components/CompanyList";
+import OpenHours from "/Components/openHours";
 
-function Home({ sponsors, location, compaines }) {
+function Home({ sponsors, location, compaines, openHours }) {
   //start page with links to compaines and thair placements
   
   return (
     <div className="viewport">
       <MainMenu />
-      <div className="openHours">
-        <h2>Öppettider</h2>
-        <p>12-19 1.1.2202</p>
-        <p>10-18 1.2.2202</p>
-      </div>
+      <OpenHours openHours={openHours}/>
       <br/>
       <CompanyList company={compaines}/>
       <br/>
@@ -46,12 +43,16 @@ export async function getStaticProps() { // fetches sponsors and location data f
   const dataCompanies = await prisma.company.findMany({include: {placement: true,},});
   const compaines = [...JSON.parse(JSON.stringify(dataCompanies)),]
 
+  const dataOpenHours = await prisma.openhours.findMany();
+  const openHours = [...JSON.parse(JSON.stringify(dataOpenHours)),]
+
 
   return {
     props: {
       sponsors,
       location,
       compaines,
+      openHours,
     },
   };
 }

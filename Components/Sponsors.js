@@ -7,7 +7,7 @@ function Sponsors({sponsors}){
             {sponsors.map(({logoUrl,sponsorUrl,name}, i) => ( //maps out sponsors
                 <div key={i}>
                     
-                    <Link href={sponsorUrl} className="sponsorHomepage" passHref><img src={logoUrl} alt="sponsorimgae" className="sponsorImage"></img></Link>
+                    <Link href={sponsorUrl} className="sponsorHomepage" passHref><img src={logoUrl} alt={name} className="sponsorImage"></img></Link>
                    
                     <br/>
                 </div>

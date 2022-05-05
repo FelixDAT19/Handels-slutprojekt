@@ -16,10 +16,10 @@
   
   
 }
-.companyDropdownNav{
+.companyDropdownNav{ /* The dropdown navigation area */
   position: relative;
   top: 25%;
-  left: 50%;
+  left: 49%;
   transform: translate(-50%, -50%);
   background: rgb(0, 126, 205);
   width: 300px;

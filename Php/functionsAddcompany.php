@@ -1,7 +1,18 @@
 <?php
+//creates the function array_key_first if the server runs a php version that doesn't support it
+if (!function_exists('array_key_first')) {
+    function array_key_first(array $arr)
+    {
+        foreach ($arr as $key => $unused) {
+            return $key;
+        }
+        return NULL;
+    }
+}
 
 function deletePlace($db)
 {
+    //checks the id of the chosen place & replaces the companyid with null
     $deletePlace = array_key_first($_POST['deletePlace']);
     $sqlDeletePlace = "UPDATE placement
             SET companyId = NULL 
@@ -26,11 +37,13 @@ function deleteCompany($db)
 
     $stmtDeleteCPlace->execute();
 
+    //creates sql to delete the offers that belong to the selected company & executes
     $sqlDeleteOffer = "DELETE FROM offers WHERE companyId=$deleteCompany";
 
     $stmtDeleteOffer = $db->prepare($sqlDeleteOffer);
     $stmtDeleteOffer->execute();
 
+    //creates sql to delete the competitions that belong to the selected company & executes
     $sqlDeleteCompetition = "DELETE FROM competitions WHERE companyId=$deleteCompany";
 
     $stmtDeleteCompetition = $db->prepare($sqlDeleteCompetition);
@@ -47,6 +60,7 @@ function deleteCompany($db)
 
 function deleteOffer($db)
 {
+    //deletes the offer with the selected id
     $deleteOffer = array_key_first($_POST['deleteOffer']);
     $sqlDeleteOffer = "DELETE FROM offers WHERE id=$deleteOffer;";
 
@@ -55,41 +69,74 @@ function deleteOffer($db)
     $stmtDeleteOffer->execute();
 }
 
+function checkDupesOffer($db)
+{
+    //creates sql used to check for already existing offers.
+    $sqlNodupes = "SELECT * FROM offers";
+
+    $stmtNodupes = $db->prepare($sqlNodupes);
+
+    $stmtNodupes->execute([]);
+
+    $rowNodupes = $stmtNodupes->fetchAll();
+
+    $a = array();
+
+    //checks the offers table & compares the input to the already existing offers
+    foreach ($rowNodupes as $names) {
+
+        $arrayContent = ($names['offer'] . $names['companyId']);
+        array_push($a, $arrayContent);
+    };
+    return $a;
+}
+
 function createOffer($db)
 {
+    //checks the users inputs & gives error message if the inputs are incorrect
     if (!isset($_POST['companies'])) {
         $_SESSION['alertError'] = "Välj ett företag";
         header("location:Addcompany.php");
         exit();
     } elseif (isset($_POST['companies']) && $_POST['companies'] != "") {
-        //Checks all fields are filled in & that the price is more than 0, and sends error alert of not
+        //Checks all fields are filled in correctly
         if ($_POST['offerInfo'] == "") {
             $_SESSION['alertError'] = "Erbjudandebeskrivning saknas";
             header("location:Addcompany.php");
             exit();
-        } elseif ($_POST['offerPrice'] == "") {
-            $_SESSION['alertError'] = "Pris saknas";
-            header("location:Addcompany.php");
-            exit();
-        } elseif ($_POST['offerPrice'] <= 0) {
-            $_SESSION['alertError'] = "Priset kan inte vara 0 eller mindre";
+        } elseif ($_POST['offerPrice'] < 0) {
+            $_SESSION['alertError'] = "Priset kan inte vara mindre än 0";
             header("location:Addcompany.php");
             exit();
         } else {
+            //assigns the inputs to different variables
             $chosenCompany = $_POST['companies'];
             $offerInfo = trim(htmlspecialchars($_POST['offerInfo']));
             $offerPrice = trim(htmlspecialchars($_POST['offerPrice']));
+            $a = checkDupesOffer($db);
+            $compareOffer = ($offerInfo . $chosenCompany);
+            //Checks if the offer you want to add already exists, adds it if it doesn't
+            if (in_array($compareOffer, $a)) {
+                $_SESSION['alertError'] = "Erbjudandet finns redan";
+                header("location:Addcompany.php");
+                exit();
+            } else {
+                //creates sql to add the offer to the database & executes
+                $sqlAddOffer = "INSERT INTO offers (companyId, offer, price)
+                VALUES (:chosenCompany, :offerInfo, :offerPrice);";
 
-            $sqlAddOffer = "INSERT INTO offers (companyId, offer, price)
-            VALUES (:chosenCompany, :offerInfo, :offerPrice);";
+                $stmtAddOffer = $db->prepare($sqlAddOffer);
 
-            $stmtAddOffer = $db->prepare($sqlAddOffer);
+                $stmtAddOffer->bindParam('chosenCompany', $chosenCompany, PDO::PARAM_STR);
+                $stmtAddOffer->bindParam('offerInfo', $offerInfo, PDO::PARAM_STR);
+                $stmtAddOffer->bindParam('offerPrice', $offerPrice, PDO::PARAM_INT);
 
-            $stmtAddOffer->bindParam('chosenCompany', $chosenCompany, PDO::PARAM_STR);
-            $stmtAddOffer->bindParam('offerInfo', $offerInfo, PDO::PARAM_STR);
-            $stmtAddOffer->bindParam('offerPrice', $offerPrice, PDO::PARAM_INT);
+                $stmtAddOffer->execute();
 
-            $result = $stmtAddOffer->execute();
+                $_SESSION['alertSuccess'] = "Erbjudandet har lagts till";
+                header("location:Addcompany.php");
+                exit();
+            }
         }
     }
 }
@@ -207,15 +254,15 @@ function selectPlacement($db, $placement)
     //loops the placement table & creates a checkbox list with all the showcases
     foreach ($row as $places) {
         if ($places['companyId'] == null && isset($_SESSION['alertError']) == false) {
-            echo ("<input type='checkbox' value='$places[id]' name='place[]'>$places[id]");
+            echo ("<div class='grid-item'><input type='checkbox' value='$places[id]' name='place[]'>$places[id]</div>");
         } elseif (isset($_SESSION['alertError']) == true && $places['companyId'] == null) {
             if (in_array($places['id'], $placement)) {
-                echo ("<input type='checkbox' value='$places[id]' name='place[]' checked>$places[id]");
+                echo ("<div class='grid-item'><input type='checkbox' value='$places[id]' name='place[]' checked>$places[id]</div>");
             } else {
-                echo ("<input type='checkbox' value='$places[id]' name='place[]'>$places[id]");
+                echo ("<div class='grid-item'><input type='checkbox' value='$places[id]' name='place[]'>$places[id]</div>");
             }
         } else {
-            echo ("<input type='checkbox' disabled>$places[id]");
+            echo ("<div class='grid-item'><input type='checkbox' disabled>$places[id]</div>");
         }
     }
 }
@@ -234,9 +281,9 @@ function offerList($db)
 
     while ($row = $stmt->fetch()) {
         echo "<tr>
-        <td>$row[name]</td>
-        <td>$row[offer]</td>
-        <td>$row[price]</td>
+        <td title='$row[name]'>$row[name]</td>
+        <td title='$row[offer]'>$row[offer]</td>
+        <td title='$row[price]'>$row[price]</td>
         <td>
         <form method='post'><input type='submit' name='deleteOffer[$row[id]]' value='ta bort'></form>
         </td>
@@ -257,8 +304,8 @@ function placementList($db)
 
     while ($row = $stmt->fetch()) {
         echo "<tr>
-            <td>$row[name]</td>
-            <td>$row[id]</td>
+            <td title='$row[id]'>$row[id]</td>
+            <td title='$row[name]'>$row[name]</td>
             <td>
             <form method='post'><input type='submit' name='deletePlace[$row[id]]' value='töm'></form>
             </td>
@@ -277,10 +324,10 @@ function companyList($db)
 
     while ($row = $stmt->fetch()) {
         echo "<tr>
-        <td>$row[name]</td>
-        <td>$row[companyInfo]</td>
-        <td>$row[externalUrl]</td>
-        <td>$row[logoUrl]</td>
+        <td title='$row[name]'>$row[name]</td>
+        <td title='$row[companyInfo]'>$row[companyInfo]</td>
+        <td title='$row[externalUrl]'>$row[externalUrl]</td>
+        <td title='$row[logoUrl]'>$row[logoUrl]</td>
         <td>
         <form method='post'><input type='submit' name='editCompany[$row[id]]' value='ändra'></form>
         </td>
@@ -293,7 +340,7 @@ function companyList($db)
 
 function selectCompany($db)
 {
-    //prepares sql & binds params.
+    //creates sql  & executes
     $sqlSelectCompany = "SELECT * FROM company ORDER BY id;";
 
     $stmtSelectCompany = $db->prepare($sqlSelectCompany);
